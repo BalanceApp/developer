@@ -8,7 +8,7 @@
    <div id="kt_header_mobile" class="header-mobile">
       <!--begin::Logo-->
       <a href="index.html">
-         <img alt="Logo" src="{{url('../others/assets/media/logos/logo_black.png')}}" class="logo-default max-h-30px" />
+         <img alt="Logo" src="../others/assets/media/logos/logo_black.png" class="logo-default max-h-30px" />
       </a>
       <!--end::Logo-->
       <!--begin::Toolbar-->
@@ -161,11 +161,11 @@
                                  style="text-align: center; min-height:400px">
                                  <div class="col-lg-12 col-md-12 content-item content-item-1 background border-radius20"> 
                                     <center style="margin-top: 80px;">
-                                        <a href="{{url('/everyday')}}" class="btn font-weight-bold btn-square btn-outline-dark" style="width: 150px">毎日入力</a>
-                                        <a href="{{url('/regular')}}" class="btn font-weight-bold btn-square btn-outline-dark" style="margin-left: 5%; width: 150px">定期サポート入力</a>
+                                        <a href="/everyday" class="btn font-weight-bold btn-square btn-outline-dark" style="width: 150px">毎日入力</a>
+                                        <a href="/regular" class="btn font-weight-bold btn-square btn-outline-dark" style="margin-left: 5%; width: 150px">定期サポート入力</a>
                                     </center>
                                     <center>
-                                        <a href="{{url('/history')}}" class="btn font-weight-bold btn-square btn-outline-dark" style="margin-top: 10%; width: 150px">過去の記録</a>
+                                        <a href="/history" class="btn font-weight-bold btn-square btn-outline-dark" style="margin-top: 10%; width: 150px">過去の記録</a>
                                     </center>
                                 </div>
                               </div>

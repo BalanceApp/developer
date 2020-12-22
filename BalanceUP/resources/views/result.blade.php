@@ -1,8 +1,8 @@
 @extends('app')
 @section('title', '先頭ページ')
 @section('content')
-<script src="{{url('../js/jquery.min.js')}}"></script>
-<script src="{{url('../js/dietgram.js')}}"></script>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/dietgram.js"></script>
 
 <input id="userid" type="hidden" value="@isset($userid){{$userid}}@endisset">
 
@@ -12,7 +12,8 @@
    <div id="kt_header_mobile" class="header-mobile">
       <!--begin::Logo-->
       <a href="">
-         <img alt="Logo" src="{{url('../others/assets/media/logos/logo_black.png')}}" class="logo-default max-h-30px" />
+         <img alt="Logo" src="../others/assets/media/logos/logo_black.png
+         " class="logo-default max-h-30px" />
       </a>
       <!--end::Logo-->
       <!--begin::Toolbar-->
@@ -56,9 +57,9 @@
                      <!--begin::Header Logo-->
                      <div class="header-logo">
                         <a href="/">
-                           <img alt="Logo" src="{{url('../others/assets/media/logos/logo_white.png')}}"
+                           <img alt="Logo" src="../others/assets/media/logos/logo_white.png"
                               class="logo-default max-h-40px" />
-                           <img alt="Logo" src="{{url('../others/assets/media/logos/logo_black.png')}}"
+                           <img alt="Logo" src="../others/assets/media/logos/logo_black.png"
                               class="logo-sticky max-h-40px" />
 						</a>
 						
@@ -221,10 +222,10 @@
                               <div style="text-align: right;padding-right: 100px;margin-top: 10px;">
                                  <div>
                                  @isset($player)
-                                          <a href="{{url('/viewGraph')}}"><span class="btn btn-primary btn-lg"
+                                          <a href="/viewGraph"><span class="btn btn-primary btn-lg"
                                           style="border-radius: 5px; min-width: 100px">Next</span></a>  
                                  @else
-                                       <a href="{{url('/playerlist')}}"><span class="btn btn-primary btn-lg"
+                                       <a href="/playerlist"><span class="btn btn-primary btn-lg"
                                           style="border-radius: 5px; min-width: 100px">return</span></a>
                                
                                  @endisset

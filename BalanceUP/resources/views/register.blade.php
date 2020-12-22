@@ -155,7 +155,7 @@
 																to your account:</div> -->
 														</div>
 														
-														<form method="POST" class="form" action="{{ url('/userinfocheck') }}" id="kt_login_signin_form">
+														<form method="POST" class="form" action="/userinfocheck" id="kt_login_signin_form">
                                                             @csrf
 															<div style="display: block;margin-top: 60px; padding-left: 30px;">
 																<div style="display: flex;" class="row">

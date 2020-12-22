@@ -162,7 +162,7 @@
                                                     style="border-style: solid solid solid solid; margin-left: 3%">ページ12
                                                     csv出力選択画面</h1>
                                             </div>
-                                            <form method="POST" class="form" action="{{ url('/userinfocheck') }}" id="kt_login_signin_form">
+                                            <form method="POST" class="form" action="/userinfocheck" id="kt_login_signin_form">
                                                 @csrf
                                                 <div class="row col-md-12" style="margin-left:10%; margin-top: 50px">
                                                     <a style="padding-top:10px">期間</a>

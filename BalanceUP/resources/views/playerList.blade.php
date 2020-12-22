@@ -189,8 +189,8 @@
                                                    @foreach($playerlist as $value)
                                                       <tr>
                                                         <td> {{ $value->userid }} </td>
-                                                         <td><a href="{{url('/finishInputing/'.$value->userid)}}">食事チェック結果</a></td>
-                                                         <td><a href="{{url('/viewGraph/'.$value->userid)}}">からだの変化</a></td>
+                                                         <td><a href="{{'/finishInputing/'.$value->userid}}">食事チェック結果</a></td>
+                                                         <td><a href="{{'/viewGraph/'.$value->userid}}">からだの変化</a></td>
                                                       </tr>
                                                    @endforeach
                                              @endisset

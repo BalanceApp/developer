@@ -143,9 +143,9 @@
 														@isset($data_erro)
 															<center><p id="unkown" style="color: #0c3392; padding: 20px;">{{ $data_erro }}</p></center>
 														@endisset
-														<form method="POST" class="form" action="{{ url('/check') }}"
+														<form method="POST" class="form" action="/check"
 															id="kt_login_signin_form">
-															@csrf
+															@csrf 
 															<div class="form-group mb-5">
 																<input
 																	onclick="clearerror();" class="form-control h-auto form-control-solid py-4 px-8"

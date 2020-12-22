@@ -156,10 +156,10 @@
                                  <div class="col-lg-12 col-md-12 content-item content-item-1 background border-radius20">     
                                         <p  style="margin-left: 75%; width: 150px">スタッフ用画面</p>
                                     <center style="margin-top: 80px;">
-                                        <a href="{{url('/playerlist')}}" class="btn btn-square btn-outline-dark" style="width: 150px; font-size: 28px; font-weight: bold">選手情報</a>
+                                        <a href="/playerlist" class="btn btn-square btn-outline-dark" style="width: 150px; font-size: 28px; font-weight: bold">選手情報</a>
                                     </center>
                                     <center>
-                                        <a href="{{url('/outputCSV')}}" class="btn font-weight-bold btn-square btn-outline-dark" style="margin-top: 10%; width: 150px">CSV出力</a>
+                                        <a href="/outputCSV" class="btn font-weight-bold btn-square btn-outline-dark" style="margin-top: 10%; width: 150px">CSV出力</a>
                                     </center>
                                 </div>
                               </div>
