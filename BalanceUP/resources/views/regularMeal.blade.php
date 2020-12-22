@@ -19,7 +19,7 @@
    }
 
    label>input:checked+img {
-      background: url(public/images/tick.png)!important;
+      background: url(images/tick.png)!important;
       background-repeat: no-repeat;
       background-position: center center;
       background-size: 20px 20px;
