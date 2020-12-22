@@ -8,7 +8,7 @@
 	<!--begin::Header Mobile-->
 	<div id="kt_header_mobile" class="header-mobile">
 		<!--begin::Logo-->
-		<a href="/">
+        <a href="{{url('/')}}">
 			<img alt="Logo" src="{{asset('others/assets/media/logos/logo_black.png')}}" class="logo-default max-h-30px" />
 		</a>
 		<!--end::Logo-->
