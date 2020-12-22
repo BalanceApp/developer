@@ -80,13 +80,19 @@ class UserCtrl extends Controller
     	}
     }
 
-    public function getplayerList(Type $var = null)
+    public function getplayerList(Request $req, Type $var = null)
     {
+        if( $req->session()->get('role')!='staff'){
+            return redirect('/');
+        }
         $playerlist = DB::select('select userid, name from player');
         return view('playerList', compact('playerlist'));
     }
 
     public function csvOut(Request $req){
+        if( $req->session()->get('role')!='staff'){
+            return redirect('/');
+        }
         $stafflist = DB::select('select userid, name from player');
         return view('CSVpage', compact('stafflist'));
     }

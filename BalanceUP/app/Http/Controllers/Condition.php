@@ -11,21 +11,14 @@ class Condition extends Controller
 
     public function regularInput(Request $req){
         $regularData = $req->all();
-        DB::insert('INSERT INTO regular(userid, height, weight, fat, muscle, frequency, time, regDate) VALUES(?,?,?,?,?,?,?,?)', [$req->session()->get('userid'), $regularData['height'], $regularData['weight'], $regularData['fat'], $regularData['muscle'], $regularData['frequency'], $regularData['time'], date("y-m-d")]);
-        $endtime = date("y-m-d");
-        
-        for($i = 1; $i<=7; $i++){
-            $startdate = date_format(date_sub(date_create(date("y-m-d")), date_interval_create_from_date_string((7-$i)." days")),"Y-m-d");
-            DB::delete('delete from everyday where date=?',[$startdate]);
-            DB::insert('INSERT INTO everyday(userid, height, weight, fat, muscle, date) VALUES(?,?,?,?,?,?)', [$req->session()->get('userid'), $regularData['height'], $regularData['weight'], $regularData['fat'], $regularData['muscle'], $startdate]);
-        }
-        DB::insert('INSERT INTO regular(userid, height, weight, fat, muscle, frequency, time, regDate) VALUES(?,?,?,?,?,?,?,?)', [$req->session()->get('userid'), $regularData['height'], $regularData['weight'], $regularData['fat'], $regularData['muscle'], $regularData['frequency'], $regularData['time'], date("y-m-d")]);
+       
+        DB::insert('INSERT INTO everyday(userid, height, weight, fat, muscle, regulardata, frequency, time, date) VALUES(?,?,?,?,?,1,?,?,?)', [$req->session()->get('userid'), $regularData['height'], $regularData['weight'], $regularData['fat'], $regularData['muscle'], $regularData['frequency'], $regularData['time'], date("y-m-d")]);
         return view('regularMeal'); 
     }
 
     public function everydayInput(Request $req){
         $everydayData = $req->all();
-        DB::insert('INSERT INTO everyday(userid, height, weight, fat, muscle, date) VALUES(?,?,?,?,?,?)', [$req->session()->get('userid'), $everydayData['height'], $everydayData['weight'], $everydayData['fat'], $everydayData['muscle'], date("y-m-d")]);
+        DB::insert('INSERT INTO everyday(userid, height, weight, fat, muscle,regulardata, date) VALUES(?,?,?,?,?,0,?)', [$req->session()->get('userid'), $everydayData['height'], $everydayData['weight'], $everydayData['fat'], $everydayData['muscle'], date("y-m-d")]);
         return view('finishInputing1');
     }
 
@@ -93,182 +86,18 @@ class Condition extends Controller
 
     function getGraphData(Request $req)
     {
-        $today=strtotime("today");
-        $startdate = strtotime("-1 week", $today);
-        $startdate = date("yy-m-d",$startdate);
+
+        $startdate = date_format(date_sub(date_create(date("y-m-d")), date_interval_create_from_date_string("7 days")),"Y-m-d");
         $userid = $req->userid;
-        $everydayHData = DB::select("SELECT height,date FROM everyday  WHERE userid=?  AND DATE IN (SELECT DATE FROM everyday WHERE date>?) ORDER BY DATE", [$userid, $startdate]);
-        $everydayWData = DB::select("SELECT weight, date FROM everyday WHERE userid=?  AND DATE IN (SELECT DATE FROM everyday WHERE date>?) order by date", [$userid, $startdate]);
-        $everydayFData = DB::select("SELECT fat, date FROM everyday WHERE userid=?  AND DATE IN (SELECT DATE FROM everyday WHERE date>?) order by date", [$userid, $startdate]);
-        $everydayMData = DB::select("SELECT muscle, date FROM everyday WHERE userid=?  AND DATE IN (SELECT DATE FROM everyday WHERE date>?) order by date", [$userid, $startdate]);
         $everydayData['hdata']=array();
         $everydayData['wdata']=array();
         $everydayData['fdata']=array();
         $everydayData['mdata']=array();
-        if(count($everydayHData) == 0)
-        $everydayData['hdata'] = 'null';
-        else if(count($everydayHData) == 1)
-        {
-            $y = $everydayHData[0]['height'];
-            for($i=0; $i<7; $i++)
-            {
-                array_push($everydayData['hdata'], (object)["x" => date_format(date_sub(date_create(date("y-m-d")),date_interval_create_from_date_string((7-$i)." days")), "Y-m-d"), "y" => $y]);
-            }
-        }
-        else
-        {
-            $count = count($everydayHData);
-            if($everydayHData[0]->date != date_format(date_sub(date_create(date("y-m-d")),date_interval_create_from_date_string("6 days")),"Y-m-d"))
-            {
-                $i = 0;
-                $y = $everydayHData[0]->height;
-                while($everydayHData[0]->date != date_format(date_sub(date_create(date("y-m-d")),date_interval_create_from_date_string(((6-$i)." days"))),"Y-m-d"))
-                {
-                    array_push($everydayData['hdata'], (object)["x" => date_format(date_sub(date_create(date("y-m-d")), date_interval_create_from_date_string((6-$i)." days")),"Y-m-d"), "y" => $y]);
-                    $i++;
-                }
-            }
-            for($i=0;$i<$count; $i++)
-            {
-                array_push($everydayData['hdata'],(object)["x" => $everydayHData[$i]->date, "y" => $everydayHData[$i]->height]);
-            }
-            $str= date("Y-m-d");
-            if($everydayHData[$count-1]->date != $str)
-            {
-                $i = 0;
-                $y = $everydayHData[$count-1]->height;
-               
-                while(date("y-m-d") != date_format(date_add(date_create($everydayHData[$count-1]->date),date_interval_create_from_date_string(($i)." days")),"Y-m-d"));
-                {
-                    array_push($everydayData['hdata'], (object)["x" => date_format(date_add(strtotime($everydayHData[$count-1]->date), date_interval_create_from_date_string(($i)." days")),"Y-m-d"), "y" => $y]);
-                    $i++;
-                }
-            }
-        }
-
-        if(count($everydayWData) == 0)
-        $everydayData['wdata'] = 'null';
-        else if(count($everydayWData) == 1)
-        {
-            $y = $everydayWData[0]->weight;
-            for($i=0; $i<7; $i++)
-            {
-                array_push($everydayData['wdata'], (object)["x" => date_format(date_sub(date_create(date("y-m-d")),date_interval_create_from_date_string((6-$i)." days")), "Y-m-d"), "y" => $y]);
-            }
-        }
-        else
-        {
-            $count = count($everydayWData);
-            if($everydayWData[0]->date != date_format(date_sub(date_create(date("y-m-d")),date_interval_create_from_date_string("6 days")),"Y-m-d"))
-            {
-                $i = 0;
-                $y = $everydayWData[0]->weight;
-                while($everydayWData[0]->date != date_format(date_sub(date_create(date("y-m-d")),date_interval_create_from_date_string(((6-$i)." days"))),"Y-m-d"))
-                {
-                    array_push($everydayData['wdata'], (object)["x" => date_format(date_sub(date_create(date("y-m-d")), date_interval_create_from_date_string((6-$i)." days")),"Y-m-d"), "y" => $y]);
-                    $i++;
-                }
-            }
-            for($i=0;$i<$count; $i++)
-            {
-                array_push($everydayData['wdata'],(object)["x" => $everydayWData[$i]->date, "y" => $everydayWData[$i]->weight]);
-            }
-            $str= date("Y-m-d");
-            if($everydayWData[$count-1]->date != $str)
-            {
-                $i = 0;
-                $y = $everydayWData[$count-1]->weight;
-               
-                while(date("y-m-d") != date_format(date_add(date_create($everydayWData[$count-1]->date),date_interval_create_from_date_string(($i)." days")),"Y-m-d"));
-                {
-                    array_push($everydayData['wdata'], (object)["x" => date_format(date_add(strtotime($everydayWData[$count-1]->date), date_interval_create_from_date_string(($i)." days")),"Y-m-d"), "y" => $y]);
-                    $i++;
-                }
-            }
-        }
-
-        if(count($everydayFData) == 0)
-        $everydayData['fdata'] = 'null';
-        else if(count($everydayFData) == 1)
-        {
-            $y = $everydayFData[0]->fat;
-            for($i=0; $i<7; $i++)
-            {
-                array_push($everydayData['fdata'], (object)["x" => date_format(date_sub(date_create(date("y-m-d")),date_interval_create_from_date_string((6-$i)." days")), "Y-m-d"), "y" => $y]);
-            }
-        }
-        else
-        {
-            $count = count($everydayFData);
-            if($everydayFData[0]->date != date_format(date_sub(date_create(date("y-m-d")),date_interval_create_from_date_string("6 days")),"Y-m-d"))
-            {
-                $i = 0;
-                $y = $everydayFData[0]->fat;
-                while($everydayFData[0]->date != date_format(date_sub(date_create(date("y-m-d")),date_interval_create_from_date_string(((6-$i)." days"))),"Y-m-d"))
-                {
-                    array_push($everydayData['fdata'], (object)["x" => date_format(date_sub(date_create(date("y-m-d")), date_interval_create_from_date_string((6-$i)." days")),"Y-m-d"), "y" => $y]);
-                    $i++;
-                }
-            }
-            for($i=0;$i<$count; $i++)
-            {
-                array_push($everydayData['fdata'],(object)["x" => $everydayFData[$i]->date, "y" => $everydayFData[$i]->fat]);
-            }
-            $str= date("Y-m-d");
-            if($everydayFData[$count-1]->date != $str)
-            {
-                $i = 0;
-                $y = $everydayFData[$count-1]->fat;
-               
-                while(date("y-m-d") != date_format(date_add(date_create($everydayFData[$count-1]->date),date_interval_create_from_date_string(($i)." days")),"Y-m-d"));
-                {
-                    array_push($everydayData['fdata'], (object)["x" => date_format(date_add(strtotime($everydayFData[$count-1]->date), date_interval_create_from_date_string(($i)." days")),"Y-m-d"), "y" => $y]);
-                    $i++;
-                }
-            }
-        }
-
-        if(count($everydayMData) == 0)
-        $everydayData['mdata'] = 'null';
-        else if(count($everydayMData) == 1)
-        {
-            $y = $everydayMData[0]->muscle;
-            for($i=0; $i<7; $i++)
-            {
-                array_push($everydayData['mdata'], (object)["x" => date_format(date_sub(date_create(date("y-m-d")),date_interval_create_from_date_string((6-$i)." days")), "Y-m-d"), "y" => $y]);
-            }
-        }
-        else
-        {
-            $count = count($everydayMData);
-            if($everydayMData[0]->date != date_format(date_sub(date_create(date("y-m-d")),date_interval_create_from_date_string("6 days")),"Y-m-d"))
-            {
-                $i = 0;
-                $y = $everydayMData[0]->muscle;
-                while($everydayMData[0]->date != date_format(date_sub(date_create(date("y-m-d")),date_interval_create_from_date_string(((6-$i)." days"))),"Y-m-d"))
-                {
-                    array_push($everydayData['mdata'], (object)["x" => date_format(date_sub(date_create(date("y-m-d")), date_interval_create_from_date_string((6-$i)." days")),"Y-m-d"), "y" => $y]);
-                    $i++;
-                }
-            }
-            for($i=0;$i<$count; $i++)
-            {
-                array_push($everydayData['mdata'],(object)["x" => $everydayMData[$i]->date, "y" => $everydayMData[$i]->muscle]);
-            }
-            $str= date("Y-m-d");
-            if($everydayMData[$count-1]->date != $str)
-            {
-                $i = 0;
-                $y = $everydayMData[$count-1]->muscle;
-               
-                while(date("y-m-d") != date_format(date_add(date_create($everydayMData[$count-1]->date),date_interval_create_from_date_string(($i)." days")),"Y-m-d"));
-                {
-                    array_push($everydayData['mdata'], (object)["x" => date_format(date_add(strtotime($everydayMData[$count-1]->date), date_interval_create_from_date_string(($i)." days")),"Y-m-d"), "y" => $y]);
-                    $i++;
-                }
-            }
-        }
-
+        $everydayData['hdata'] = DB::select("SELECT  DISTINCT DATE as x, height as y FROM everyday WHERE userid=? AND date>?", [$userid,$startdate]);
+        $everydayData['wdata'] = DB::select("SELECT  DISTINCT DATE as x, weight as y FROM everyday WHERE userid=? AND date>?", [$userid,$startdate]);
+        $everydayData['fdata'] = DB::select("SELECT  DISTINCT DATE as x, fat as y FROM everyday WHERE userid=? AND date>?", [$userid,$startdate]);
+        $everydayData['mdata'] = DB::select("SELECT  DISTINCT DATE as x, muscle as y FROM everyday WHERE userid=? AND date>?", [$userid,$startdate]);
+     
         $week = array();
         $week['hdata'] = array();
         $week['wdata'] = array();
@@ -279,13 +108,13 @@ class Condition extends Controller
         {
             $endtime = date_format(date_sub(date_create(date("y-m-d")), date_interval_create_from_date_string(($i * 7)." days")),"Y-m-d");
             $startdate = date_format(date_sub(date_create(date("y-m-d")), date_interval_create_from_date_string((($i + 1) * 7)." days")),"Y-m-d");
-            $result = DB::select("SELECT DATE AS x, height AS y FROM everyday WHERE height = (SELECT MAX(height) FROM everyday WHERE userid=? AND DATE>? AND DATE<?)", [$userid, $startdate,$endtime]);
+            $result = DB::select("SELECT DATE AS x, height AS y FROM everyday WHERE height = (SELECT MAX(height) FROM everyday WHERE userid=? AND DATE>? AND DATE<=?) AND DATE>? AND DATE<=?", [$userid, $startdate,$endtime,$startdate,$endtime]);
             if($result) array_push($week['hdata'], $result[0]);
-            $result = DB::select("SELECT DATE AS x, weight AS y FROM everyday WHERE weight = (SELECT MAX(weight) FROM everyday WHERE userid=? AND DATE>? AND DATE<?)", [$userid, $startdate,$endtime]);
+            $result = DB::select("SELECT DATE AS x, weight AS y FROM everyday WHERE weight = (SELECT MAX(weight) FROM everyday WHERE userid=? AND DATE>? AND DATE<=?) AND DATE>? AND DATE<=?", [$userid, $startdate,$endtime,$startdate,$endtime]);
             if($result) array_push($week['wdata'], $result[0]);
-            $result = DB::select("SELECT DATE AS x, fat AS y FROM everyday WHERE fat = (SELECT MAX(fat) FROM everyday WHERE userid=? AND DATE>? AND DATE<?)", [$userid, $startdate,$endtime]);
+            $result = DB::select("SELECT DATE AS x, fat AS y FROM everyday WHERE fat = (SELECT MAX(fat) FROM everyday WHERE userid=? AND DATE>? AND DATE<=?) AND DATE>? AND DATE<=?", [$userid, $startdate,$endtime,$startdate,$endtime]);
             if($result) array_push($week['fdata'], $result[0]);
-            $result = DB::select("SELECT DATE AS x, muscle AS y FROM everyday WHERE muscle = (SELECT MAX(muscle) FROM everyday WHERE userid=? AND DATE>? AND DATE<?)", [$userid, $startdate,$endtime]);
+            $result = DB::select("SELECT DATE AS x, muscle AS y FROM everyday WHERE muscle = (SELECT MAX(muscle) FROM everyday WHERE userid=? AND DATE>? AND DATE<=?) AND DATE>? AND DATE<=?", [$userid, $startdate,$endtime,$startdate,$endtime]);
             if($result) array_push($week['mdata'], $result[0]);
         }
 
@@ -299,13 +128,14 @@ class Condition extends Controller
         $month['mdata'] = array();
         for($i=0;$i<4;$i++)
         {
-            $result = DB::select("SELECT DATE AS x, height AS y FROM everyday WHERE height = (SELECT MAX(height) FROM everyday WHERE userid=? and date like ?) limit 1", [$userid, $yy."-".$mm."-%"]);
+            $monthstring = $yy."-".$mm."-%";
+            $result = DB::select("SELECT DATE AS x, height AS y FROM everyday WHERE height = (SELECT MAX(height) FROM everyday WHERE userid=? and date like ?) and  date like ? limit 1", [$userid, $monthstring,$monthstring]);
             if($result) array_push($month['hdata'], $result[0]);
-            $result = DB::select("SELECT DATE AS x, weight AS y FROM everyday WHERE weight = (SELECT MAX(weight) FROM everyday WHERE userid=? and date like ?) limit 1", [$userid, $yy."-".$mm."-%"]);
+            $result = DB::select("SELECT DATE AS x, weight AS y FROM everyday WHERE weight = (SELECT MAX(weight) FROM everyday WHERE userid=? and date like ?) and date like ? limit 1", [$userid, $monthstring,$monthstring]);
             if($result) array_push($month['wdata'], $result[0]);
-            $result = DB::select("SELECT DATE AS x, fat AS y FROM everyday WHERE fat = (SELECT MAX(fat) FROM everyday WHERE userid=? and date like ? limit 1)", [$userid, $yy."-".$mm."-%"]);
+            $result = DB::select("SELECT DATE AS x, fat AS y FROM everyday WHERE fat = (SELECT MAX(fat) FROM everyday WHERE userid=? and date like ?) and date like ?  limit 1", [$userid, $monthstring,$monthstring]);
             if($result) array_push($month['fdata'], $result[0]);
-            $result = DB::select("SELECT DATE AS x, muscle AS y FROM everyday WHERE muscle = (SELECT MAX(muscle) FROM everyday WHERE userid=? and date like ? limit 1)", [$userid, $yy."-".$mm."-%"]);
+            $result = DB::select("SELECT DATE AS x, muscle AS y FROM everyday WHERE muscle = (SELECT MAX(muscle) FROM everyday WHERE userid=? and date like ?)and date like ?  limit 1", [$userid, $monthstring,$monthstring]);
             if($result) array_push($month['mdata'], $result[0]);
             $mm -=1;
             if($mm<=0)
@@ -322,13 +152,13 @@ class Condition extends Controller
         for($i=0;$i<4;$i++)
         {
             $yy = (int)date("Y") - 3 + $i;
-            $result = DB::select("SELECT DATE AS x, height AS y FROM everyday WHERE height = (SELECT MAX(height) FROM everyday WHERE userid=? AND date like ?)", [$userid, $yy."-%"]);
+            $result = DB::select("SELECT DATE AS x, height AS y FROM everyday WHERE height = (SELECT MAX(height) FROM everyday WHERE userid=? AND date like ?) AND date like ? limit 1", [$userid, $yy."-%",$yy."-%"]);
             if($result) array_push($year['hdata'], $result[0]);
-            $result = DB::select("SELECT DATE AS x, weight AS y FROM everyday WHERE weight = (SELECT MAX(weight) FROM everyday WHERE userid=? AND date like ?)", [$userid, $yy."-%"]);
+            $result = DB::select("SELECT DATE AS x, weight AS y FROM everyday WHERE weight = (SELECT MAX(weight) FROM everyday WHERE userid=? AND date like ?) AND date like ? limit 1", [$userid, $yy."-%",$yy."-%"]);
             if($result) array_push($year['wdata'], $result[0]);
-            $result = DB::select("SELECT DATE AS x, fat AS y FROM everyday WHERE fat = (SELECT MAX(fat) FROM everyday WHERE userid=? AND date like ?)", [$userid, $yy."-%"]);
+            $result = DB::select("SELECT DATE AS x, fat AS y FROM everyday WHERE fat = (SELECT MAX(fat) FROM everyday WHERE userid=? AND date like ?) AND date like ? limit 1", [$userid, $yy."-%",$yy."-%"]);
             if($result) array_push($year['fdata'], $result[0]);
-            $result = DB::select("SELECT DATE AS x, muscle AS y FROM everyday WHERE muscle = (SELECT MAX(muscle) FROM everyday WHERE userid=? AND date like ?)", [$userid, $yy."-%"]);
+            $result = DB::select("SELECT DATE AS x, muscle AS y FROM everyday WHERE muscle = (SELECT MAX(muscle) FROM everyday WHERE userid=? AND date like ?) AND date like ? limit 1", [$userid, $yy."-%",$yy."-%"]);
             if($result) array_push($year['mdata'], $result[0]);
         }
     
