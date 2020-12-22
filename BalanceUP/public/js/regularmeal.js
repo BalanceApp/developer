@@ -40,9 +40,9 @@ $(document).ready(function() {
     let misoSoup = getradioval("foo31") / 2;
     let MenSoup = getradioval("foo32") / 2;
     let supply = getradioval("foo33") / 2;
-    let _token   = $('meta[name="csrf-token"]').attr('content');
+     let _token   = $('meta[name="csrf-token"]').attr('content');
 
-    $.post('/dietData', {
+    $.post("/dietData", {
            stapleFood:stapleFood,
            mainDish:mainDish,
            sideDish:sideDish,
@@ -65,7 +65,7 @@ $(document).ready(function() {
            misoSoup:misoSoup,
            MenSoup:MenSoup,
            supply:supply,
-          _token: _token
+          _token:_token
        },
        function(res){
           if(res)

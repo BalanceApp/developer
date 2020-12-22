@@ -184,7 +184,7 @@
                               </div>
                               <!--end::Header-->
                               <!--begin::Body-->
-                              <form >
+                              <form action="/dietData" id="regular" method="POST" >
 					                  @csrf
                                  <div class="card-body d-flex flex-column px-0" style="min-height:400px">
                                     <center>
@@ -214,7 +214,7 @@
                                                 <span style="margin-top: 10px;">(ご飯・パン・麺類・シリアル)</span>
                                              </div>
                                              <div style="display: block;">
-                                                <input type="radio" name="">&nbsp;&nbsp;
+                                                <input type="radio" name="" checked disabled>&nbsp;&nbsp;
                                                 <span style="margin-top: 10px;">あさ、ひる、よるどのくらい食ペましたか?</span>
                                                 <table class="table" style="text-align: center;">
                                                    <thead>
@@ -321,7 +321,7 @@
                                                 <span style="margin-top: 10px;">（肉・魚•卵•豆を便ったメインのおかず）</span>
                                              </div>
                                              <div style="display: block;">
-                                                <input type="radio" name="">&nbsp;&nbsp;
+                                                <input type="radio" name="" checked disabled>&nbsp;&nbsp;
                                                 <span style="margin-top: 10px;">あさ、ひる、よるどのくらい食べましたか?</span>
                                                 <table class="table" style="text-align: center;">
                                                    <thead>
@@ -424,7 +424,7 @@
                                              </div>
                                              <br>
                                              <div style="display: block;">
-                                                <input type="radio" name="">&nbsp;&nbsp;
+                                                <input type="radio" name="" checked disabled>&nbsp;&nbsp;
                                                 <span style="margin-top: 10px;">1週間のあいだで、それぞれどのくらい食べましたか?</span>
                                                 <table class="table" style="text-align: center;">
                                                    <thead>
@@ -556,7 +556,7 @@
                                                 <span style="margin-top: 10px;">（野菜・きのこ・海そう•いもを使った料理）</span>
                                              </div>
                                              <div style="display: block;">
-                                                <input type="radio" name="">&nbsp;&nbsp;
+                                                <input type="radio" name="" checked disabled>&nbsp;&nbsp;
                                                 <span style="margin-top: 10px;">あさ、ひる、よるどのくらい食ペましたか?</span>
                                                 <table class="table" style="text-align: center;">
                                                    <thead>
@@ -659,7 +659,7 @@
                                              </div>
                                              <br>
                                              <div style="display: block;">
-                                                <input type="radio" name="">&nbsp;&nbsp;
+                                                <input type="radio" name="" disabled>&nbsp;&nbsp;
                                                 <span style="margin-top: 10px;">1日でどのくらい食べましたか?</span>
                                                 <table class="table" style="text-align: center;">
                                                    <thead>
@@ -704,7 +704,7 @@
                                              </div>
                                              <br>
                                              <div style="display: block;">
-                                                <input type="radio" name="">&nbsp;&nbsp;
+                                                <input type="radio" name="" checked disabled>&nbsp;&nbsp;
                                                 <span style="margin-top: 10px;">1週間のあいだで、それぞれどのくらい食べましたか?</span>
                                                 <table class="table" style="text-align: center;">
                                                    <thead>
@@ -834,7 +834,7 @@
                                              </div>
                                              <div class="row">
                                                 <div class="col-md-6" style="min-width: 400px;">
-                                                   <input type="radio" name="">&nbsp;&nbsp;
+                                                   <input type="radio" name="" disabled>&nbsp;&nbsp;
                                                    <span
                                                       style="margin-top: 10px;font-size: 12px;margin-top: 10px;">1日でどのくらい食べましたか?</span>
                                                    <table class="table" style="text-align: center;">
@@ -882,7 +882,7 @@
                                                 </div>
                                                 <br>
                                                 <div class="col-md-6" style="min-width: 400px;">
-                                                   <input type="radio" name="">&nbsp;&nbsp;
+                                                   <input type="radio" name="" checked disabled>&nbsp;&nbsp;
                                                    <span
                                                       style="margin-top: 10px;font-size: 12px;margin-top: 10px;">1週間のあいだで、どのくらい食べましたか?</span>
                                                    <table class="table" style="text-align: center;">
@@ -931,7 +931,7 @@
                                              </div>
                                              <div class="row">
                                                 <div class="col-md-6" style="min-width: 400px;">
-                                                   <input type="radio" name="">&nbsp;&nbsp;
+                                                   <input type="radio" name="" disabled>&nbsp;&nbsp;
                                                    <span
                                                       style="margin-top: 10px;font-size: 12px;margin-top: 10px;">1日でどのくらい食べましたか?</span>
                                                    <table class="table" style="text-align: center;">
@@ -979,7 +979,7 @@
                                                 </div>
                                                 <br>
                                                 <div class="col-md-6" style="min-width: 400px;">
-                                                   <input type="radio" name="">&nbsp;&nbsp;
+                                                   <input type="radio" name="" checked disabled>&nbsp;&nbsp;
                                                    <span
                                                       style="margin-top: 10px;font-size: 12px;margin-top: 10px;">1週間のあいだで、どのくらい食べましたか?</span>
                                                    <table class="table" style="text-align: center;">
@@ -1049,7 +1049,7 @@
                                                 <p class="lable-p" style="font-size: 20px;font-weight: bold;">あまいおかし</p>
                                              </div>
                                              <div style="display: block;">
-                                                <input type="radio" name="">&nbsp;&nbsp;
+                                                <input type="radio" name="" disabled>&nbsp;&nbsp;
                                                 <span style="margin-top: 10px;">1日でどのくらい食べしたか?</span>
                                                 <table class="table" style="text-align: center;">
                                                    <thead>
@@ -1094,7 +1094,7 @@
                                                    </tbody>
                                                 </table>
                                                 <br>
-                                                <input type="radio" name="">&nbsp;&nbsp;
+                                                <input type="radio" name="" checked disabled>&nbsp;&nbsp;
                                                 <span
                                                    style="margin-top: 10px;font-size: 12px;margin-top: 10px;">1週間のあいだで、どのくらい食べましたか?</span>
                                                 <table class="table" style="text-align: center;">
@@ -1141,7 +1141,7 @@
                                                 <p class="lable-p" style="font-size: 20px;font-weight: bold;">しょっぱいおかし</p>
                                              </div>
                                              <div style="display: block;">
-                                                <input type="radio" name="">&nbsp;&nbsp;
+                                                <input type="radio" name="" disabled>&nbsp;&nbsp;
                                                 <span style="margin-top: 10px;">1日でどのくらい食べしたか?</span>
                                                 <table class="table" style="text-align: center;">
                                                    <thead>
@@ -1186,7 +1186,7 @@
                                                    </tbody>
                                                 </table>
                                                 <br>
-                                                <input type="radio" name="">&nbsp;&nbsp;
+                                                <input type="radio" name="" checked disabled>&nbsp;&nbsp;
                                                 <span
                                                    style="margin-top: 10px;font-size: 12px;margin-top: 10px;">1週間のあいだで、どのくらい食べましたか?</span>
                                                 <table class="table" style="text-align: center;">
@@ -1234,7 +1234,7 @@
                                                    style="margin-top: 10px;">（スポーツドリンクを含む）</span></p>
                                              </div>
                                              <div style="display: block;">
-                                                <input type="radio" name="">&nbsp;&nbsp;
+                                                <input type="radio" name="" disabled>&nbsp;&nbsp;
                                                 <span style="margin-top: 10px;">1日でどのくらい食べしたか?</span>
                                                 <table class="table" style="text-align: center;">
                                                    <thead>
@@ -1279,7 +1279,7 @@
                                                    </tbody>
                                                 </table>
                                                 <br>
-                                                <input type="radio" name="">&nbsp;&nbsp;
+                                                <input type="radio" name="" checked disabled>&nbsp;&nbsp;
                                                 <span
                                                    style="margin-top: 10px;font-size: 12px;margin-top: 10px;">1週間のあいだで、どのくらい食べましたか?</span>
                                                 <table class="table" style="text-align: center;">
@@ -1328,7 +1328,7 @@
                                                 <p class="lable-p" style="font-size: 20px;font-weight: bold;">あげもの</p>
                                              </div>
                                              <div style="display: block;">
-                                                <input type="radio" name="">&nbsp;&nbsp;
+                                                <input type="radio" name="" checked disabled>&nbsp;&nbsp;
                                                 <span
                                                    style="margin-top: 10px;font-size: 12px;margin-top: 10px;">1週間のあいだで、どのくらい食べましたか?</span>
                                                 <table class="table" style="text-align: center;">
@@ -1375,7 +1375,7 @@
                                                 <p class="lable-p" style="font-size: 20px;font-weight: bold;">ファーストフード</p>
                                              </div>
                                              <div style="display: block;">
-                                                <input type="radio" name="">&nbsp;&nbsp;
+                                                <input type="radio" name="" checked disabled>&nbsp;&nbsp;
                                                 <span
                                                    style="margin-top: 10px;font-size: 12px;margin-top: 10px;">1週間のあいだで、どのくらい食べましたか?</span>
                                                 <table class="table" style="text-align: center;">
@@ -1422,7 +1422,7 @@
                                                 <p class="lable-p" style="font-size: 20px;font-weight: bold;">みそ汁・スープ</p>
                                              </div>
                                              <div style="display: block;">
-                                                <input type="radio" name="">&nbsp;&nbsp;
+                                                <input type="radio" name="" disabled>&nbsp;&nbsp;
                                                 <span
                                                    style="margin-top: 10px;font-size: 12px;margin-top: 10px;">1日で、どのくらいのみますか?</span>
                                                 <table class="table" style="text-align: center;">
@@ -1462,7 +1462,7 @@
                                                 <p class="lable-p" style="font-size: 20px;font-weight: bold;">めん類のスープ</p>
                                              </div>
                                              <div style="display: block;">
-                                                <input type="radio" name="">&nbsp;&nbsp;
+                                                <input type="radio" name="" checked disabled>&nbsp;&nbsp;
                                                 <span
                                                    style="margin-top: 10px;font-size: 12px;margin-top: 10px;">普段めん類を食べる時、どのくらいスープを飲みますか?</span>
                                                 <table class="table" style="text-align: center;">
@@ -1503,7 +1503,7 @@
                                                 </p>
                                              </div>
                                              <div style="display: block;">
-                                                <input type="radio" name="">&nbsp;&nbsp;
+                                                <input type="radio" name="" checked disabled>&nbsp;&nbsp;
                                                 <span
                                                    style="margin-top: 10px;font-size: 12px;margin-top: 10px;">1週間のあいだで、どのくらい食べましたか?</span>
                                                 <table class="table" style="text-align: center;">
@@ -1547,7 +1547,7 @@
                                              </div>
                                              <br>
                                              <div style="display: block;">
-                                                <input type="radio" name="">&nbsp;&nbsp;
+                                                <input type="radio" name="" checked disabled>&nbsp;&nbsp;
                                                 <span
                                                    style="margin-top: 10px;font-size: 12px;margin-top: 10px;">おもにふくまれている成分?</span>
                                                 <table class="table" style="text-align: center;">

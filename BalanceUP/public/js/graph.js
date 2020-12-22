@@ -78,7 +78,7 @@
             var parts =weekfData[i].x.split('-');
              tempdata[i] = {x:new Date(parts[0], parts[1] - 1, parts[2]),y:weekfData[i].y};
          }
-        
+         weekData['fdata'] = tempdata;
          var tempdata = new Array();
          for(i = 0; i<weekmData.length; i++)
          {
@@ -113,15 +113,15 @@
          monthlyData['wdata'] = tempdata;
 
          var tempdata = new Array();
-         for(i = 0; i<weekfData.length; i++)
+         for(i = 0; i<monthlyfData.length; i++)
          {
             if(!monthlyfData[i]) continue;
             var parts =monthlyfData[i].x.split('-');
              tempdata[i] = {x:new Date(parts[0], parts[1] - 1, parts[2]),y:monthlyfData[i].y};
          }
-        
+         monthlyData['fdata'] = tempdata;
          var tempdata = new Array();
-         for(i = 0; i<weekmData.length; i++)
+         for(i = 0; i<monthlymData.length; i++)
          {
             if(!monthlymData[i]) continue;
             var parts =monthlymData[i].x.split('-');
@@ -155,15 +155,15 @@
          yearData['wdata'] = tempdata;
 
          var tempdata = new Array();
-         for(i = 0; i<weekfData.length; i++)
+         for(i = 0; i<yearfData.length; i++)
          {
             if(!yearfData[i]) continue;
             var parts =yearfData[i].x.split('-');
              tempdata[i] = {x:new Date(parts[0], parts[1] - 1, parts[2]),y:yearfData[i].y};
          }
-        
+         yearData['fdata'] = tempdata;
          var tempdata = new Array();
-         for(i = 0; i<weekmData.length; i++)
+         for(i = 0; i<yearmData.length; i++)
          {
             if(!yearmData[i]) continue;
             var parts =yearmData[i].x.split('-');
