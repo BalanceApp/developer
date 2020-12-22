@@ -18,7 +18,7 @@ function senddata(){
         }
     }
     $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') } });
-    $.post("{{url('/saveCSV')}}",{
+    $.post('/saveCSV',{
         startyear:startyear,
         endyear:endyear,
         userlist:userlist,
