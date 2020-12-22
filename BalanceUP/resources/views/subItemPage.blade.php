@@ -8,7 +8,7 @@
    <div id="kt_header_mobile" class="header-mobile">
       <!--begin::Logo-->
       <a href="index.html">
-         <img alt="Logo" src="{{url('../others/assets/media/logos/logo_black.png')}}" class="logo-default max-h-30px" />
+         <img alt="Logo" src="{{asset('others/assets/media/logos/logo_black.png')}}" class="logo-default max-h-30px" />
       </a>
       <!--end::Logo-->
       <!--begin::Toolbar-->
@@ -52,9 +52,9 @@
                      <!--begin::Header Logo-->
                      <div class="header-logo">
                         <a href="index.html">
-                           <img alt="Logo" src="../others/assets/media/logos/logo_white.png"
+                           <img alt="Logo" src="{{asset('others/assets/media/logos/logo_white.png')}}"
                               class="logo-default max-h-40px" />
-                           <img alt="Logo" src="../others/assets/media/logos/logo_black.png"
+                           <img alt="Logo" src="{{asset('others/assets/media/logos/logo_black.png')}}"
                               class="logo-sticky max-h-40px" />
                         </a>
                      </div>

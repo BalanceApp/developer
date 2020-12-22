@@ -1,15 +1,69 @@
 @extends('app')
 @section('title', '先頭ページ')
 @section('content')
-<script src="js/jquery.min.js"></script>
-<script src="../js/csvout.js"></script>
+<script src="asset('js/jquery.min.js')"></script>
+<script>
+        
+    function senddata(){
+        var checkbox = document.getElementsByName("users");
+        var diet = document.getElementById("saveDiet");
+        var change = document.getElementById("saveChange");
+        var startyear = document.getElementById("startyear").value;
+        var endyear = document.getElementById("endyear").value;
+        var userlist = new Array();
+        var dietData = diet.checked ? 1 : 0;
+        var changeData= change.checked ? 1 : 0;
+
+        for(var i=0; i<checkbox.length;i++)
+        {
+            if(checkbox[i].checked)
+            {
+            
+                userlist.push(checkbox[i].id);
+            }
+        }
+        $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') } });
+        $.post("/saveCSV",{
+            startyear:startyear,
+            endyear:endyear,
+            userlist:userlist,
+            dietData:dietData,
+            changeData:changeData
+        },function sucess(data){
+            alert("CSV out sucess!!")
+        });
+
+    }
+
+    function setall()
+    {
+    var allcheck=document.getElementById("allcheck");
+    var checkbox = document.getElementsByName("users");
+        if(allcheck.checked)
+        {
+            for(var i=0; i<checkbox.length;i++)
+            {
+                checkbox[i].checked=true;                
+            }
+        }
+        else
+        {
+            for(var i=0; i<checkbox.length;i++)
+            {
+                checkbox[i].checked=false;                
+            }
+        }
+    }
+
+
+</script>
 <div id="home">
     <!--begin::Main-->
     <!--begin::Header Mobile-->
     <div id="kt_header_mobile" class="header-mobile">
         <!--begin::Logo-->
         <a href="index.html">
-            <img alt="Logo" src="../others/assets/media/logos/logo_black.png" class="logo-default max-h-30px" />
+            <img alt="Logo" src="{{ asset('others/assets/media/logos/logo_black.png')}}" class="logo-default max-h-30px" />
         </a>
         <!--end::Logo-->
         <!--begin::Toolbar-->
@@ -53,9 +107,9 @@
                             <!--begin::Header Logo-->
                             <div class="header-logo">
                                 <a href="index.html">
-                                    <img alt="Logo" src="../others/assets/media/logos/logo_white.png"
+                                    <img alt="Logo" src="{{asset('others/assets/media/logos/logo_white.png')}}"
                                         class="logo-default max-h-40px" />
-                                    <img alt="Logo" src="../others/assets/media/logos/logo_black.png"
+                                    <img alt="Logo" src="{{asset('others/assets/media/logos/logo_black.png')}}"
                                         class="logo-sticky max-h-40px" />
                                 </a>
                             </div>
