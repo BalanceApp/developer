@@ -6,8 +6,8 @@
    <!--begin::Header Mobile-->
    <div id="kt_header_mobile" class="header-mobile">
       <!--begin::Logo-->
-      <a href="/">
-         <img alt="Logo" src="../others/assets/media/logos/logo_black.png" class="logo-default max-h-30px" />
+      <a href="{{url('/')}}">
+         <img alt="Logo" src="{{asset('others/assets/media/logos/logo_black.png')}}" class="logo-default max-h-30px" />
       </a>
       <!--end::Logo-->
       <!--begin::Toolbar-->
@@ -50,10 +50,10 @@
                   <div class="d-flex align-items-stretch mr-3">
                      <!--begin::Header Logo-->
                      <div class="header-logo">
-                        <a href="/">
-                           <img alt="Logo" src="../others/assets/media/logos/logo_white.png"
+                        <a href="{{url('/')}}">
+                           <img alt="Logo" src="{{asset('others/assets/media/logos/logo_white.png')}}"
                               class="logo-default max-h-40px" />
-                           <img alt="Logo" src="../others/assets/media/logos/logo_black.png"
+                           <img alt="Logo" src="{{asset('others/assets/media/logos/logo_black.png')}}"
                               class="logo-sticky max-h-40px" />
                         </a>
                      </div>
@@ -160,15 +160,15 @@
                                  style="text-align: center; min-height:400px">
                                  <div class="row">
                                     <div class="col-sm-4"></div>
-                                    <div class="col-sm-4"><img src="others/assets/media/logos/logo_black.png"
+                                    <div class="col-sm-4"><img src="{{asset('others/assets/media/logos/logo_black.png')}}"
                                           style="width: 100%;"></div>
                                     <div class="col-sm-4"></div>
                                  </div>
                                  <div>
                                     <center style="margin-top: 215px;">
-                                       <a href="/player"><span class="btn btn-info btn-lg"
+                                       <a href="{{url('/player')}}"><span class="btn btn-info btn-lg"
                                              style="min-width: 100px">選手</span></a>
-                                       <a href="/staff"><span class="btn btn-primary btn-lg"
+                                       <a href="{{url('/staff')}}"><span class="btn btn-primary btn-lg"
                                              style="border-radius: 5px; min-width: 100px">スタッフ</span></a>
                                     </center>
                                  </div>
