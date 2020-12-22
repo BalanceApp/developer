@@ -162,7 +162,7 @@
                                     <!-- <div>
                                        <p class="headBtn">アカウント作成</p> 
                                     </div>  -->
-                                    <form method="POST" action='{{url(/inputRegular)}}' class="form__wrapper">
+                                    <form method="POST" action="{{url('/inputRegular')}}" class="form__wrapper">
                                        @csrf
                                        <div class="row m-container" style="margin-left: 20%; margin-top: 40px">
                                           <table>

@@ -13,7 +13,7 @@
       $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }});
       var useridinput = document.getElementById("userid")
       var userid = useridinput.value;
-      $.get({{url('/getGraphData')}},{userid:userid}, function sucess(result){
+      $.get("{{url('/getGraphData')}}",{userid:userid}, function sucess(result){
             everydayData = JSON.parse(result)['everydaydata'];
             everydayhData = everydayData['hdata'];
             everydaywData = everydayData['wdata'];
