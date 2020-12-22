@@ -34,11 +34,11 @@ License: You must have a valid license purchased only from themeforest(the above
 		<!--end::Global Theme Styles-->
 		<!--begin::Layout Themes(used by all pages)-->
 		<!--end::Layout Themes-->
-		<link rel="shortcut icon" href="{{asset('others/assets/media/logos/favicon.ico')}}" />
+		<link rel="shortcut icon" href="../others/assets/media/logos/favicon.ico" />
 	</head>
 	<!--end::Head-->
 	<!--begin::Body-->
-	<body id="kt_body" style="background-image: url(../others/assets/media/bg/bg-10.jpg)')}}" class="quick-panel-right demo-panel-right offcanvas-right header-fixed subheader-enabled page-loading">
+	<body id="kt_body" style="background-image: url(../others/assets/media/bg/bg-10.jpg)" class="quick-panel-right demo-panel-right offcanvas-right header-fixed subheader-enabled page-loading">
 		<div>
 			@yield('content')
 		</div>

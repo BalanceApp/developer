@@ -19,7 +19,7 @@
    }
 
    label>input:checked+img {
-      background: url(images/tick.png);
+      background: url(public/images/tick.png)!important;
       background-repeat: no-repeat;
       background-position: center center;
       background-size: 20px 20px;
@@ -278,9 +278,9 @@
                                     <center>
                                        <p style="letter-spacing: 5px;font-size: 20px;font-weight: bold;">
                                           最近1週間の食事でどのくらい食べたか思い出して<br>
-                                          <img src="images/square.png" alt="Square" style="width: 20px;">
+                                          <img src="{{asset('images/square.png')}}" alt="Square" style="width: 20px;">
                                           の中に当てはまるところに
-                                          <img src="images/tick.png" alt="Tick" style="width: 20px;">
+                                          <img src="{{asset('images/tick.png')}}" alt="Tick" style="width: 20px;">
                                           をつけてみましょう
                                        </p>
                                     </center>
