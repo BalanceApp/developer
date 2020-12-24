@@ -29,13 +29,15 @@ class Condition extends Controller
         $result = DB::insert('INSERT INTO diet(userid, stapleFood, mainDish, sideDish,
         meat, seafood, eggs, beans, LCvegetables, GYvegetables, mushrooms, seaweeds, 
         potatoes, milk, fruit, sweets, saltSweets, juice, friedFood, fastFood, misoSoup,
-         MenSoup, supply, regDate) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
+         MenSoup, supply,energy,calcium,vitamin,others,unknown, otherslist, description, regDate) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
         [$req->session()->get('userid'), $dietData['stapleFood'], $dietData['mainDish'], 
         $dietData['sideDish'],$dietData['meat'], $dietData['seafood'], $dietData['eggs'],
          $dietData['beans'], $dietData['LCvegetables'], $dietData['GYvegetables'], $dietData['mushrooms'], 
          $dietData['seaweeds'], $dietData['potatoes'], $dietData['milk'],$dietData['fruit'], $dietData['sweets'], 
          $dietData['saltSweets'], $dietData['juice'], $dietData['friedFood'], $dietData['fastFood'], 
-         $dietData['misoSoup'], $dietData['MenSoup'], $dietData['supply'], date("y-m-d")]);
+         $dietData['misoSoup'], $dietData['MenSoup'], $dietData['supply'], $dietData['energy'],
+         $dietData['calcium'],$dietData['vitamin'],$dietData['others'],$dietData['unknown'], $dietData['otherslist'], 
+         $dietData['description'], date("y-m-d")]);
         echo $result;      
     }
 
@@ -51,7 +53,10 @@ class Condition extends Controller
         [$userid,$userid]);
         
          $user_point = 0;
+         $count = DB::select("select count(*) as count from player");
+
          $grade = 1;
+         
          if(count($returndata['data'])==1)
          {
             foreach($returndata['data'][0] as $value)
@@ -78,7 +83,7 @@ class Condition extends Controller
                 }
                 
             }
-           $returndata['grade'] = $grade;
+           $returndata['grade'] = $grade."位/".$count[0]->count."人";
         }       
 
         echo json_encode($returndata);
@@ -208,6 +213,7 @@ class Condition extends Controller
         $startyear=2019;
         $endyear =(int)date("Y");
         $delimiter = ",";
+        $files = array();
         if($data['startyear']!=null) $startyear=(int)$data['startyear'];
         if($data['endyear']!=null) $endyear=(int)$data['endyear'];
         for($i=0; $i<count($data['userlist']); $i++){
@@ -231,7 +237,7 @@ class Condition extends Controller
         }
         if($data['dietData']==1){
             $filename = 'diet'.date('Ymd').'_'.date('his').'';		 
-            $fp = fopen($filename.'.csv','w');
+            $fp = fopen('./CSV/'.$filename.'.csv','w');
             $columnNames = array('userid', 'stapleFood', 'mainDish', 'sideDish',
             'meat', 'seafood', 'eggs', 'beans', 'LCvegetables', 'GYvegetables', 'mushrooms', 'seaweeds', 
             'potatoes', 'milk', 'fruit', 'sweets', 'saltSweets', 'juice', 'friedFood', 'fastFood', 'misoSoup',
@@ -254,10 +260,12 @@ class Condition extends Controller
                 $i++;
             }
             fclose($fp);
+            $file = $filename.'.csv';
+            array_push($files,$file); 
         }
         if($data['changeData']==1){
             $filename = 'change'.date('Ymd').'_'.date('his').'';		 
-            $fp1 = fopen($filename.'.csv','w');
+            $fp1 = fopen('./CSV/'.$filename.'.csv','w');
             $columnNames = array('userid', 'height', 'weight', 'fat',        'muscle', 'date');
             $headers = array(
                 'Content-Type'        => 'text/csv',
@@ -274,7 +282,9 @@ class Condition extends Controller
                 $i++;
             }
             fclose($fp1);
+            $file = $filename.'.csv';
+            array_push($files,$file);      
         }
-        echo json_encode(true);
+        echo json_encode($files);
     }
 }

@@ -47,7 +47,10 @@ Route::get('/toscreen', function(){
     return view('subItemPage');
 });
 Route::post('/dietData', [Condition::class,'insertDiet']);
-Route::get('/finishInputing' , [Condition::class,'setResult']);
+Route::get('/finishInputing' , function(){
+    // [Condition::class,'setResult']
+    return view('finishInputing1');
+});
 Route::get('/getGraphData', [Condition::class, 'getGraphData']);
 Route::get('/getDiet', [Condition::class,'getDiet']);
 Route::get('/viewGraph', [Condition::class,'setGraph']);
