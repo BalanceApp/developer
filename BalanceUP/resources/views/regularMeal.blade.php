@@ -7,7 +7,6 @@
       visibility: hidden;
       border: none;
    }
-
    label>img {
       display: inline-block;
       padding: 0px;
@@ -17,7 +16,6 @@
       border: none;
       margin-left: -10px;
    }
-
    label>input:checked+img {
       background: url(images/tick.png);
       background-repeat: no-repeat;
@@ -28,25 +26,20 @@
 </style>
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script>
-
    $(document).ready(function() {
       $("#second").hide();
    });
-
    function nextPage() {
       $("#first").hide();
       $("#second").show();
    }
-
    function previousPage() {
       $("#second").hide();
       $("#first").show();
    }
-
    function end(){
       calculate();
    }
-
    function calculate(){
       $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') } });
       let stapleFood = (parseInt(getradioval("foo1")) + parseInt(getradioval("foo2")) + parseInt(getradioval("foo3"))) / 2;
@@ -72,7 +65,6 @@
       let MenSoup = getradioval("foo32") / 2;
       let supply = getradioval("foo33") / 2;
       let _token   = $('meta[name="csrf-token"]').attr('content');
-
       $.post("{{url('/dietData')}}", {
             stapleFood:stapleFood,
             mainDish:mainDish,
@@ -106,7 +98,6 @@
          }
       );
    }
-
    function getradioval(name)
    {
       var radios = document.getElementsByName(name);
@@ -115,7 +106,6 @@
       }
       return 0;
    }
-
 </script>
 <div id="home">
    <!--begin::Main-->
@@ -310,11 +300,11 @@
                                                          <th scope="col">#</th>
                                                          <th scope="col">食ベない</th>
                                                          <th scope="col">ふつう量<br><span
-                                                               style="font-size: 12px">(より少ない)</span>
+                                                               style="font-size: 12px">より少ない</span>
                                                          </th>
                                                          <th scope="col">ふつう量</th>
                                                          <th scope="col">ふつう量<br><span
-                                                               style="font-size: 12px">（より多い）</span>
+                                                               style="font-size: 12px">より多い</span>
                                                          </th>
                                                       </tr>
                                                    </thead>
@@ -417,11 +407,11 @@
                                                          <th scope="col">#</th>
                                                          <th scope="col">食べない</th>
                                                          <th scope="col">ふつう量<br><span
-                                                               style="font-size: 12px">(より少ない)</span>
+                                                               style="font-size: 12px">より少ない</span>
                                                          </th>
                                                          <th scope="col">ふつう量</th>
                                                          <th scope="col">ふつう量<br><span
-                                                               style="font-size: 12px">（より多い）</span>
+                                                               style="font-size: 12px">より多い</span>
                                                          </th>
                                                       </tr>
                                                    </thead>
@@ -652,11 +642,11 @@
                                                          <th scope="col">#</th>
                                                          <th scope="col">食べない</th>
                                                          <th scope="col">ふつう量<br><span
-                                                               style="font-size: 12px">(より少ない)</span>
+                                                               style="font-size: 12px">より少ない</span>
                                                          </th>
                                                          <th scope="col">ふつう量</th>
                                                          <th scope="col">ふつう量<br><span
-                                                               style="font-size: 12px">（より多い）</span>
+                                                               style="font-size: 12px">より多い</span>
                                                          </th>
                                                       </tr>
                                                    </thead>
@@ -930,11 +920,11 @@
                                                          <tr>
                                                             <th scope="col">食べない</th>
                                                             <th scope="col">ふつう量<br><span
-                                                                  style="font-size: 12px">(より少ない)</span>
+                                                                  style="font-size: 12px">より少ない</span>
                                                             </th>
                                                             <th scope="col">ふつう量</th>
                                                             <th scope="col">ふつう量<br><span
-                                                                  style="font-size: 12px">（より多い）</span>
+                                                                  style="font-size: 12px">より多い</span>
                                                             </th>
                                                          </tr>
                                                       </thead>
@@ -1027,11 +1017,11 @@
                                                          <tr>
                                                             <th scope="col">食べない</th>
                                                             <th scope="col">ふつう量<br><span
-                                                                  style="font-size: 12px">(より少ない)</span>
+                                                                  style="font-size: 12px">より少ない</span>
                                                             </th>
                                                             <th scope="col">ふつう量</th>
                                                             <th scope="col">ふつう量<br><span
-                                                                  style="font-size: 12px">（より多い）</span>
+                                                                  style="font-size: 12px">より多い</span>
                                                             </th>
                                                          </tr>
                                                       </thead>
@@ -1144,11 +1134,11 @@
                                                       <tr>
                                                          <th scope="col">食べない</th>
                                                          <th scope="col">ふつう量<br><span
-                                                               style="font-size: 12px">(より少ない)</span>
+                                                               style="font-size: 12px">より少ない</span>
                                                          </th>
                                                          <th scope="col">ふつう量</th>
                                                          <th scope="col">ふつう量<br><span
-                                                               style="font-size: 12px">（より多い）</span>
+                                                               style="font-size: 12px">より多い</span>
                                                          </th>
                                                       </tr>
                                                    </thead>
@@ -1236,11 +1226,11 @@
                                                       <tr>
                                                          <th scope="col">食べない</th>
                                                          <th scope="col">ふつう量<br><span
-                                                               style="font-size: 12px">(より少ない)</span>
+                                                               style="font-size: 12px">より少ない</span>
                                                          </th>
                                                          <th scope="col">ふつう量</th>
                                                          <th scope="col">ふつう量<br><span
-                                                               style="font-size: 12px">（より多い）</span>
+                                                               style="font-size: 12px">より多い</span>
                                                          </th>
                                                       </tr>
                                                    </thead>
@@ -1329,11 +1319,11 @@
                                                       <tr>
                                                          <th scope="col">のまない</th>
                                                          <th scope="col">ふつう量<br><span
-                                                               style="font-size: 12px">(より少ない)</span>
+                                                               style="font-size: 12px">より少ない</span>
                                                          </th>
                                                          <th scope="col">ふつう量</th>
                                                          <th scope="col">ふつう量<br><span
-                                                               style="font-size: 12px">（より多い）</span>
+                                                               style="font-size: 12px">より多い</span>
                                                          </th>
                                                       </tr>
                                                    </thead>
@@ -1587,7 +1577,7 @@
                                              </div>
                                              <br>
                                              <div style="display: flex;">
-                                                <p class="lable-p" style="font-size: 20px;font-weight: bold;">サプリメント•栄養補助食品
+                                                <p class="lable-p" style="font-size: 20px;font-weight: bold;">サプリメント・栄養補助食品
                                                 </p>
                                              </div>
                                              <div style="display: block;">
