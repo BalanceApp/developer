@@ -26,6 +26,5 @@ class AppServiceProvider extends ServiceProvider
     public function boot(UrlGenerator $url)
     {
          URL::forceRootUrl(Config::get('app.url'));
-         $url->forceScheme('https');
     }
 }
