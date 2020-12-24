@@ -37,7 +37,7 @@ Route::get('/regular',function (){
     return view("regularDay");
 });
 Route::get('/everyday', function (){
-    return view('everyday');
+    return view('everyDay');
 });
 Route::post('/inputEveryday', [Condition::class, 'everydayInput']);
 Route::post('/inputRegular', [Condition::class, 'regularInput']);
