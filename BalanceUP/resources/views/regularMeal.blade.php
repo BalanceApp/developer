@@ -277,7 +277,7 @@
                                  <div class="card-body d-flex flex-column px-0" style="min-height:400px">
                                     <center>
                                        <p style="letter-spacing: 5px;font-size: 20px;font-weight: bold;">
-                                          最近1週間の食事でどのくらい食べたか思い出して<br>
+                                          最近1週間の食事でどのくらい食べたかを思い出して<br>
                                           <img src="{{asset('images/square.png')}}" alt="Square" style="width: 20px;">
                                           の中に当てはまるところに
                                           <img src="{{asset('images/tick.png')}}" alt="Tick" style="width: 20px;">
@@ -303,12 +303,12 @@
                                              </div>
                                              <div style="display: block;">
                                                 <input type="radio" name="" checked disabled>&nbsp;&nbsp;
-                                                <span style="margin-top: 10px;">あさ、ひる、よるどのくらい食ペましたか?</span>
+                                                <span style="margin-top: 10px;">あさ、ひる、よるで、どのくらい食べましたか?</span>
                                                 <table class="table" style="text-align: center;">
                                                    <thead>
                                                       <tr>
                                                          <th scope="col">#</th>
-                                                         <th scope="col">食ペない</th>
+                                                         <th scope="col">食ベない</th>
                                                          <th scope="col">ふつう量<br><span
                                                                style="font-size: 12px">(より少ない)</span>
                                                          </th>
@@ -406,16 +406,16 @@
                                              <br>
                                              <div style="display: flex;">
                                                 <p class="lable-p" style="font-size: 20px;font-weight: bold;">主菜</p>
-                                                <span style="margin-top: 10px;">（肉・魚•卵•豆を便ったメインのおかず）</span>
+                                                <span style="margin-top: 10px;">（肉・魚・卵・豆を使ったメインのおかず）</span>
                                              </div>
                                              <div style="display: block;">
                                                 <input type="radio" name="" checked disabled>&nbsp;&nbsp;
-                                                <span style="margin-top: 10px;">あさ、ひる、よるどのくらい食べましたか?</span>
+                                                <span style="margin-top: 10px;">あさ、ひる、よるで、どのくらい食べましたか?</span>
                                                 <table class="table" style="text-align: center;">
                                                    <thead>
                                                       <tr>
                                                          <th scope="col">#</th>
-                                                         <th scope="col">食ペない</th>
+                                                         <th scope="col">食べない</th>
                                                          <th scope="col">ふつう量<br><span
                                                                style="font-size: 12px">(より少ない)</span>
                                                          </th>
@@ -553,7 +553,7 @@
                                                          </td>
                                                       </tr>
                                                       <tr>
-                                                         <th scope="row">魚•貝など</th>
+                                                         <th scope="row">魚・貝など</th>
                                                          <td>
                                                             <label title="item1">
                                                                <input type="radio" name="foo8" value=0 />
@@ -641,16 +641,16 @@
                                              style="min-width: 500px; padding-left: 100px; padding-right: 100px;">
                                              <div style="display: flex;">
                                                 <p class="lable-p" style="font-size: 20px;font-weight: bold;">副菜</p>
-                                                <span style="margin-top: 10px;">（野菜・きのこ・海そう•いもを使った料理）</span>
+                                                <span style="margin-top: 10px;">（野菜・きのこ・海そう・いもを使った料理）</span>
                                              </div>
                                              <div style="display: block;">
                                                 <input type="radio" name="" checked disabled>&nbsp;&nbsp;
-                                                <span style="margin-top: 10px;">あさ、ひる、よるどのくらい食ペましたか?</span>
+                                                <span style="margin-top: 10px;">あさ、ひる、よるで、どのくらい食べましたか?</span>
                                                 <table class="table" style="text-align: center;">
                                                    <thead>
                                                       <tr>
                                                          <th scope="col">#</th>
-                                                         <th scope="col">食ペない</th>
+                                                         <th scope="col">食べない</th>
                                                          <th scope="col">ふつう量<br><span
                                                                style="font-size: 12px">(より少ない)</span>
                                                          </th>
@@ -918,7 +918,7 @@
                                              </div>
                                              <br>
                                              <div>
-                                                <p class="lable-p" style="font-size: 20px;font-weight: bold;">牛乳•乳製品</p>
+                                                <p class="lable-p" style="font-size: 20px;font-weight: bold;">牛乳・乳製品</p>
                                              </div>
                                              <div class="row">
                                                 <div class="col-md-6" style="min-width: 400px;">
@@ -928,7 +928,7 @@
                                                    <table class="table" style="text-align: center;">
                                                       <thead>
                                                          <tr>
-                                                            <th scope="col">食ペない</th>
+                                                            <th scope="col">食べない</th>
                                                             <th scope="col">ふつう量<br><span
                                                                   style="font-size: 12px">(より少ない)</span>
                                                             </th>
@@ -1025,7 +1025,7 @@
                                                    <table class="table" style="text-align: center;">
                                                       <thead>
                                                          <tr>
-                                                            <th scope="col">食ペない</th>
+                                                            <th scope="col">食べない</th>
                                                             <th scope="col">ふつう量<br><span
                                                                   style="font-size: 12px">(より少ない)</span>
                                                             </th>
@@ -1138,11 +1138,11 @@
                                              </div>
                                              <div style="display: block;">
                                                 <input type="radio" name="" disabled>&nbsp;&nbsp;
-                                                <span style="margin-top: 10px;">1日でどのくらい食べしたか?</span>
+                                                <span style="margin-top: 10px;">1日でどのくらい食べましたか?</span>
                                                 <table class="table" style="text-align: center;">
                                                    <thead>
                                                       <tr>
-                                                         <th scope="col">食ペない</th>
+                                                         <th scope="col">食べない</th>
                                                          <th scope="col">ふつう量<br><span
                                                                style="font-size: 12px">(より少ない)</span>
                                                          </th>
@@ -1230,11 +1230,11 @@
                                              </div>
                                              <div style="display: block;">
                                                 <input type="radio" name="" disabled>&nbsp;&nbsp;
-                                                <span style="margin-top: 10px;">1日でどのくらい食べしたか?</span>
+                                                <span style="margin-top: 10px;">1日でどのくらい食べましたか?</span>
                                                 <table class="table" style="text-align: center;">
                                                    <thead>
                                                       <tr>
-                                                         <th scope="col">食ペない</th>
+                                                         <th scope="col">食べない</th>
                                                          <th scope="col">ふつう量<br><span
                                                                style="font-size: 12px">(より少ない)</span>
                                                          </th>
@@ -1323,11 +1323,11 @@
                                              </div>
                                              <div style="display: block;">
                                                 <input type="radio" name="" disabled>&nbsp;&nbsp;
-                                                <span style="margin-top: 10px;">1日でどのくらい食べしたか?</span>
+                                                <span style="margin-top: 10px;">1日でどのくらいのみましたか?</span>
                                                 <table class="table" style="text-align: center;">
                                                    <thead>
                                                       <tr>
-                                                         <th scope="col">食ペない</th>
+                                                         <th scope="col">のまない</th>
                                                          <th scope="col">ふつう量<br><span
                                                                style="font-size: 12px">(より少ない)</span>
                                                          </th>
@@ -1369,11 +1369,11 @@
                                                 <br>
                                                 <input type="radio" name="" checked disabled>&nbsp;&nbsp;
                                                 <span
-                                                   style="margin-top: 10px;font-size: 12px;margin-top: 10px;">1週間のあいだで、どのくらい食べましたか?</span>
+                                                   style="margin-top: 10px;font-size: 12px;margin-top: 10px;">1週間のあいだで、どのくらいのみましたか?</span>
                                                 <table class="table" style="text-align: center;">
                                                    <thead>
                                                       <tr>
-                                                         <th scope="col">食べなかった</th>
+                                                         <th scope="col">のまなかった</th>
                                                          <th scope="col">1〜2日</th>
                                                          <th scope="col">3〜4日</th>
                                                          <th scope="col">5日以上</th>
@@ -1552,7 +1552,7 @@
                                              <div style="display: block;">
                                                 <input type="radio" name="" checked disabled>&nbsp;&nbsp;
                                                 <span
-                                                   style="margin-top: 10px;font-size: 12px;margin-top: 10px;">普段めん類を食べる時、どのくらいスープを飲みますか?</span>
+                                                   style="margin-top: 10px;font-size: 12px;margin-top: 10px;">普段めん類を食べる時、どのくらいスープをのみますか?</span>
                                                 <table class="table" style="text-align: center;">
                                                    <thead>
                                                       <tr>
@@ -1593,11 +1593,11 @@
                                              <div style="display: block;">
                                                 <input type="radio" name="" checked disabled>&nbsp;&nbsp;
                                                 <span
-                                                   style="margin-top: 10px;font-size: 12px;margin-top: 10px;">1週間のあいだで、どのくらい食べましたか?</span>
+                                                   style="margin-top: 10px;font-size: 12px;margin-top: 10px;">1週間のあいだで、どのくらいとりましたか?</span>
                                                 <table class="table" style="text-align: center;">
                                                    <thead>
                                                       <tr>
-                                                         <th scope="col">食べなかった</th>
+                                                         <th scope="col">とらなかった</th>
                                                          <th scope="col">1〜2日</th>
                                                          <th scope="col">3〜4日</th>
                                                          <th scope="col">5日以上</th>
@@ -1637,14 +1637,14 @@
                                              <div style="display: block;">
                                                 <input type="radio" name="" checked disabled>&nbsp;&nbsp;
                                                 <span
-                                                   style="margin-top: 10px;font-size: 12px;margin-top: 10px;">おもにふくまれている成分?</span>
+                                                   style="margin-top: 10px;font-size: 12px;margin-top: 10px;">おもにふくまれている成分</span>
                                                 <table class="table" style="text-align: center;">
                                                    <thead>
                                                       <tr>
                                                          <th scope="col">エネルギー</th>
-                                                         <th scope="col">カルシウム铁など</th>
-                                                         <th scope="col">ピタミン</th>
-                                                         <th scope="col">ブロティンアミノ酸など</th>
+                                                         <th scope="col">カルシウム・鉄など</th>
+                                                         <th scope="col">ビタミン</th>
+                                                         <th scope="col">プロテイン・アミノ酸など</th>
                                                          <th scope="col">その他</th>
                                                          <th scope="col">わからない</th>
                                                       </tr>
