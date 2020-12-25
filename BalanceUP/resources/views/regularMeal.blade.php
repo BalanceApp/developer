@@ -7,6 +7,7 @@
       visibility: hidden;
       border: none;
    }
+
    label>img {
       display: inline-block;
       padding: 0px;
@@ -16,6 +17,7 @@
       border: none;
       margin-left: -10px;
    }
+
    label>input:checked+img {
       background: url(images/tick.png);
       background-repeat: no-repeat;
@@ -26,20 +28,25 @@
 </style>
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script>
+
    $(document).ready(function() {
       $("#second").hide();
    });
+
    function nextPage() {
       $("#first").hide();
       $("#second").show();
    }
+
    function previousPage() {
       $("#second").hide();
       $("#first").show();
    }
+
    function end(){
       calculate();
    }
+
    function calculate(){
       $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') } });
       let stapleFood = (parseInt(getradioval("foo1")) + parseInt(getradioval("foo2")) + parseInt(getradioval("foo3"))) / 2;
@@ -65,6 +72,7 @@
       let MenSoup = getradioval("foo32") / 2;
       let supply = getradioval("foo33") / 2;
       let _token   = $('meta[name="csrf-token"]').attr('content');
+
       $.post("{{url('/dietData')}}", {
             stapleFood:stapleFood,
             mainDish:mainDish,
@@ -98,6 +106,7 @@
          }
       );
    }
+
    function getradioval(name)
    {
       var radios = document.getElementsByName(name);
@@ -106,6 +115,7 @@
       }
       return 0;
    }
+
 </script>
 <div id="home">
    <!--begin::Main-->
@@ -294,104 +304,113 @@
                                              <div style="display: block;">
                                                 <input type="radio" name="" checked disabled>&nbsp;&nbsp;
                                                 <span style="margin-top: 10px;">あさ、ひる、よるで、どのくらい食べましたか?</span>
-                                                <table class="table" style="text-align: center;">
-                                                   <thead>
-                                                      <tr>
-                                                         <th scope="col">#</th>
-                                                         <th scope="col">食ベない</th>
-                                                         <th scope="col">ふつう量<br><span
-                                                               style="font-size: 12px">より少ない</span>
-                                                         </th>
-                                                         <th scope="col">ふつう量</th>
-                                                         <th scope="col">ふつう量<br><span
-                                                               style="font-size: 12px">より多い</span>
-                                                         </th>
-                                                      </tr>
-                                                   </thead>
-                                                   <tbody>
-                                                      <tr>
-                                                         <th scope="row">あさ</th>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo1" value=0 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo1" value=1 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo1" value=2 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo1" value=3 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                      </tr>
-                                                      <tr>
-                                                         <th scope="row">ひる</th>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo2" value=0 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo2" value=1 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo2" value=2 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo2" value=3 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                      </tr>
-                                                      <tr>
-                                                         <th scope="row">よる</th>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo3" value=0 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo3" value=1 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo3" value=2 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo3" value=3 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                      </tr>
-                                                   </tbody>
-                                                </table>
+                                                <div class="row">
+                                                   <div class="col-md-8">
+                                                      <table class="table" style="text-align: center;">
+                                                         <thead>
+                                                            <tr>
+                                                               <th scope="col">#</th>
+                                                               <th scope="col">食ベない</th>
+                                                               <th scope="col">ふつう量<br><span
+                                                                     style="font-size: 12px">より少ない</span>
+                                                               </th>
+                                                               <th scope="col">ふつう量</th>
+                                                               <th scope="col">ふつう量<br><span
+                                                                     style="font-size: 12px">より多い</span>
+                                                               </th>
+                                                            </tr>
+                                                         </thead>
+                                                         <tbody>
+                                                            <tr>
+                                                               <th scope="row">あさ</th>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo1" value=0 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo1" value=1 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo1" value=2 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo1" value=3 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                            </tr>
+                                                            <tr>
+                                                               <th scope="row">ひる</th>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo2" value=0 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo2" value=1 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo2" value=2 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo2" value=3 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                            </tr>
+                                                            <tr>
+                                                               <th scope="row">よる</th>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo3" value=0 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo3" value=1 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo3" value=2 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo3" value=3 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                            </tr>
+                                                         </tbody>
+                                                      </table>
+                                                   </div>
+                                                   <div class="col-md-2">
+                                                      <div style="margin-top: 20px;">
+                                                         <img src="{{asset('images/meal11.png')}}"   alt="ごはんの量" style="width: 200px;">
+                                                      </div>
+                                                   </div>
+						                              </div>
                                              </div>
                                              <br>
                                              <div style="display: flex;">
@@ -401,230 +420,248 @@
                                              <div style="display: block;">
                                                 <input type="radio" name="" checked disabled>&nbsp;&nbsp;
                                                 <span style="margin-top: 10px;">あさ、ひる、よるで、どのくらい食べましたか?</span>
-                                                <table class="table" style="text-align: center;">
-                                                   <thead>
-                                                      <tr>
-                                                         <th scope="col">#</th>
-                                                         <th scope="col">食べない</th>
-                                                         <th scope="col">ふつう量<br><span
-                                                               style="font-size: 12px">より少ない</span>
-                                                         </th>
-                                                         <th scope="col">ふつう量</th>
-                                                         <th scope="col">ふつう量<br><span
-                                                               style="font-size: 12px">より多い</span>
-                                                         </th>
-                                                      </tr>
-                                                   </thead>
-                                                   <tbody>
-                                                      <tr>
-                                                         <th scope="row">あさ</th>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo4" value=0 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo4" value=1 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo4" value=2 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo4" value=3 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                      </tr>
-                                                      <tr>
-                                                         <th scope="row">ひる</th>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo5" value=0 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo5" value=1 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo5" value=2 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo5" value=3 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                      </tr>
-                                                      <tr>
-                                                         <th scope="row">よる</th>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo6" value=0 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo6" value=1 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo6" value=2 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo6" value=3 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                      </tr>
-                                                   </tbody>
-                                                </table>
+                                                <div class="row">
+                                                   <div class="col-md-8">                                                
+                                                      <table class="table" style="text-align: center;">
+                                                         <thead>
+                                                            <tr>
+                                                               <th scope="col">#</th>
+                                                               <th scope="col">食べない</th>
+                                                               <th scope="col">ふつう量<br><span
+                                                                     style="font-size: 12px">より少ない</span>
+                                                               </th>
+                                                               <th scope="col">ふつう量</th>
+                                                               <th scope="col">ふつう量<br><span
+                                                                     style="font-size: 12px">より多い</span>
+                                                               </th>
+                                                            </tr>
+                                                         </thead>
+                                                         <tbody>
+                                                            <tr>
+                                                               <th scope="row">あさ</th>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo4" value=0 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo4" value=1 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo4" value=2 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo4" value=3 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                            </tr>
+                                                            <tr>
+                                                               <th scope="row">ひる</th>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo5" value=0 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo5" value=1 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo5" value=2 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo5" value=3 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                            </tr>
+                                                            <tr>
+                                                               <th scope="row">よる</th>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo6" value=0 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo6" value=1 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo6" value=2 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo6" value=3 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                            </tr>
+                                                         </tbody>
+                                                      </table>
+                                                   </div>
+                                                   <div class="col-md-4">
+                                                      <div style="margin-top: 20px;">
+                                                         <img src="{{asset('images/meal21.png')}}"   alt="主菜の量" style="width: 250px;">
+                                                      </div>
+                                                   </div>
+						                              </div>                                                     
                                              </div>
                                              <br>
                                              <div style="display: block;">
                                                 <input type="radio" name="" checked disabled>&nbsp;&nbsp;
                                                 <span style="margin-top: 10px;">1週間のあいだで、それぞれどのくらい食べましたか?</span>
-                                                <table class="table" style="text-align: center;">
-                                                   <thead>
-                                                      <tr>
-                                                         <th scope="col">#</th>
-                                                         <th scope="col">食べなかった</th>
-                                                         <th scope="col">1〜2日</th>
-                                                         <th scope="col">3〜4日</th>
-                                                         <th scope="col">5日以上</th>
-                                                      </tr>
-                                                   </thead>
-                                                   <tbody>
-                                                      <tr>
-                                                         <th scope="row">肉</th>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo7" value=0 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo7" value=1 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo7" value=2 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo7" value=3 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                      </tr>
-                                                      <tr>
-                                                         <th scope="row">魚・貝など</th>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo8" value=0 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo8" value=1 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo8" value=2 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo8" value=3 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                      </tr>
-                                                      <tr>
-                                                         <th scope="row">たまご</th>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo9" value=0 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo9" value=1 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo9" value=2 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo9" value=3 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                      </tr>
-                                                      <tr>
-                                                         <th scope="row">豆</th>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo10" value=0 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo10" value=1 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo10" value=2 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo10" value=3 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                      </tr>
-                                                   </tbody>
-                                                </table>
+                                                <div class="row">
+                                                   <div class="col-md-8">
+                                                      <table class="table" style="text-align: center;">
+                                                         <thead>
+                                                            <tr>
+                                                               <th scope="col">#</th>
+                                                               <th scope="col">食べなかった</th>
+                                                               <th scope="col">1〜2日</th>
+                                                               <th scope="col">3〜4日</th>
+                                                               <th scope="col">5日以上</th>
+                                                            </tr>
+                                                         </thead>
+                                                         <tbody>
+                                                            <tr>
+                                                               <th scope="row">肉</th>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo7" value=0 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo7" value=1 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo7" value=2 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo7" value=3 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                            </tr>
+                                                            <tr>
+                                                               <th scope="row">魚・貝など</th>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo8" value=0 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo8" value=1 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo8" value=2 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo8" value=3 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                            </tr>
+                                                            <tr>
+                                                               <th scope="row">たまご</th>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo9" value=0 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo9" value=1 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo9" value=2 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo9" value=3 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                            </tr>
+                                                            <tr>
+                                                               <th scope="row">豆</th>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo10" value=0 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo10" value=1 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo10" value=2 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo10" value=3 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                            </tr>
+                                                         </tbody>
+                                                      </table>
+                                                   </div>
+                                                   <div class="col-md-4">
+                                                      <div style="margin-top: 70px;">
+                                                         <img src="{{asset('images/meal22.png')}}"   alt="主菜の種類" style="width: 200px;">
+                                                      </div>
+                                                   </div>
+						                              </div>                                                  
                                              </div>
                                           </div>
                                           <div class="col-lg-6 col-md-6 col-sm-6"
@@ -636,275 +673,302 @@
                                              <div style="display: block;">
                                                 <input type="radio" name="" checked disabled>&nbsp;&nbsp;
                                                 <span style="margin-top: 10px;">あさ、ひる、よるで、どのくらい食べましたか?</span>
-                                                <table class="table" style="text-align: center;">
-                                                   <thead>
-                                                      <tr>
-                                                         <th scope="col">#</th>
-                                                         <th scope="col">食べない</th>
-                                                         <th scope="col">ふつう量<br><span
-                                                               style="font-size: 12px">より少ない</span>
-                                                         </th>
-                                                         <th scope="col">ふつう量</th>
-                                                         <th scope="col">ふつう量<br><span
-                                                               style="font-size: 12px">より多い</span>
-                                                         </th>
-                                                      </tr>
-                                                   </thead>
-                                                   <tbody>
-                                                      <tr>
-                                                         <th scope="row">あさ</th>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo11" value=0 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo11" value=1 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo11" value=2 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo11" value=3 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                      </tr>
-                                                      <tr>
-                                                         <th scope="row">ひる</th>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo12" value=0 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo12" value=1 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo12" value=2 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo12" value=3 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                      </tr>
-                                                      <tr>
-                                                         <th scope="row">よる</th>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo13" value=0 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo13" value=1 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo13" value=2 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo13" value=3 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                      </tr>
-                                                   </tbody>
-                                                </table>
+                                                <div class="row">
+                                                   <div class="col-md-8">
+                                                      <table class="table" style="text-align: center;">
+                                                         <thead>
+                                                            <tr>
+                                                               <th scope="col">#</th>
+                                                               <th scope="col">食べない</th>
+                                                               <th scope="col">ふつう量<br><span
+                                                                     style="font-size: 12px">より少ない</span>
+                                                               </th>
+                                                               <th scope="col">ふつう量</th>
+                                                               <th scope="col">ふつう量<br><span
+                                                                     style="font-size: 12px">より多い</span>
+                                                               </th>
+                                                            </tr>
+                                                         </thead>
+                                                         <tbody>
+                                                            <tr>
+                                                               <th scope="row">あさ</th>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo11" value=0 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo11" value=1 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo11" value=2 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo11" value=3 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                            </tr>
+                                                            <tr>
+                                                               <th scope="row">ひる</th>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo12" value=0 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo12" value=1 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo12" value=2 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo12" value=3 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                            </tr>
+                                                            <tr>
+                                                               <th scope="row">よる</th>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo13" value=0 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo13" value=1 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo13" value=2 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo13" value=3 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                            </tr>
+                                                         </tbody>
+                                                      </table>
+                                                   </div>
+                                                   <div class="col-md-4">
+                                                      <div style="margin-top: 20px;">
+                                                         <img src="{{asset('images/meal31.png')}}"   alt="副菜の量" style="width: 200px;">
+                                                      </div>
+                                                   </div>
+						                              </div>                                                      
                                              </div>
                                              <br>
                                              <div style="display: block;">
                                                 <input type="radio" name="" disabled>&nbsp;&nbsp;
                                                 <span style="margin-top: 10px;">1日でどのくらい食べましたか?</span>
-                                                <table class="table" style="text-align: center;">
-                                                   <thead>
-                                                      <tr>
-                                                         <th scope="col">#</th>
-                                                         <th scope="col">食べなかった</th>
-                                                         <th scope="col">1〜2日</th>
-                                                         <th scope="col">3〜4日</th>
-                                                         <th scope="col">5日以上</th>
-                                                      </tr>
-                                                   </thead>
-                                                   <tbody>
-                                                      <tr>
-                                                         <th scope="row">色のうすい<br>野菜</th>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo14" value=0 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo14" value=1 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo14" value=2 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo14" value=3 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                      </tr>
-                                                   </tbody>
-                                                </table>
+                                                <div class="row">
+                                                   <div class="col-md-8">                                                
+                                                      <table class="table" style="text-align: center;">
+                                                         <thead>
+                                                            <tr>
+                                                               <th scope="col">#</th>
+                                                               <th scope="col">食べなかった</th>
+                                                               <th scope="col">1〜2日</th>
+                                                               <th scope="col">3〜4日</th>
+                                                               <th scope="col">5日以上</th>
+                                                            </tr>
+                                                         </thead>
+                                                         <tbody>
+                                                            <tr>
+                                                               <th scope="row">色のうすい<br>野菜</th>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo14" value=0 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo14" value=1 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo14" value=2 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo14" value=3 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                            </tr>
+                                                         </tbody>
+                                                      </table>
+                                                   </div>
+                                                   <div class="col-md-2">
+                                                      <div style="margin-top: 20px;">
+                                                         <img src="{{asset('images/meal32.png')}}"   alt="色のうすい野菜の量" style="width: 200px;">
+                                                      </div>
+                                                   </div>
+						                              </div>
                                              </div>
                                              <br>
                                              <div style="display: block;">
                                                 <input type="radio" name="" checked disabled>&nbsp;&nbsp;
                                                 <span style="margin-top: 10px;">1週間のあいだで、それぞれどのくらい食べましたか?</span>
-                                                <table class="table" style="text-align: center;">
-                                                   <thead>
-                                                      <tr>
-                                                         <th scope="col">#</th>
-                                                         <th scope="col">食べなかった</th>
-                                                         <th scope="col">1〜2日</th>
-                                                         <th scope="col">3〜4日</th>
-                                                         <th scope="col">5日以上</th>
-                                                      </tr>
-                                                   </thead>
-                                                   <tbody>
-                                                      <tr>
-                                                         <th scope="row">色のうすい<br>野菜</th>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo15" value=0 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo15" value=1 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo15" value=2 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo15" value=3 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                      </tr>
-                                                      <tr>
-                                                         <th scope="row">きのこ</th>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo16" value=0 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo16" value=1 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo16" value=2 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo16" value=3 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                      </tr>
-                                                      <tr>
-                                                         <th scope="row">海そう</th>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo17" value=0 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo17" value=1 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo17" value=2 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo17" value=3 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                      </tr>
-                                                      <tr>
-                                                         <th scope="row">いも</th>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo18" value=0 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo18" value=1 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo18" value=2 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo18" value=3 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                      </tr>
-                                                   </tbody>
-                                                </table>
+                                                <div class="row">
+                                                   <div class="col-md-8">                                                
+                                                      <table class="table" style="text-align: center;">
+                                                         <thead>
+                                                            <tr>
+                                                               <th scope="col">#</th>
+                                                               <th scope="col">食べなかった</th>
+                                                               <th scope="col">1〜2日</th>
+                                                               <th scope="col">3〜4日</th>
+                                                               <th scope="col">5日以上</th>
+                                                            </tr>
+                                                         </thead>
+                                                         <tbody>
+                                                            <tr>
+                                                               <th scope="row">色のうすい<br>野菜</th>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo15" value=0 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo15" value=1 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo15" value=2 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo15" value=3 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                            </tr>
+                                                            <tr>
+                                                               <th scope="row">きのこ</th>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo16" value=0 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo16" value=1 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo16" value=2 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo16" value=3 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                            </tr>
+                                                            <tr>
+                                                               <th scope="row">海そう</th>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo17" value=0 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo17" value=1 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo17" value=2 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo17" value=3 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                            </tr>
+                                                            <tr>
+                                                               <th scope="row">いも</th>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo18" value=0 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo18" value=1 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo18" value=2 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo18" value=3 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                            </tr>
+                                                         </tbody>
+                                                      </table>
+                                                   </div>
+                                                   <div class="col-md-4">
+                                                      <div style="margin-top: 50px;">
+                                                         <img src="{{asset('images/meal33.png')}}"   alt="色のうすいやさいの量こまかく" style="width: 200px;">
+                                                      </div>
+                                                   </div>
+						                              </div>                                                      
                                              </div>
                                              <br>
                                              <div>
@@ -915,48 +979,57 @@
                                                    <input type="radio" name="" disabled>&nbsp;&nbsp;
                                                    <span
                                                       style="margin-top: 10px;font-size: 12px;margin-top: 10px;">1日でどのくらい食べましたか?</span>
-                                                   <table class="table" style="text-align: center;">
-                                                      <thead>
-                                                         <tr>
-                                                            <th scope="col">食べない</th>
-                                                            <th scope="col">ふつう量<br><span
-                                                                  style="font-size: 12px">より少ない</span>
-                                                            </th>
-                                                            <th scope="col">ふつう量</th>
-                                                            <th scope="col">ふつう量<br><span
-                                                                  style="font-size: 12px">より多い</span>
-                                                            </th>
-                                                         </tr>
-                                                      </thead>
-                                                      <tbody>
-                                                         <tr>
-                                                            <td>
-                                                               <label title="item1">
-                                                                  <input type="radio" name="foo19" value=0 />
-                                                                  <img />
-                                                               </label>
-                                                            </td>
-                                                            <td>
-                                                               <label title="item1">
-                                                                  <input type="radio" name="foo19" value=1 />
-                                                                  <img />
-                                                               </label>
-                                                            </td>
-                                                            <td>
-                                                               <label title="item1">
-                                                                  <input type="radio" name="foo19" value=2 />
-                                                                  <img />
-                                                               </label>
-                                                            </td>
-                                                            <td>
-                                                               <label title="item1">
-                                                                  <input type="radio" name="foo19" value=3 />
-                                                                  <img />
-                                                               </label>
-                                                            </td>
-                                                         </tr>
-                                                      </tbody>
-                                                   </table>
+                                                   <div class="row">
+                                                      <div class="col-md-8">                                                   
+                                                         <table class="table" style="text-align: center;">
+                                                            <thead>
+                                                               <tr>
+                                                                  <th scope="col">食べない</th>
+                                                                  <th scope="col">ふつう量<br><span
+                                                                        style="font-size: 12px">より少ない</span>
+                                                                  </th>
+                                                                  <th scope="col">ふつう量</th>
+                                                                  <th scope="col">ふつう量<br><span
+                                                                        style="font-size: 12px">より多い</span>
+                                                                  </th>
+                                                               </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                               <tr>
+                                                                  <td>
+                                                                     <label title="item1">
+                                                                        <input type="radio" name="foo19" value=0 />
+                                                                        <img />
+                                                                     </label>
+                                                                  </td>
+                                                                  <td>
+                                                                     <label title="item1">
+                                                                        <input type="radio" name="foo19" value=1 />
+                                                                        <img />
+                                                                     </label>
+                                                                  </td>
+                                                                  <td>
+                                                                     <label title="item1">
+                                                                        <input type="radio" name="foo19" value=2 />
+                                                                        <img />
+                                                                     </label>
+                                                                  </td>
+                                                                  <td>
+                                                                     <label title="item1">
+                                                                        <input type="radio" name="foo19" value=3 />
+                                                                        <img />
+                                                                     </label>
+                                                                  </td>
+                                                               </tr>
+                                                            </tbody>
+                                                         </table>
+                                                      </div>
+                                                      <div class="col-md-4">
+                                                         <div style="margin-top: 20px;">
+                                                            <img src="{{asset('images/meal41.png')}}"   alt="乳製品の量" style="width: 250px;">
+                                                         </div>
+                                                      </div>
+                                                   </div>
                                                 </div>
                                                 <br>
                                                 <div class="col-md-6" style="min-width: 400px;">
@@ -1012,48 +1085,57 @@
                                                    <input type="radio" name="" disabled>&nbsp;&nbsp;
                                                    <span
                                                       style="margin-top: 10px;font-size: 12px;margin-top: 10px;">1日でどのくらい食べましたか?</span>
-                                                   <table class="table" style="text-align: center;">
-                                                      <thead>
-                                                         <tr>
-                                                            <th scope="col">食べない</th>
-                                                            <th scope="col">ふつう量<br><span
-                                                                  style="font-size: 12px">より少ない</span>
-                                                            </th>
-                                                            <th scope="col">ふつう量</th>
-                                                            <th scope="col">ふつう量<br><span
-                                                                  style="font-size: 12px">より多い</span>
-                                                            </th>
-                                                         </tr>
-                                                      </thead>
-                                                      <tbody>
-                                                         <tr>
-                                                            <td>
-                                                               <label title="item1">
-                                                                  <input type="radio" name="foo21" value=0 />
-                                                                  <img />
-                                                               </label>
-                                                            </td>
-                                                            <td>
-                                                               <label title="item1">
-                                                                  <input type="radio" name="foo21" value=1 />
-                                                                  <img />
-                                                               </label>
-                                                            </td>
-                                                            <td>
-                                                               <label title="item1">
-                                                                  <input type="radio" name="foo21" value=2 />
-                                                                  <img />
-                                                               </label>
-                                                            </td>
-                                                            <td>
-                                                               <label title="item1">
-                                                                  <input type="radio" name="foo21" value=3 />
-                                                                  <img />
-                                                               </label>
-                                                            </td>
-                                                         </tr>
-                                                      </tbody>
-                                                   </table>
+                                                   <div class="row">
+                                                      <div class="col-md-8">                                                      
+                                                         <table class="table" style="text-align: center;">
+                                                            <thead>
+                                                               <tr>
+                                                                  <th scope="col">食べない</th>
+                                                                  <th scope="col">ふつう量<br><span
+                                                                        style="font-size: 12px">より少ない</span>
+                                                                  </th>
+                                                                  <th scope="col">ふつう量</th>
+                                                                  <th scope="col">ふつう量<br><span
+                                                                        style="font-size: 12px">より多い</span>
+                                                                  </th>
+                                                               </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                               <tr>
+                                                                  <td>
+                                                                     <label title="item1">
+                                                                        <input type="radio" name="foo21" value=0 />
+                                                                        <img />
+                                                                     </label>
+                                                                  </td>
+                                                                  <td>
+                                                                     <label title="item1">
+                                                                        <input type="radio" name="foo21" value=1 />
+                                                                        <img />
+                                                                     </label>
+                                                                  </td>
+                                                                  <td>
+                                                                     <label title="item1">
+                                                                        <input type="radio" name="foo21" value=2 />
+                                                                        <img />
+                                                                     </label>
+                                                                  </td>
+                                                                  <td>
+                                                                     <label title="item1">
+                                                                        <input type="radio" name="foo21" value=3 />
+                                                                        <img />
+                                                                     </label>
+                                                                  </td>
+                                                               </tr>
+                                                            </tbody>
+                                                         </table>
+                                                      </div>
+                                                      <div class="col-md-4">
+                                                         <div style="margin-top: 20px;">
+                                                            <img src="{{asset('images/meal51.png')}}"   alt="くだものの量" style="width: 250px;">
+                                                         </div>
+                                                      </div>
+						                                 </div>
                                                 </div>
                                                 <br>
                                                 <div class="col-md-6" style="min-width: 400px;">
@@ -1129,48 +1211,57 @@
                                              <div style="display: block;">
                                                 <input type="radio" name="" disabled>&nbsp;&nbsp;
                                                 <span style="margin-top: 10px;">1日でどのくらい食べましたか?</span>
-                                                <table class="table" style="text-align: center;">
-                                                   <thead>
-                                                      <tr>
-                                                         <th scope="col">食べない</th>
-                                                         <th scope="col">ふつう量<br><span
-                                                               style="font-size: 12px">より少ない</span>
-                                                         </th>
-                                                         <th scope="col">ふつう量</th>
-                                                         <th scope="col">ふつう量<br><span
-                                                               style="font-size: 12px">より多い</span>
-                                                         </th>
-                                                      </tr>
-                                                   </thead>
-                                                   <tbody>
-                                                      <tr>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo23" value=0 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo23" value=1 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo23" value=2 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo23" value=3 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                      </tr>
-                                                   </tbody>
-                                                </table>
+                                                <div class="row">
+                                                   <div class="col-md-8">                                                
+                                                      <table class="table" style="text-align: center;">
+                                                         <thead>
+                                                            <tr>
+                                                               <th scope="col">食べない</th>
+                                                               <th scope="col">ふつう量<br><span
+                                                                     style="font-size: 12px">より少ない</span>
+                                                               </th>
+                                                               <th scope="col">ふつう量</th>
+                                                               <th scope="col">ふつう量<br><span
+                                                                     style="font-size: 12px">より多い</span>
+                                                               </th>
+                                                            </tr>
+                                                         </thead>
+                                                         <tbody>
+                                                            <tr>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo23" value=0 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo23" value=1 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo23" value=2 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo23" value=3 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                            </tr>
+                                                         </tbody>
+                                                      </table>
+                                                   </div>
+                                                   <div class="col-md-4">
+                                                      <div style="margin-top: 20px;">
+                                                         <img src="{{asset('images/meal61.png')}}"   alt="あまいおかしの量" style="width: 250px;">
+                                                      </div>
+                                                   </div>
+						                              </div>                                                      
                                                 <br>
                                                 <input type="radio" name="" checked disabled>&nbsp;&nbsp;
                                                 <span
@@ -1221,48 +1312,57 @@
                                              <div style="display: block;">
                                                 <input type="radio" name="" disabled>&nbsp;&nbsp;
                                                 <span style="margin-top: 10px;">1日でどのくらい食べましたか?</span>
-                                                <table class="table" style="text-align: center;">
-                                                   <thead>
-                                                      <tr>
-                                                         <th scope="col">食べない</th>
-                                                         <th scope="col">ふつう量<br><span
-                                                               style="font-size: 12px">より少ない</span>
-                                                         </th>
-                                                         <th scope="col">ふつう量</th>
-                                                         <th scope="col">ふつう量<br><span
-                                                               style="font-size: 12px">より多い</span>
-                                                         </th>
-                                                      </tr>
-                                                   </thead>
-                                                   <tbody>
-                                                      <tr>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo25" value=0 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo25" value=1 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo25" value=2 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo25" value=3 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                      </tr>
-                                                   </tbody>
-                                                </table>
+                                                <div class="row">
+                                                   <div class="col-md-8">                                               
+                                                      <table class="table" style="text-align: center;">
+                                                         <thead>
+                                                            <tr>
+                                                               <th scope="col">食べない</th>
+                                                               <th scope="col">ふつう量<br><span
+                                                                     style="font-size: 12px">より少ない</span>
+                                                               </th>
+                                                               <th scope="col">ふつう量</th>
+                                                               <th scope="col">ふつう量<br><span
+                                                                     style="font-size: 12px">より多い</span>
+                                                               </th>
+                                                            </tr>
+                                                         </thead>
+                                                         <tbody>
+                                                            <tr>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo25" value=0 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo25" value=1 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo25" value=2 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo25" value=3 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                            </tr>
+                                                         </tbody>
+                                                      </table>
+                                                   </div>
+                                                   <div class="col-md-4">
+                                                      <div style="margin-top: 20px;">
+                                                         <img src="{{asset('images/meal71.png')}}"   alt="しょっぱいおかしの量" style="width: 250px;">
+                                                      </div>
+                                                   </div>
+                                                </div>                                            
                                                 <br>
                                                 <input type="radio" name="" checked disabled>&nbsp;&nbsp;
                                                 <span
@@ -1314,48 +1414,57 @@
                                              <div style="display: block;">
                                                 <input type="radio" name="" disabled>&nbsp;&nbsp;
                                                 <span style="margin-top: 10px;">1日でどのくらいのみましたか?</span>
-                                                <table class="table" style="text-align: center;">
-                                                   <thead>
-                                                      <tr>
-                                                         <th scope="col">のまない</th>
-                                                         <th scope="col">ふつう量<br><span
-                                                               style="font-size: 12px">より少ない</span>
-                                                         </th>
-                                                         <th scope="col">ふつう量</th>
-                                                         <th scope="col">ふつう量<br><span
-                                                               style="font-size: 12px">より多い</span>
-                                                         </th>
-                                                      </tr>
-                                                   </thead>
-                                                   <tbody>
-                                                      <tr>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo27" value=0 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo27" value=1 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo27" value=2 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo27" value=3 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                      </tr>
-                                                   </tbody>
-                                                </table>
+                                                <div class="row">
+                                                   <div class="col-md-8">                                                
+                                                      <table class="table" style="text-align: center;">
+                                                         <thead>
+                                                            <tr>
+                                                               <th scope="col">のまない</th>
+                                                               <th scope="col">ふつう量<br><span
+                                                                     style="font-size: 12px">より少ない</span>
+                                                               </th>
+                                                               <th scope="col">ふつう量</th>
+                                                               <th scope="col">ふつう量<br><span
+                                                                     style="font-size: 12px">より多い</span>
+                                                               </th>
+                                                            </tr>
+                                                         </thead>
+                                                         <tbody>
+                                                            <tr>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo27" value=0 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo27" value=1 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo27" value=2 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo27" value=3 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                            </tr>
+                                                         </tbody>
+                                                      </table>
+                                                   </div>
+                                                   <div class="col-md-4">
+                                                      <div style="margin-top: 20px;">
+                                                         <img src="{{asset('images/meal81.png')}}"   alt="ジュースの量" style="width: 150px;">
+                                                      </div>
+                                                   </div>
+						                              </div>                                                     
                                                 <br>
                                                 <input type="radio" name="" checked disabled>&nbsp;&nbsp;
                                                 <span
@@ -1409,44 +1518,53 @@
                                                 <input type="radio" name="" checked disabled>&nbsp;&nbsp;
                                                 <span
                                                    style="margin-top: 10px;font-size: 12px;margin-top: 10px;">1週間のあいだで、どのくらい食べましたか?</span>
-                                                <table class="table" style="text-align: center;">
-                                                   <thead>
-                                                      <tr>
-                                                         <th scope="col">食べなかった</th>
-                                                         <th scope="col">1〜2日</th>
-                                                         <th scope="col">3〜4日</th>
-                                                         <th scope="col">5日以上</th>
-                                                      </tr>
-                                                   </thead>
-                                                   <tbody>
-                                                      <tr>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo29" value=0 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo29" value=1 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo29" value=2 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo29" value=3 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                      </tr>
-                                                   </tbody>
-                                                </table>
+                                                <div class="row">
+                                                   <div class="col-md-8">
+                                                      <table class="table" style="text-align: center;">
+                                                         <thead>
+                                                            <tr>
+                                                               <th scope="col">食べなかった</th>
+                                                               <th scope="col">1〜2日</th>
+                                                               <th scope="col">3〜4日</th>
+                                                               <th scope="col">5日以上</th>
+                                                            </tr>
+                                                         </thead>
+                                                         <tbody>
+                                                            <tr>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo29" value=0 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo29" value=1 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo29" value=2 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo29" value=3 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                            </tr>
+                                                         </tbody>
+                                                      </table>
+                                                   </div>
+                                                   <div class="col-md-4">
+                                                      <div style="margin-top: 20px;">
+                                                         <img src="{{asset('images/meal91.png')}}"   alt="あげものの量" style="width: 150px;">
+                                                      </div>
+                                                   </div>
+						                              </div>
                                              </div>
                                              <br>
                                              <div style="display: flex;">
@@ -1456,44 +1574,54 @@
                                                 <input type="radio" name="" checked disabled>&nbsp;&nbsp;
                                                 <span
                                                    style="margin-top: 10px;font-size: 12px;margin-top: 10px;">1週間のあいだで、どのくらい食べましたか?</span>
-                                                <table class="table" style="text-align: center;">
-                                                   <thead>
-                                                      <tr>
-                                                         <th scope="col">食べなかった</th>
-                                                         <th scope="col">1〜2日</th>
-                                                         <th scope="col">3〜4日</th>
-                                                         <th scope="col">5日以上</th>
-                                                      </tr>
-                                                   </thead>
-                                                   <tbody>
-                                                      <tr>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo30" value=0 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo30" value=1 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo30" value=2 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo30" value=3 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                      </tr>
-                                                   </tbody>
-                                                </table>
+                                                <div class="row">
+                                                   <div class="col-md-8">
+
+                                                      <table class="table" style="text-align: center;">
+                                                         <thead>
+                                                            <tr>
+                                                               <th scope="col">食べなかった</th>
+                                                               <th scope="col">1〜2日</th>
+                                                               <th scope="col">3〜4日</th>
+                                                               <th scope="col">5日以上</th>
+                                                            </tr>
+                                                         </thead>
+                                                         <tbody>
+                                                            <tr>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo30" value=0 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo30" value=1 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo30" value=2 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo30" value=3 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                            </tr>
+                                                         </tbody>
+                                                      </table>
+                                                   </div>
+                                                   <div class="col-md-4">
+                                                      <div style="margin-top: 20px;">
+                                                         <img src="{{asset('images/meal101.png')}}"   alt="ファーストフードの量" style="width: 150px;">
+                                                      </div>
+                                                   </div>
+						                              </div>
                                              </div>
                                              <br>
                                              <div style="display: flex;">
@@ -1584,44 +1712,54 @@
                                                 <input type="radio" name="" checked disabled>&nbsp;&nbsp;
                                                 <span
                                                    style="margin-top: 10px;font-size: 12px;margin-top: 10px;">1週間のあいだで、どのくらいとりましたか?</span>
-                                                <table class="table" style="text-align: center;">
-                                                   <thead>
-                                                      <tr>
-                                                         <th scope="col">とらなかった</th>
-                                                         <th scope="col">1〜2日</th>
-                                                         <th scope="col">3〜4日</th>
-                                                         <th scope="col">5日以上</th>
-                                                      </tr>
-                                                   </thead>
-                                                   <tbody>
-                                                      <tr>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo33" value=0 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo33" value=1 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo33" value=2 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                         <td>
-                                                            <label title="item1">
-                                                               <input type="radio" name="foo33" value=3 />
-                                                               <img />
-                                                            </label>
-                                                         </td>
-                                                      </tr>
-                                                   </tbody>
-                                                </table>
+                                                <div class="row">
+                                                   <div class="col-md-8">
+                                                
+                                                      <table class="table" style="text-align: center;">
+                                                         <thead>
+                                                            <tr>
+                                                               <th scope="col">とらなかった</th>
+                                                               <th scope="col">1〜2日</th>
+                                                               <th scope="col">3〜4日</th>
+                                                               <th scope="col">5日以上</th>
+                                                            </tr>
+                                                         </thead>
+                                                         <tbody>
+                                                            <tr>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo33" value=0 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo33" value=1 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo33" value=2 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                               <td>
+                                                                  <label title="item1">
+                                                                     <input type="radio" name="foo33" value=3 />
+                                                                     <img />
+                                                                  </label>
+                                                               </td>
+                                                            </tr>
+                                                         </tbody>
+                                                      </table>
+                                                   </div>
+                                                   <div class="col-md-4">
+                                                      <div style="margin-top: 20px;">
+                                                         <img src="{{asset('images/meal131.png')}}"   alt="サプリメントの量" style="width: 150px;">
+                                                      </div>
+                                                   </div>
+						                              </div>
                                              </div>
                                              <br>
                                              <div style="display: block;">
