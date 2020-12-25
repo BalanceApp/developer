@@ -161,7 +161,7 @@
                                  style="text-align: center; min-height:400px">
                                  <div class="col-lg-12 col-md-12 content-item content-item-1 background border-radius20"> 
                                     <center style="margin-top: 80px;">
-                                        <a href="{{url('/everyday')}}" class="btn font-weight-bold btn-square btn-outline-dark" style="width: 150px">毎日入力</a>
+                                        <a href="{{url('/everyday')}}" class="btn font-weight-bold btn-square btn-outline-dark" style="width: 150px"> からだの記録</a>
                                         <a href="{{url('/regular')}}" class="btn font-weight-bold btn-square btn-outline-dark" style="margin-left: 5%; width: 150px">定期サポート入力</a>
                                     </center>
                                     <center>
