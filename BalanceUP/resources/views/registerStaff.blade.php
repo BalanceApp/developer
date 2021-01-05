@@ -46,7 +46,7 @@
 										<!-- <div class="text-muted font-weight-bold">Enter your details to login
 											to your account:</div> -->
 									</div>
-									
+
 									<form method="POST" class="form" action="{{ url('/staffinfocheck') }}" id="kt_login_signin_form">
 										@csrf
 										<div style="display: block;margin-top: 60px; padding-left: 30px;">
@@ -70,17 +70,18 @@
 														<input type="radio" name="sex" id="female" class="py-4 px-8 form-check-input">
 														<span></span>女</label>
 													</div>
-											</div> 
+											</div>
 											<div style="display: flex;margin-top: 20px;" class="form-group row">
 													<label class="col-sm-3 py-4 px-8 text-right">ログイン情報</label>
 													<input onclick="clearerror();" type="text" class="col-sm-2 form-control h-auto form-control-solid py-4 px-8" id="userid" name="userid" placeholder="ID">
-													<input onclick="clearerror();" type="password" class="col-sm-2 form-control h-auto form-control-solid py-4 px-8" style="margin-left: 20px;" id="password" name="password" placeholder="PW">
+													<div class="col-sm-1" style="margin-top:15px;"></div>
+                                                    <input onclick="clearerror();" type="password" class="col-sm-2 form-control h-auto form-control-solid py-4 px-8" id="password" name="password" placeholder="PW">
 											</div>
 											<div style="display: block;margin-top: 50px;">
 													<button type="submit" id="submit" style="display: none;"></button>
 													<center><p id="error" style="color: red; padding: 20px;"></p></center>
 													<a onclick="validateform();" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-4">Next</a>
-											</div> 
+											</div>
 										</div>
 									</form>
 								</div>
@@ -96,5 +97,5 @@
 		<!--end::Dashboard-->
 	</div>
 	<!--end::Container-->
-					
+
 @stop

@@ -11,9 +11,9 @@ class Condition extends Controller
 
     public function regularInput(Request $req){
         $regularData = $req->all();
-       
+
         DB::insert('INSERT INTO everyday(userid, height, weight, fat, muscle, regulardata, frequency, time, date) VALUES(?,?,?,?,?,1,?,?,?)', [$req->session()->get('userid'), $regularData['height'], $regularData['weight'], $regularData['fat'], $regularData['muscle'], $regularData['frequency'], $regularData['time'], date("y-m-d")]);
-        return view('regularMeal'); 
+        return view('regularMeal');
     }
 
     public function everydayInput(Request $req){
@@ -27,18 +27,18 @@ class Condition extends Controller
         $dietData = $req->all();
         DB::delete('delete from diet where regDate = ? and userid = ?',[date("y-m-d"),$req->session()->get('userid')]);
         $result = DB::insert('INSERT INTO diet(userid, stapleFood, mainDish, sideDish,
-        meat, seafood, eggs, beans, LCvegetables, GYvegetables, mushrooms, seaweeds, 
+        meat, seafood, eggs, beans, LCvegetables, GYvegetables, mushrooms, seaweeds,
         potatoes, milk, fruit, sweets, saltSweets, juice, friedFood, fastFood, misoSoup,
          MenSoup, supply,energy,calcium,vitamin,others,unknown, otherslist, description, regDate) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
-        [$req->session()->get('userid'), $dietData['stapleFood'], $dietData['mainDish'], 
+        [$req->session()->get('userid'), $dietData['stapleFood'], $dietData['mainDish'],
         $dietData['sideDish'],$dietData['meat'], $dietData['seafood'], $dietData['eggs'],
-         $dietData['beans'], $dietData['LCvegetables'], $dietData['GYvegetables'], $dietData['mushrooms'], 
-         $dietData['seaweeds'], $dietData['potatoes'], $dietData['milk'],$dietData['fruit'], $dietData['sweets'], 
-         $dietData['saltSweets'], $dietData['juice'], $dietData['friedFood'], $dietData['fastFood'], 
+         $dietData['beans'], $dietData['LCvegetables'], $dietData['GYvegetables'], $dietData['mushrooms'],
+         $dietData['seaweeds'], $dietData['potatoes'], $dietData['milk'],$dietData['fruit'], $dietData['sweets'],
+         $dietData['saltSweets'], $dietData['juice'], $dietData['friedFood'], $dietData['fastFood'],
          $dietData['misoSoup'], $dietData['MenSoup'], $dietData['supply'], $dietData['energy'],
-         $dietData['calcium'],$dietData['vitamin'],$dietData['others'],$dietData['unknown'], $dietData['otherslist'], 
+         $dietData['calcium'],$dietData['vitamin'],$dietData['others'],$dietData['unknown'], $dietData['otherslist'],
          $dietData['description'], date("y-m-d")]);
-        echo $result;      
+        echo $result;
     }
 
     public function getDiet(Request $req)
@@ -46,17 +46,19 @@ class Condition extends Controller
         $userid = $req->userid;
         $returndata=array();
         $returndata['data'] = DB::select('SELECT stapleFood, mainDish, sideDish,
-        meat, seafood, eggs, beans, LCvegetables, GYvegetables, mushrooms, seaweeds, 
+        meat, seafood, eggs, beans, LCvegetables, GYvegetables, mushrooms, seaweeds,
         potatoes, milk, fruit, sweets, saltSweets, juice, friedFood, fastFood, misoSoup,
-         MenSoup, supply FROM diet WHERE userid = ? AND 
+         MenSoup, supply FROM diet WHERE userid = ? AND
         regDate = (SELECT MAX(regDate) FROM diet WHERE userid = ?)',
         [$userid,$userid]);
-        
+
+        $returndata['five_two'] = DB::select('SELECT frequency, time FROM everyday WHERE userid = ? AND id = (SELECT MAX(id) FROM everyday WHERE userid =?)',[$userid,$userid]);
+
          $user_point = 0;
          $count = DB::select("select count(*) as count from player");
 
          $grade = 1;
-         
+
          if(count($returndata['data'])==1)
          {
             foreach($returndata['data'][0] as $value)
@@ -67,7 +69,7 @@ class Condition extends Controller
             foreach($result as $users)
             {
                 $othersdata = DB::select('SELECT stapleFood, mainDish, sideDish,
-                meat, seafood, eggs, beans, LCvegetables, GYvegetables, mushrooms, seaweeds, 
+                meat, seafood, eggs, beans, LCvegetables, GYvegetables, mushrooms, seaweeds,
                 potatoes, milk, fruit, sweets, saltSweets, juice, friedFood, fastFood, misoSoup,
                 MenSoup, supply FROM diet WHERE  regDate = (SELECT MAX(regDate) FROM diet WHERE userid = ?)', [$users->userid]);
                 $otherspoint = 0;
@@ -81,11 +83,16 @@ class Condition extends Controller
                         $grade++;
                     }
                 }
-                
-            }
-           $returndata['grade'] = $grade."位/".$count[0]->count."人";
-        }       
 
+            }
+           $returndata['grade'] = $grade;
+        }
+
+        else {
+            $returndata['grade'] = $grade;
+        }
+
+        $returndata['count'] = $count[0]->count;
         echo json_encode($returndata);
     }
 
@@ -102,7 +109,7 @@ class Condition extends Controller
         $everydayData['wdata'] = DB::select("SELECT  DISTINCT DATE as x, weight as y FROM everyday WHERE userid=? AND date>?", [$userid,$startdate]);
         $everydayData['fdata'] = DB::select("SELECT  DISTINCT DATE as x, fat as y FROM everyday WHERE userid=? AND date>?", [$userid,$startdate]);
         $everydayData['mdata'] = DB::select("SELECT  DISTINCT DATE as x, muscle as y FROM everyday WHERE userid=? AND date>?", [$userid,$startdate]);
-     
+
         $week = array();
         $week['hdata'] = array();
         $week['wdata'] = array();
@@ -125,7 +132,7 @@ class Condition extends Controller
 
         $yy = (int)date("Y");
         $mm = (int)date("m");
-        
+
         $month = array();
         $month['hdata'] = array();
         $month['wdata'] = array();
@@ -166,7 +173,7 @@ class Condition extends Controller
             $result = DB::select("SELECT DATE AS x, muscle AS y FROM everyday WHERE muscle = (SELECT MAX(muscle) FROM everyday WHERE userid=? AND date like ?) AND date like ? limit 1", [$userid, $yy."-%",$yy."-%"]);
             if($result) array_push($year['mdata'], $result[0]);
         }
-    
+
         echo json_encode(array("everydaydata" =>$everydayData, "week"=>$week, "month"=>$month, "year"=>$year));
     }
 
@@ -181,14 +188,14 @@ class Condition extends Controller
         $player="";
         if($req->session()->get('role')=='staff'){
             $userid = $req->playid;
-            return view('graphPage',compact('userid')); 
+            return view('graphPage',compact('userid'));
         }
         else
         {
             $userid = $req->session()->get('userid');
             $player = $userid;
-            return view('graphPage',compact('userid','player')); 
-        }  
+            return view('graphPage',compact('userid','player'));
+        }
     }
 
     function setResult(Request $req){
@@ -196,14 +203,14 @@ class Condition extends Controller
         $player="";
         if($req->session()->get('role')=='staff'){
             $userid = $req->playid;
-            return view('result',compact('userid')); 
+            return view('result',compact('userid'));
         }
         else{
             $userid = $req->session()->get('userid');
             $player = $userid;
-            return view('result',compact('userid','player')); 
-        }     
- 
+            return view('result',compact('userid','player'));
+        }
+
     }
 
     function csvSave(Request $req){
@@ -217,29 +224,29 @@ class Condition extends Controller
         if($data['startyear']!=null) $startyear=(int)$data['startyear'];
         if($data['endyear']!=null) $endyear=(int)$data['endyear'];
         for($i=0; $i<count($data['userlist']); $i++){
-            
+
             for($year=$startyear; $year<=$endyear;$year++)
             {
                 $result = DB::select("select userid, stapleFood, mainDish, sideDish,
-                meat, seafood, eggs, beans, LCvegetables, GYvegetables, mushrooms, seaweeds, 
+                meat, seafood, eggs, beans, LCvegetables, GYvegetables, mushrooms, seaweeds,
                 potatoes, milk, fruit, sweets, saltSweets, juice, friedFood, fastFood, misoSoup,
                 MenSoup, supply, regDate from diet where userid=? and regDate like ?",[$data['userlist'][$i],$year."-%"]);
                 $dietData = array_merge($dietData,$result);
             }
-        
-        
+
+
             for($year=$startyear; $year<=$endyear;$year++)
             {
                 $result = DB::select("select userid, height, weight, fat,muscle, date from everyday where userid=? and date like ?",[$data['userlist'][$i],$year."-%"]);
                 $changeData= array_merge($changeData,$result);
             }
-            
+
         }
         if($data['dietData']==1){
-            $filename = 'diet'.date('Ymd').'_'.date('his').'';		 
+            $filename = 'diet'.date('Ymd').'_'.date('his').'';
             $fp = fopen('./CSV/'.$filename.'.csv','w');
             $columnNames = array('userid', 'stapleFood', 'mainDish', 'sideDish',
-            'meat', 'seafood', 'eggs', 'beans', 'LCvegetables', 'GYvegetables', 'mushrooms', 'seaweeds', 
+            'meat', 'seafood', 'eggs', 'beans', 'LCvegetables', 'GYvegetables', 'mushrooms', 'seaweeds',
             'potatoes', 'milk', 'fruit', 'sweets', 'saltSweets', 'juice', 'friedFood', 'fastFood', 'misoSoup',
             'MenSoup', 'supply', 'regDate');
             $headers = array(
@@ -253,18 +260,18 @@ class Condition extends Controller
             $i=0;
             foreach ($dietData as $row) {
                 $lineData = array($row->userid, $row->stapleFood, $row->mainDish, $row->sideDish,
-                $row->meat, $row->seafood, $row->eggs, $row->beans, $row->LCvegetables, $row->GYvegetables, $row->mushrooms, $row->seaweeds, 
+                $row->meat, $row->seafood, $row->eggs, $row->beans, $row->LCvegetables, $row->GYvegetables, $row->mushrooms, $row->seaweeds,
                 $row->potatoes, $row->milk, $row->fruit, $row->sweets, $row->saltSweets, $row->juice, $row->friedFood, $row->fastFood, $row->misoSoup,
-                $row->MenSoup, $row->supply, $row->regDate); 
+                $row->MenSoup, $row->supply, $row->regDate);
                 fputcsv($fp, $lineData);
                 $i++;
             }
             fclose($fp);
             $file = $filename.'.csv';
-            array_push($files,$file); 
+            array_push($files,$file);
         }
         if($data['changeData']==1){
-            $filename = 'change'.date('Ymd').'_'.date('his').'';		 
+            $filename = 'change'.date('Ymd').'_'.date('his').'';
             $fp1 = fopen('./CSV/'.$filename.'.csv','w');
             $columnNames = array('userid', 'height', 'weight', 'fat',        'muscle', 'date');
             $headers = array(
@@ -277,13 +284,13 @@ class Condition extends Controller
             fputcsv($fp1, $columnNames);
             foreach ($changeData as $row) {
                 $lineData = array($row->userid, $row->height, $row->weight, $row->fat,
-                $row->muscle, $row->date); 
+                $row->muscle, $row->date);
                 fputcsv($fp1, $lineData);
                 $i++;
             }
             fclose($fp1);
             $file = $filename.'.csv';
-            array_push($files,$file);      
+            array_push($files,$file);
         }
         echo json_encode($files);
     }

@@ -3,7 +3,7 @@
 @section('content')
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script>
-        
+
     function senddata(){
         var checkbox = document.getElementsByName("users");
         var diet = document.getElementById("saveDiet");
@@ -18,7 +18,7 @@
         {
             if(checkbox[i].checked)
             {
-            
+
                 userlist.push(checkbox[i].id);
             }
         }
@@ -37,10 +37,10 @@
                 const link = document.createElement('a');
                  link.setAttribute('href', url);
                  link.setAttribute('download', data[i]);
-                 link.click();    
+                 link.click();
             }
-            
-                       
+
+
         });
 
     }
@@ -53,14 +53,14 @@
         {
             for(var i=0; i<checkbox.length;i++)
             {
-                checkbox[i].checked=true;                
+                checkbox[i].checked=true;
             }
         }
         else
         {
             for(var i=0; i<checkbox.length;i++)
             {
-                checkbox[i].checked=false;                
+                checkbox[i].checked=false;
             }
         }
     }
@@ -68,78 +68,81 @@
 
 </script>
 
-                        <!--begin::Container-->
-                        <div class="container">
-                            <!--begin::Dashboard-->
-                            <!--begin::Row-->
-                            <div class="row">
-                                <div class="col-xl-12">
-                                    <!--begin::Tiles Widget 1-->
-                                    <div class="card card-custom gutter-b card-stretch" id="kt_page_stretched_card">
-                                        <!--begin::Body-->
-                                        <div class="card-body d-flex flex-column px-0"
-                                            style="text-align: center; min-height:400px">
-                                            <div class="row col-md-12">
-                                                <h1 class="headBtn col-sm-4"
-                                                    style="border-style: solid solid solid solid; margin-left: 3%">ページ12
-                                                    csv出力選択画面</h1>
-                                            </div>
-                                            <form method="POST" class="form" action="{{ url('/userinfocheck') }}" id="kt_login_signin_form">
-                                                @csrf
-                                                <div class="row col-md-12" style="margin-left:10%; margin-top: 50px">
-                                                    <a style="padding-top:10px">期間</a>
-                                                    <div class="col-md-3">
-                                                        <input id ="startyear" class="form-control" type="text" name="">
-                                                    </div>
-                                                    <a style="padding-top:10px">年</a>
-                                                    <a style="float: right; margin-left: 50px;">
-                                                    <a style="padding-top:10px"> ~ </a>
-                                                    <div class="col-md-3" style="margin-left:5%">
-                                                        <input id="endyear" class="form-control" type="text" name="">
-                                                    </div>
-                                                    <a style="padding-top:10px">年</a>
+    <!--begin::Container-->
+    <div class="container">
+        <!--begin::Dashboard-->
+        <!--begin::Row-->
+        <div class="row">
+            <div class="col-xl-12">
+                <!--begin::Tiles Widget 1-->
+                <div class="card card-custom gutter-b card-stretch" id="kt_page_stretched_card">
+                    <!--begin::Body-->
+                    <div class="card-body d-flex flex-column px-0"
+                        style="text-align: center; min-height:400px">
+                        <div class="col-md-12">
+                            <h1 class="headBtn col-sm-4"
+                                style="border-style: solid solid solid solid; margin-left: 3%">
+                                csv出力選択画面</h1>
+                        </div>
+                        <form method="POST" class="form" action="{{ url('/userinfocheck') }}" id="kt_login_signin_form">
+                            @csrf
+                            <div class="col-md-12" style="display:flex;">
+                                <a style="padding-top:10px; min-width:25px;max-width:26px;width:100%;">期間</a>
+                                <div class="col-md-2">
+                                    <input id ="startyear" class="form-control" type="text" name="">
+                                </div>
+                                <a style="padding-top:10px">年</a>
+                                <a style="float: right; margin-left: 5%;">
+                                <a style="padding-top:10px"> ~ </a>
+                                <div class="col-md-3" style="margin-left:5%">
+                                    <input id="endyear" class="form-control" type="text" name="">
+                                </div>
+                                <a style="padding-top:10px">年</a>
+                            </div>
+                            <div class="card-scroll col-md-12" id="staffinfo" style="font-size:18px; margin-left: 10%;margin-top: 50px">
+                                <div class="container">
+                                    <h3 style="text-align:left">選手</h3>
+                                    <div class="man-list">
+                                        @isset($stafflist)
+                                            @foreach($stafflist as $value)
+                                                <div class="col-lg-1 col-md-1 col-sm-1" style="text-align: end;">
+                                                    <input name="users" id="{{$value->userid}}" type="checkbox">
                                                 </div>
-                                                <div class="card-scroll col-md-12" id="staffinfo" style="font-size:18px; margin-left: 10%;margin-top: 50px">
-                                                    <div class="container">
-                                                    <h3 style="text-align:left">選手</h3>
-                                                        <div class="row col-md-12">
-                                                            @isset($stafflist)
-                                                                @foreach($stafflist as $value)
-                                                                <div class="row col-md-4">
-                                                                    <div> <input name="users" id="{{$value->userid}}" type="checkbox"> 
-                                                                    </div>
-                                                                    <div style="margin-left: 10%; text-decoration:underline">
-                                                                        {{ $value->name }} 
-                                                                    </div>
-                                                                </div>
-                                                                @endforeach
-                                                            @endisset
-                                                        </div>
-                                                    </div>
+                                                <div class="col-lg-4 col-md-4 col-sm-4" style="text-decoration:underline; text-align: left;">
+                                                    {{ $value->name }}
                                                 </div>
-                                                <div class="row" style="margin-left: 80%">
-                                                    <input id="allcheck" type="checkbox" class="" style="margin-top:3px" onclick="setall()"> 
-                                                    <a style="margin-left: 5%">全て選択</a>
-                                                </div>
-                                                <div class="row" style="margin-left: 10%;margin-top:10px">
-                                                    <h3 style="margin-left: 15%">項目</h3>
-                                                    <input id="saveDiet" type="checkbox" class="" style="margin-top:5px; margin-left:5%"> 
-                                                    <h3 style="margin-left: 1%; text-decoration:underline">食事チェック結果</h3>
-                                                    <input id="saveChange" type="checkbox" class="" style="margin-top:5px; margin-left:10%"> 
-                                                    <h3 style="margin-left: 1%; text-decoration:underline">からだの変化</h3>
-                                                </div>
-                                                <div style="display: block;margin-top: 10px;margin-left: 80%">
-                                                    <a href="#" class="nextBtn" onclick="senddata()" style="text-decoration:underline;font-size:18px">ダウンロード</a>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <!--end::Body-->
+                                            @endforeach
+                                        @endisset
                                     </div>
-                                    <!--end::Tiles Widget 1-->
                                 </div>
                             </div>
-                            <!--end::Row-->
-                            <!--end::Dashboard-->
-                        </div>
- 
+                            <div class="col-lg-12 col-md-12 col-sm-12" style="text-align: end;padding:30px;">
+                                <input id="allcheck" type="checkbox" style="margin-top:3px" onclick="setall()">
+                                <a style="margin-left: 5%">全て選択</a>
+                            </div>
+                            <div class="row">
+                                <h3 class="col-lg-2 col-md-2 col-sm-2" style="text-align: start;padding-left: 40px;">項目</h3>
+                                <div class="col-lg-4 col-md-4 col-sm-4" style="display:flex;margin-left: 40px;">
+                                    <input id="saveDiet" type="checkbox" style="margin-top: 3px;margin-right: 13px;">
+                                    <h3>食事チェック結果</h3>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4" style="display:flex;margin-left: 40px;">
+                                    <input id="saveChange" type="checkbox" style="margin-top: 3px;margin-right: 13px;">
+                                    <h3 style="text-decoration:underline">からだの変化</h3>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12" style="text-align: end;margin-right: 35px;margin-top: 10px;">
+                                <a href="#" class="nextBtn make-csv" onclick="senddata()">ダウンロード</a>
+                            </div>
+                        </form>
+                    </div>
+                    <!--end::Body-->
+                </div>
+                <!--end::Tiles Widget 1-->
+            </div>
+        </div>
+        <!--end::Row-->
+        <!--end::Dashboard-->
+    </div>
+
     @stop
