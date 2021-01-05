@@ -18,7 +18,7 @@
                   <div class="row col-md-12">
                      <a href="/outputCSV" class="headBtn col-sm-2" style="border-style: solid solid solid solid; margin-left: 3%">CSV出力へ</a>
                   </div>
-                  <div class="card-scroll col-md-10" id="staffinfo" style="font-size:18px; margin-left: 10%;margin-top: 50px">
+                  <div class="card-scroll col-md-10" id="staffinfo" style="font-size:18px; margin-top: 50px">
                      <div class="container">
                         <div class="row">
                            <div class="col-md-3 form-group"> 	<!--		Show Numbers Of Rows 		-->
@@ -42,9 +42,9 @@
                                  <tr>
                                     <th>ユーザー識別子</th>
                                     <th>食事チェック結果</th>
-                                    <th style="padding-left:100px">からだの変化</th>
+                                    <th>からだの変化</th>
                                  </tr>
-                           </thead> 
+                           </thead>
                            <tbody>
                               @isset($playerlist)
                                     @foreach($playerlist as $value)
@@ -55,7 +55,7 @@
                                        </tr>
                                     @endforeach
                               @endisset
-                           </tbody>          
+                           </tbody>
                         </table>
                         <div class='pagination-container' >
                            <nav>
@@ -82,5 +82,5 @@
       <!--end::Dashboard-->
    </div>
    <!--end::Container-->
-              
+
 @stop

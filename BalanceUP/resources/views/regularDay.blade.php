@@ -19,59 +19,49 @@
                <!--begin::Body-->
                <div class="card-body d-flex flex-column px-0"
                   style="text-align: center; min-height:400px">
-                  <div class="col-lg-12 col-md-12 content-item content-item-1 background border-radius20" style="padding: 20px;position: relative;"> 
+                  <div class="col-lg-12 col-md-12 content-item content-item-1 background border-radius20" style="padding: 20px;position: relative;">
                      <!-- <div>
-                        <p class="headBtn">アカウント作成</p> 
+                        <p class="headBtn">アカウント作成</p>
                      </div>  -->
-                     <form method="POST" action="{{url('/inputRegular')}}" class="form__wrapper">
+                     <form  class="form__wrapper" name="playInfo" method="POST" action="{{url('/inputRegular')}}" onsubmit="return validateForm()">
                         @csrf
-                        <div class="row m-container" style="margin-left: 20%; margin-top: 40px">
-                           <table>
-                              <tr>
-                                    <td>
-                                       <td id="td-title">身長</td>
-                                       <td><input class="form-control" type="text" name="height"></td>
-                                       <td>cm</td>
-                                    </td> 
-                                    <td style="float: right; margin-left: 100px;">
-                                       <td id="td-title">体重</td>
-                                       <td><input class="form-control" type="text" name="weight"></td>
-                                       <td>kg</td>
-                                    </td>
-                              </tr>
-                              <tr style="height: 30px;"></tr>
-                              <tr>
-                                    <td>
-                                       <td id="td-title">除脂肪量</td>
-                                       <td><input class="form-control" type="text" name="fat"></td> 
-                                       <td>kg</td>
-                                    </td>
-                                    <td style="float: right;">
-                                       <td id="td-title">筋肉量</td>
-                                       <td><input class="form-control" type="text" name="muscle"></td>  
-                                       <td>kg</td>
-                                    </td>                               
-                              </tr>	
-                              <tr style="height: 30px;"></tr>
-                              <tr>
-                                    <td>
-                                       <td id="td-title">練習頻度</td>
-                                       <td><input class="form-control" type="text" name="frequency"></td> 
-                                       <td>回/週</td>
-                                    </td>
-                                    <td style="float: right;">
-                                       <td id="td-title">練習時間</td>
-                                       <td><input class="form-control" type="text" name="time"></td>  
-                                       <td>時間/週</td>
-                                    </td>                               
-                              </tr>
-                           </table>
-                           <div style="display: block;margin-top: 250px;margin-left: 10%">
+                        <div class="row m-container">
+                            <div class="col-md-6 sub-input">
+                                <span id="td-title">身長</span>
+                                <input class="form-control" type="text" name="height">
+                                <span>cm</span>
+                            </div>
+                            <div  class="col-md-6 sub-input">
+                                <span id="td-title">体重</span>
+                                <input class="form-control" type="text" name="weight">
+                                <span>kg</span>
+                            </div>
+                            <div class="col-md-6 sub-input">
+                                <span id="td-title">除脂肪量</span>
+                                <input class="form-control" type="text" name="fat">
+                                <span>kg</span>
+                            </div>
+                            <div class="col-md-6 sub-input">
+                                <span id="td-title">筋肉量</span>
+                                <input class="form-control" type="text" name="muscle">
+                                <span>kg</span>
+                            </div>
+                            <div class="col-md-6 sub-input">
+                                <span id="td-title">練習頻度</span>
+                                <input class="form-control" type="text" name="frequency">
+                                <span>回/週</span>
+                            </div>
+                            <div class="col-md-6 sub-input">
+                                <span id="td-title">練習時間</span>
+                                <input class="form-control" type="text" name="time">
+                                <span>時間/週</span>
+                            </div>
+                           <div class="col-md-12 form-next-btn">
                               <button type="submit" id="submit" style="display: none;"></button>
-                              <a class="nextBtn" href="javascript: $('#submit').click();" style="margin-top: 100px">Next</a>
+                              <a class="nextBtn" href="javascript: $('#submit').click();">Next</a>
                            </div>
-                        </div> 
-                     </form> 
+                        </div>
+                     </form>
                   </div>
                </div>
                <!--end::Body-->
@@ -83,5 +73,4 @@
       <!--end::Dashboard-->
    </div>
    <!--end::Container-->
-               
 @stop
