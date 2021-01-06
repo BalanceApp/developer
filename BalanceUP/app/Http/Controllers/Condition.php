@@ -52,7 +52,8 @@ class Condition extends Controller
         regDate = (SELECT MAX(regDate) FROM diet WHERE userid = ?)',
         [$userid,$userid]);
 
-        $returndata['five_two'] = DB::select('SELECT frequency, time FROM everyday WHERE userid = ? AND id = (SELECT MAX(id) FROM everyday WHERE userid =?)',[$userid,$userid]);
+        $returndata['five_two'] = DB::select('SELECT frequency, time, height, weight, fat, muscle, date FROM everyday WHERE userid = ? AND id = (SELECT MAX(id) FROM everyday WHERE userid =?)',[$userid,$userid]);
+        $returndata['userName'] = DB::select('SELECT name from player WHERE userid=?', [$userid]);
 
          $user_point = 0;
          $count = DB::select("select count(*) as count from player");
