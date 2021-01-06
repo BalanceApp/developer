@@ -6,6 +6,7 @@
    var values;
    var protein;
    var five_two_player;
+   var playerName;
    $(document).ready(function () {
       $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') } });
       var useridinput = document.getElementById("userid")
@@ -14,12 +15,21 @@
 
          values = JSON.parse(result)['data'][0];
          five_two_player = JSON.parse(result)['five_two'][0];
+         playerName = JSON.parse(result)['userName'][0];
+
+         $("#p_name").html(playerName['name']);
+         $("#p_height").html(five_two_player['height']);
+         $("#p_weight").html(five_two_player['weight']);
+         $("#p_fat").html(five_two_player['fat']);
+         $("#p_muscle").html(five_two_player['muscle']);
+         $("#p_date").html(five_two_player['date']);
+
          var order = JSON.parse(result)['grade'];
          var s_num = JSON.parse(result)['count'];
 
          order = parseInt(order);
          s_num = parseInt(s_num);
-         var posit = 100 - ((100) / s_num * order);
+         var posit = 100 / s_num * (order-1);
 
          $("#grad").css("right", posit + "%");
          var c = document.getElementById("grad");
@@ -136,15 +146,32 @@
       var friedFood = [3, 3, 4.5, 6];
       var sweets = [0, 1.5, 3, 3];
       var meatforLipid = [3, 3, 3, 6];
+
+      var swt = "";
+      if (sweets[values['sweets']*2/3] == 0) {
+          swt = 0;
+      }
+
+      if (sweets[values['sweets']*2/3] > 0 & sweets[values['sweets']*2/3] < 2) {
+          swt = 1;
+      }
+
+      if (sweets[values['sweets']*2/3] > 2 & sweets[values['sweets']*2/3] < 2.5) {
+          swt = 2;
+      }
+
+      if (sweets[values['sweets']*2/3] > 2.5) {
+          swt = 3;
+      }
       var calcData = new Array();
       calcData[0] = values['stapleFood'];
       calcData[1] = values['mainDish'] * (meat[values['meat'] * 2] + seafood[values['seafood'] * 2] + eggs[values['eggs'] * 2] + beans[values['beans'] * 2]) / 21;
-      calcData[2] = (meatforLipid[values['meat'] * 2] + friedFood[values['friedFood'] * 2] + sweets[values['sweets']*2/3]) / 3;
+      calcData[2] = (meatforLipid[values['meat'] * 2] + friedFood[values['friedFood'] * 2] + swt) / 3;
       calcData[3] = (LCvegetables[values['LCvegetables'] * 2] + GYvegetables[values['GYvegetables'] * 2] + mushrooms[values['mushrooms'] * 2] + seaweeds[values['seaweeds'] * 2] + potatoes[values['potatoes'] * 2] + values['fruit']) / 6;
       calcData[4] = (LCvegetables[values['LCvegetables'] * 2] + GYvegetables[values['GYvegetables'] * 2] + mushrooms[values['mushrooms'] * 2] + seaweeds[values['seaweeds'] * 2] + potatoes[values['potatoes'] * 2] + values['milk']) / 6;
       calcData[5] = (LCvegetables[values['LCvegetables'] * 2] + GYvegetables[values['GYvegetables'] * 2] + mushrooms[values['mushrooms'] * 2] + seaweeds[values['seaweeds'] * 2] + potatoes[values['potatoes'] * 2]) / 5;
       protein = calcData[2];
-      if (calcData[0] >= 3 && calcData[1] >= 3 && calcData[2] >= 3 && calcData[3] >= 3 && calcData[4] >= 3 && calcData[5] >= 3) {
+      if (calcData[0] >= 2.4 && calcData[1] >= 2.3 && calcData[2] >= 2.3 && calcData[3] >= 2.3 && calcData[4] >= 2.3 && calcData[5] >= 2.3) {
          $("#ok").show();
       }
       var c = document.getElementById("intakegram");
@@ -600,27 +627,27 @@
                      </center>
                   </div>
                   <div style="margin-top: 10px;">
-                     <table border="1" width="100%">
+                     <table border="1" width="100%" style="text-align:center;">
                         <tbody>
                            <tr height="24px">
-                              <td widtd="14%"></td>
-                              <td widtd="14%"></td>
-                              <td widtd="14%"></td>
-                              <td widtd="14%"></td>
-                              <td widtd="14%"></td>
-                              <td widtd="14%"></td>
-                              <td widtd="*"></td>
+                              <!-- <td widtd="10%">所属</td> -->
+                              <td widtd="10%">氏名</td>
+                              <td widtd="12%">身長(cm)</td>
+                              <td widtd="12%">体重(kg)</td>
+                              <td widtd="18%">体脂肪率(%)</td>
+                              <td widtd="18%">筋肉量(%)</td>
+                              <td widtd="*">チェック記入</td>
                            </tr>
                         </tbody>
                         <tbody>
                            <tr>
-                              <td>&nbsp</td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
+                              <!-- <td></td> -->
+                              <td id="p_name"></td>
+                              <td id="p_height"></td>
+                              <td id="p_weight"></td>
+                              <td id="p_fat"></td>
+                              <td id="p_muscle"></td>
+                              <td id="p_date"></td>
                            </tr>
                         </tbody>
                      </table>

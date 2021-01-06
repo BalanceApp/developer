@@ -33,12 +33,12 @@
                             <div class="col-md-6 sub-input">
                                 <span id="td-title">除脂肪量</span>
                                 <input class="form-control" type="text" name="fat">
-                                <span>kg</span>
+                                <span>%</span>
                             </div>
                             <div class="col-md-6 sub-input">
                                 <span id="td-title">筋肉量</span>
                                 <input class="form-control" type="text" name="muscle">
-                                <span>kg</span>
+                                <span>%</span>
                             </div>
                            <div class="col-md-12 form-next-btn">
                               <button type="submit" id="submit" style="display: none;"></button>
