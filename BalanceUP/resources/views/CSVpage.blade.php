@@ -10,6 +10,7 @@
         var change = document.getElementById("saveChange");
         var startyear = document.getElementById("startyear").value;
         var endyear = document.getElementById("endyear").value;
+
         var userlist = new Array();
         var dietData = diet.checked ? 1 : 0;
         var changeData= change.checked ? 1 : 0;
@@ -22,26 +23,47 @@
                 userlist.push(checkbox[i].id);
             }
         }
-        $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') } });
-        $.post("/saveCSV",{
-            startyear:startyear,
-            endyear:endyear,
-            userlist:userlist,
-            dietData:dietData,
-            changeData:changeData
-        },function sucess(response){
-            const data = JSON.parse(response);
-            for(i=0;i<data.length; i++)
-            {
-                url=  "{{url('/')}}/CSV/" + data[i];
-                const link = document.createElement('a');
-                 link.setAttribute('href', url);
-                 link.setAttribute('download', data[i]);
-                 link.click();
-            }
+
+        // console.log("player",checkbox);
+        if (userlist.length < 1 ) {
+            alert("プレイヤーを選択してください。");
+            return false;
+        }
+
+        else if(startyear == "" || endyear =="") {
+            alert("csv出力期間を正しく入力してください。");
+            return false;
+        }
+
+        else if(!diet.checked && !change.checked) {
+            alert("csv出力項目を選択してください。");
+            return false;
+        }
+
+        else {
+
+            $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') } });
+            $.post("/saveCSV",{
+                startyear:startyear,
+                endyear:endyear,
+                userlist:userlist,
+                dietData:dietData,
+                changeData:changeData
+            },function sucess(response){
+                const data = JSON.parse(response);
+                for(i=0;i<data.length; i++)
+                {
+                    url=  "{{url('/')}}/CSV/" + data[i];
+                    const link = document.createElement('a');
+                    link.setAttribute('href', url);
+                    link.setAttribute('download', data[i]);
+                    link.click();
+                }
 
 
-        });
+            });
+        }
+
 
     }
 
@@ -89,26 +111,24 @@
                             <div class="col-md-12" style="display:flex;">
                                 <a style="padding-top:10px; min-width:25px;max-width:26px;width:100%;">期間</a>
                                 <div class="col-md-2">
-                                    <input id ="startyear" class="form-control" type="text" name="">
+                                    <input id ="startyear" class="form-control" type="date" name="">
                                 </div>
                                 <a style="padding-top:10px">年</a>
                                 <a style="float: right; margin-left: 5%;">
                                 <a style="padding-top:10px"> ~ </a>
                                 <div class="col-md-3" style="margin-left:5%">
-                                    <input id="endyear" class="form-control" type="text" name="">
+                                    <input id="endyear" class="form-control" type="date" name="">
                                 </div>
                                 <a style="padding-top:10px">年</a>
                             </div>
                             <div class="card-scroll col-md-12" id="staffinfo" style="font-size:18px; margin-left: 10%;margin-top: 50px">
                                 <div class="container">
                                     <h3 style="text-align:left">選手</h3>
-                                    <div class="man-list">
+                                    <div class="man-list row">
                                         @isset($stafflist)
                                             @foreach($stafflist as $value)
-                                                <div class="col-lg-1 col-md-1 col-sm-1" style="text-align: end;">
-                                                    <input name="users" id="{{$value->userid}}" type="checkbox">
-                                                </div>
-                                                <div class="col-lg-4 col-md-4 col-sm-4" style="text-decoration:underline; text-align: left;">
+                                                <div class="col-lg-6 col-md-6 col-sm-6" style="text-decoration:underline; text-align: left;">
+                                                    <input name="users" id="{{$value->userid}}" type="checkbox" style="margin-right: 10px;">
                                                     {{ $value->name }}
                                                 </div>
                                             @endforeach

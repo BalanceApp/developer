@@ -65,7 +65,7 @@
                var parts =weekhData[i].x.split('-');
                tempdata[i] = {x:new Date(parts[0], parts[1] - 1, parts[2]),y:weekhData[i].y};
             }
-         
+
             weekData['hdata'] = tempdata;
 
             var tempdata = new Array();
@@ -106,7 +106,7 @@
                var parts =monthlyhData[i].x.split('-');
                tempdata[i] = {x:new Date(parts[0], parts[1] - 1, parts[2]),y:monthlyhData[i].y};
             }
-         
+
             monthlyData['hdata'] = tempdata;
 
             var tempdata = new Array();
@@ -148,7 +148,7 @@
                var parts = yearhData[i].x.split('-');
                tempdata[i] = {x:new Date(parts[0], parts[1] - 1, parts[2]),y:yearhData[i].y};
             }
-         
+
             yearData['hdata'] = tempdata;
 
             var tempdata = new Array();
@@ -179,7 +179,7 @@
          drawGraph();
 
       });
-      
+
    });
 
 
@@ -218,7 +218,7 @@
                fdata = monthlyData['fdata'];
                mdata = monthlyData['mdata'];
                valueFormatString = "MMM";
-               break;  
+               break;
          }
          case 4:
          {
@@ -227,7 +227,7 @@
                fdata = yearData['fdata'];
                mdata = yearData['mdata'];
                valueFormatString = "YYY";
-            break; 
+            break;
          }
 
       }
@@ -355,7 +355,7 @@
          }]
       });
       chartm.render();
-      
+
    }
 
    function toogleDataSeries(e){
@@ -407,7 +407,7 @@
                      <div id="board" class="card-body d-flex flex-column px-0"
                      style="text-align: center; min-height:400px">
                         <div>
-                           <h1 id="board" class="headBtn">からだの変化</h1> 
+                           <h1 id="board" class="headBtn">からだの変化</h1>
                         </div>
                      <div class="example-preview">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -448,17 +448,17 @@
                         <div id="height" style="margin-top:50px;height: 200px; width: 100%;"></div>
 
                         <div id="weight" style="margin-top:50px;height: 200px; width: 100%;"></div>
-                        <div id="fat" style="margin-top:50px;height: 200px; width: 100%;"></div>            
-                        <div id="muscle" style="margin-top:50px;height: 200px; width: 100%;"></div>	      
-                        
+                        <div id="fat" style="margin-top:50px;height: 200px; width: 100%;"></div>
+                        <div id="muscle" style="margin-top:50px;height: 200px; width: 100%;"></div>
+
                         <div style="text-align: right;padding-right: 100px;margin-top: 10px;">
                            <div>
                            @isset($userid)
                               <a href="/playerlist"><span class="btn btn-primary btn-lg"
-                                    style="border-radius: 5px; min-width: 100px">return</span></a>
+                                    style="border-radius: 5px; min-width: 100px">戻る</span></a>
                            @else
                               <a href="/nextMeal"><span class="btn btn-primary btn-lg"
-                                    style="border-radius: 5px; min-width: 100px">Next</span></a>
+                                    style="border-radius: 5px; min-width: 100px">次へ</span></a>
                            @endisset
                            </div>
                         </div>
@@ -473,5 +473,5 @@
          <!--end::Dashboard-->
       </div>
       <!--end::Container-->
-               
+
 @stop

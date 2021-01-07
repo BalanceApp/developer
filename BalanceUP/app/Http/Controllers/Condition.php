@@ -53,7 +53,7 @@ class Condition extends Controller
         [$userid,$userid]);
 
         $returndata['five_two'] = DB::select('SELECT frequency, time, height, weight, fat, muscle, date FROM everyday WHERE userid = ? AND id = (SELECT MAX(id) FROM everyday WHERE userid =?)',[$userid,$userid]);
-        $returndata['userName'] = DB::select('SELECT name from player WHERE userid=?', [$userid]);
+        $returndata['userName'] = DB::select('SELECT name, sport from player WHERE userid=?', [$userid]);
 
          $user_point = 0;
          $count = DB::select("select count(*) as count from player");
@@ -216,31 +216,22 @@ class Condition extends Controller
 
     function csvSave(Request $req){
         $data = $req->all();
+        $delimiter = ",";
         $dietData = array();
         $changeData = array();
-        $startyear=2019;
-        $endyear =(int)date("Y");
-        $delimiter = ",";
         $files = array();
-        if($data['startyear']!=null) $startyear=(int)$data['startyear'];
-        if($data['endyear']!=null) $endyear=(int)$data['endyear'];
+
         for($i=0; $i<count($data['userlist']); $i++){
 
-            for($year=$startyear; $year<=$endyear;$year++)
-            {
-                $result = DB::select("select userid, stapleFood, mainDish, sideDish,
-                meat, seafood, eggs, beans, LCvegetables, GYvegetables, mushrooms, seaweeds,
-                potatoes, milk, fruit, sweets, saltSweets, juice, friedFood, fastFood, misoSoup,
-                MenSoup, supply, regDate from diet where userid=? and regDate like ?",[$data['userlist'][$i],$year."-%"]);
-                $dietData = array_merge($dietData,$result);
-            }
 
+            $result = DB::select("select userid, stapleFood, mainDish, sideDish,
+            meat, seafood, eggs, beans, LCvegetables, GYvegetables, mushrooms, seaweeds,
+            potatoes, milk, fruit, sweets, saltSweets, juice, friedFood, fastFood, misoSoup,
+            MenSoup, supply, regDate from diet where userid=? and regDate BETWEEN ? AND  ?",[$data['userlist'][$i],$data['startyear'], $data['endyear']]);
+            $dietData = array_merge($dietData,$result);
 
-            for($year=$startyear; $year<=$endyear;$year++)
-            {
-                $result = DB::select("select userid, height, weight, fat,muscle, date from everyday where userid=? and date like ?",[$data['userlist'][$i],$year."-%"]);
-                $changeData= array_merge($changeData,$result);
-            }
+            $result = DB::select("select userid, height, weight, fat,muscle, date from everyday where userid=? and date BETWEEN ? AND  ?",[$data['userlist'][$i], $data['startyear'], $data['endyear']]);
+            $changeData= array_merge($changeData,$result);
 
         }
         if($data['dietData']==1){

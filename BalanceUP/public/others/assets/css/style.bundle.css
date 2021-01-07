@@ -100836,6 +100836,10 @@ body {
     position: relative;
 }
 
+.order-title {
+    width: 20%;
+}
+
 .bad-img {
     position: absolute;
     left: -61px;
@@ -100848,8 +100852,9 @@ body {
     position: absolute;
     font-size: 20px;
     background: #058e03;
-    width: 5px;
-    height: 30px;
+    width: 7px;
+    height: 40px;
+    top: -5px;
 }
 
 .good-img {
@@ -101336,7 +101341,7 @@ body {
     }
 
     .order-main {
-        height: 30px;
+        height: 20px;
         background-image: linear-gradient(-45deg, #ef6017, transparent);
         /* margin-right: 15px; */
         width: calc(100% - 65px);
@@ -101344,6 +101349,30 @@ body {
         margin-right: auto;
         display: flex;
         position: relative;
+    }
+
+    .good-img {
+        position: absolute;
+        right: -38px;
+        top: -10px;
+        width: 40px;
+    }
+
+    .bad-img {
+        position: absolute;
+        left: -38px;
+        top: -10px;
+        width: 40px;
+    }
+
+    #grad {
+        text-align: center;
+        position: absolute;
+        font-size: 20px;
+        background: #058e03;
+        width: 5px;
+        height: 26px;
+        top: -3px;
     }
 }
 
@@ -101477,13 +101506,6 @@ body {
 }
 
 @media (max-width: 350px) {
-    .bad-img {
-        position: absolute;
-        left: -11px;
-        top: -16px;
-        width: 65px;
-    }
-
     .order-title {
         width: 100%;
     }

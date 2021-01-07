@@ -34,8 +34,29 @@
    });
 
    function nextPage() {
-      $("#first").hide();
-      $("#second").show();
+
+       let foodValArr = new Array();
+       let next = true;
+
+       for (let i = 1; i < 23; i++) {
+            let foodName = "foo";
+            foodName +=i;
+            foodValArr.push(getradioval(foodName));
+       }
+
+       for (let j = 0; j < foodValArr.length; j++) {
+           if(foodValArr[j] == 0) {
+                alert("チェック漏れがあります.");
+                next = false;
+                return false;
+           }
+       }
+
+       if (next) {
+            $("#first").hide();
+            $("#second").show();
+       }
+
    }
 
    function previousPage() {
@@ -44,7 +65,38 @@
    }
 
    function end() {
-      calculate();
+       let foodValArr1 = new Array();
+       let end = true;
+
+       for (let i = 23; i < 34; i++) {
+            let foodName = "foo";
+            foodName +=i;
+            foodValArr1.push(getradioval(foodName));
+       }
+
+      let energy = ($("#energy").val() ? 1 : 0) / 2;
+      let calcium = ($("#calcium").val() ? 1 : 0) / 2;
+      let vitamin = ($("#vitamin").val() ? 1 : 0) / 2;
+      let others = ($("#others").val() ? 1 : 0) / 2;
+      let unknown = ($("#unknown").val() ? 1 : 0) / 2;
+
+      if (energy ==0 & calcium ==0 & vitamin ==0 & others ==0 & unknown ==0) {
+            alert("チェック漏れがあります.");
+            end = false;
+            return false;
+      }
+
+      for (let j = 0; j < foodValArr1.length; j++) {
+           if(foodValArr1[j] == 0) {
+                alert("チェック漏れがあります.");
+                end = false;
+                return false;
+           }
+       }
+
+       if (end) {
+          calculate();
+       }
    }
 
    function calculate() {
@@ -1004,7 +1056,7 @@
                      </div>
                      <div style="text-align: right; padding-right: 100px;">
                         <div>
-                           <a href="#" onclick="nextPage();"><span class="btn btn-primary btn-lg" style="border-radius: 5px; min-width: 100px">Next</span></a>
+                           <a href="#" onclick="nextPage();"><span class="btn btn-primary btn-lg" style="border-radius: 5px; min-width: 100px">次へ</span></a>
                         </div>
                      </div>
                   </div>
@@ -1544,7 +1596,7 @@
                                     <tr>
                                        <th style="width:17%;">エネルギー</th>
                                        <th style="width:17%;">カルシウム铁など</th>
-                                       <th style="width:17%;">ピタミン</th>
+                                       <th style="width:17%;">ビタミン</th>
                                        <th style="width:17%;">ブロティンアミノ酸など</th>
                                        <th style="width:17%;">その他</th>
                                        <th style="width:17%;">わからない</th>
@@ -1602,8 +1654,8 @@
 
                      <div style="text-align: right; padding-right: 100px;">
                         <div>
-                           <a href="#" onclick="previousPage();"><span class="btn btn-primary btn-lg" style="border-radius: 5px; min-width: 100px">Previous</span></a>
-                           <a href="#" onclick="end();"><span class="btn btn-primary btn-lg" style="border-radius: 5px; min-width: 100px">End</span></a>
+                           <a href="#" onclick="previousPage();"><span class="btn btn-primary btn-lg" style="border-radius: 5px; min-width: 100px">前へ戻る</span></a>
+                           <a href="#" onclick="end();"><span class="btn btn-primary btn-lg" style="border-radius: 5px; min-width: 100px">入力終了</span></a>
                         </div>
                      </div>
                   </div>

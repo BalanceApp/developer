@@ -18,6 +18,7 @@
          playerName = JSON.parse(result)['userName'][0];
 
          $("#p_name").html(playerName['name']);
+         $("#p_group").html(playerName['sport']);
          $("#p_height").html(five_two_player['height']);
          $("#p_weight").html(five_two_player['weight']);
          $("#p_fat").html(five_two_player['fat']);
@@ -30,7 +31,12 @@
          order = parseInt(order);
          s_num = parseInt(s_num);
          var posit = 100 / s_num * (order-1);
-
+         if (posit == 0) {
+             posit = 2;
+         }
+         if (posit == 100) {
+             posit = 98;
+         }
          $("#grad").css("right", posit + "%");
          var c = document.getElementById("grad");
          // c.innerHTML = "|";
@@ -171,7 +177,7 @@
       calcData[4] = (LCvegetables[values['LCvegetables'] * 2] + GYvegetables[values['GYvegetables'] * 2] + mushrooms[values['mushrooms'] * 2] + seaweeds[values['seaweeds'] * 2] + potatoes[values['potatoes'] * 2] + values['milk']) / 6;
       calcData[5] = (LCvegetables[values['LCvegetables'] * 2] + GYvegetables[values['GYvegetables'] * 2] + mushrooms[values['mushrooms'] * 2] + seaweeds[values['seaweeds'] * 2] + potatoes[values['potatoes'] * 2]) / 5;
       protein = calcData[2];
-      if (calcData[0] >= 2.4 && calcData[1] >= 2.3 && calcData[2] >= 2.3 && calcData[3] >= 2.3 && calcData[4] >= 2.3 && calcData[5] >= 2.3) {
+      if (calcData[0] >= 1.5 && calcData[1] >= 1.5 && calcData[2] >= 1.5 && calcData[3] >= 1.5 && calcData[4] >= 1.5 && calcData[5] >= 1.5) {
          $("#ok").show();
       }
       var c = document.getElementById("intakegram");
@@ -630,18 +636,18 @@
                      <table border="1" width="100%" style="text-align:center;">
                         <tbody>
                            <tr height="24px">
-                              <!-- <td widtd="10%">所属</td> -->
-                              <td widtd="10%">氏名</td>
-                              <td widtd="12%">身長(cm)</td>
-                              <td widtd="12%">体重(kg)</td>
-                              <td widtd="18%">体脂肪率(%)</td>
-                              <td widtd="18%">筋肉量(%)</td>
+                              <td widtd="14%">所属</td>
+                              <td widtd="14%">氏名</td>
+                              <td widtd="14%">身長(cm)</td>
+                              <td widtd="14%">体重(kg)</td>
+                              <td widtd="14%">体脂肪率(%)</td>
+                              <td widtd="14%">筋肉量(%)</td>
                               <td widtd="*">チェック記入</td>
                            </tr>
                         </tbody>
                         <tbody>
                            <tr>
-                              <!-- <td></td> -->
+                              <td id="p_group"></td>
                               <td id="p_name"></td>
                               <td id="p_height"></td>
                               <td id="p_weight"></td>
@@ -688,7 +694,7 @@
                      <div style="margin-top: 10px; background-color: #c9f8f9; padding:15px;" id="comment">
                      </div>
                      <div class="order-list-div">
-                        <p class="order-title" style="width: 20%">チーム順位</p>&nbsp;&nbsp;
+                        <p class="order-title">チーム順位</p>&nbsp;&nbsp;
                         <div class="order-main">
                            <img src="{{ asset('images/bad.png') }}" alt="bad" class="bad-img">
                            <p id="grad"></p>
@@ -701,10 +707,10 @@
                         <div>
                            @isset($player)
                            <a href="{{url('/viewGraph')}}"><span class="btn btn-primary btn-lg"
-                                 style="border-radius: 5px; min-width: 100px">Next</span></a>
+                                 style="border-radius: 5px; min-width: 100px">次へ</span></a>
                            @else
                            <a href="{{url('/playerlist')}}"><span class="btn btn-primary btn-lg"
-                                 style="border-radius: 5px; min-width: 100px">return</span></a>
+                                 style="border-radius: 5px; min-width: 100px">戻る</span></a>
 
                            @endisset
 

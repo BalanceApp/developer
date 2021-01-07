@@ -37,7 +37,7 @@
                                 <span>kg</span>
                             </div>
                             <div class="col-md-6 sub-input">
-                                <span id="td-title">除脂肪量</span>
+                                <span id="td-title">体脂肪率</span>
                                 <input class="form-control" type="text" name="fat">
                                 <span>%</span>
                             </div>
