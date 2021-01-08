@@ -176,6 +176,25 @@
       calcData[3] = (LCvegetables[values['LCvegetables'] * 2] + GYvegetables[values['GYvegetables'] * 2] + mushrooms[values['mushrooms'] * 2] + seaweeds[values['seaweeds'] * 2] + potatoes[values['potatoes'] * 2] + values['fruit']) / 6;
       calcData[4] = (LCvegetables[values['LCvegetables'] * 2] + GYvegetables[values['GYvegetables'] * 2] + mushrooms[values['mushrooms'] * 2] + seaweeds[values['seaweeds'] * 2] + potatoes[values['potatoes'] * 2] + values['milk']) / 6;
       calcData[5] = (LCvegetables[values['LCvegetables'] * 2] + GYvegetables[values['GYvegetables'] * 2] + mushrooms[values['mushrooms'] * 2] + seaweeds[values['seaweeds'] * 2] + potatoes[values['potatoes'] * 2]) / 5;
+
+      if (calcData[0] < 0 | isNaN(calcData[0])) {
+          calcData[0] = Math.random();
+      }
+      if (isNaN(calcData[1])) {
+          calcData[1] = Math.random();
+      }
+      if (isNaN(calcData[2])) {
+          calcData[2] = Math.random();
+      }
+      if (isNaN(calcData[3])) {
+          calcData[3] = Math.random();
+      }
+      if (isNaN(calcData[4])) {
+          calcData[4] = Math.random();
+      }
+      if (isNaN(calcData[5])) {
+          calcData[5] = Math.random();
+      }
       protein = calcData[2];
       if (calcData[0] >= 1.5 && calcData[1] >= 1.5 && calcData[2] >= 1.5 && calcData[3] >= 1.5 && calcData[4] >= 1.5 && calcData[5] >= 1.5) {
          $("#ok").show();

@@ -42,7 +42,7 @@
                             </div>
                            <div class="col-md-12 form-next-btn">
                               <button type="submit" id="submit" style="display: none;"></button>
-                              <a class="nextBtn" href="javascript: $('#submit').click();" style="margin-top: 100px">Next</a>
+                              <a class="nextBtn" href="javascript: $('#submit').click();" style="margin-top: 100px">次へ</a>
                            </div>
                         </div>
                      </form>

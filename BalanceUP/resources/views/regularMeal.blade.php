@@ -37,20 +37,121 @@
 
        let foodValArr = new Array();
        let next = true;
+       let mainfood = "";
+       let mainDish = "";
+       let sideDish = "";
+       let fruit = "";
+       let milk = "";
 
        for (let i = 1; i < 23; i++) {
             let foodName = "foo";
             foodName +=i;
             foodValArr.push(getradioval(foodName));
        }
-
-       for (let j = 0; j < foodValArr.length; j++) {
+// mainfood
+       for (let j = 0; j < 3; j++) {
            if(foodValArr[j] == 0) {
-                alert("チェック漏れがあります.");
-                next = false;
-                return false;
+                // alert("チェック漏れがあります.");
+                mainfood ="ok";
+                break;
            }
        }
+
+       if(mainfood !="ok") {
+            for (let j = 0; j < 3; j++) {
+                if(foodValArr[j] < 1) {
+                    alert("チェック漏れがあります.");
+                    next = false;
+                    break;
+                }
+            }
+       }
+// end mainfodd
+
+// mainDish
+       if (next) {
+           for (let j = 3; j < 10; j++) {
+                if(foodValArr[j] == 0) {
+                        // alert("チェック漏れがあります.");
+                        mainDish ="ok";
+                        break;
+                }
+            }
+
+            if(mainDish !="ok") {
+                    for (let j = 3; j < 10; j++) {
+                        if(foodValArr[j] < 1) {
+                            alert("チェック漏れがあります.");
+                            next = false;
+                            break;
+                        }
+                    }
+            }
+       }
+// end mainDish
+// sideDish
+       if (next) {
+           for (let j = 10; j < 18; j++) {
+                if(foodValArr[j] == 0) {
+                        // alert("チェック漏れがあります.");
+                        sideDish ="ok";
+                        break;
+                }
+            }
+
+            if(sideDish !="ok") {
+                    for (let j = 10; j < 18; j++) {
+                        if(foodValArr[j] < 1) {
+                            alert("チェック漏れがあります.");
+                            next = false;
+                            break;
+                        }
+                    }
+            }
+       }
+// end sideDish
+// milk
+       if (next) {
+           for (let j = 18; j < 20; j++) {
+                if(foodValArr[j] == 0) {
+                        // alert("チェック漏れがあります.");
+                        milk ="ok";
+                        break;
+                }
+            }
+
+            if(milk !="ok") {
+                    for (let j = 18; j < 20; j++) {
+                        if(foodValArr[j] < 1) {
+                            alert("チェック漏れがあります.");
+                            next = false;
+                            break;
+                        }
+                    }
+            }
+       }
+// end milk
+// fruit
+       if (next) {
+           for (let j = 20; j < 22; j++) {
+                if(foodValArr[j] == 0) {
+                        // alert("チェック漏れがあります.");
+                        fruit ="ok";
+                        break;
+                }
+            }
+
+            if(fruit !="ok") {
+                    for (let j = 20; j < 22; j++) {
+                        if(foodValArr[j] < 1) {
+                            alert("チェック漏れがあります.");
+                            next = false;
+                            break;
+                        }
+                    }
+            }
+       }
+// end fruit
 
        if (next) {
             $("#first").hide();
@@ -65,38 +166,209 @@
    }
 
    function end() {
-       let foodValArr1 = new Array();
-       let end = true;
+        let foodValArr1 = new Array();
+        let end = true;
+        let sweetfunny = "";
+        let saltyfunny = "";
+        let juice = "";
+        let friedfood = "";
+        let fastfood = "";
+        let soup = "";
+        let m_soup = "";
+        let supplements = "";
 
-       for (let i = 23; i < 34; i++) {
+        for (let i = 23; i < 34; i++) {
             let foodName = "foo";
             foodName +=i;
             foodValArr1.push(getradioval(foodName));
-       }
+        }
 
-      let energy = ($("#energy").val() ? 1 : 0) / 2;
-      let calcium = ($("#calcium").val() ? 1 : 0) / 2;
-      let vitamin = ($("#vitamin").val() ? 1 : 0) / 2;
-      let others = ($("#others").val() ? 1 : 0) / 2;
-      let unknown = ($("#unknown").val() ? 1 : 0) / 2;
+        let energy = ($("#energy").val() ? 1 : 0) / 2;
+        let calcium = ($("#calcium").val() ? 1 : 0) / 2;
+        let vitamin = ($("#vitamin").val() ? 1 : 0) / 2;
+        let others = ($("#others").val() ? 1 : 0) / 2;
+        let unknown = ($("#unknown").val() ? 1 : 0) / 2;
 
-      if (energy ==0 & calcium ==0 & vitamin ==0 & others ==0 & unknown ==0) {
-            alert("チェック漏れがあります.");
-            end = false;
-            return false;
-      }
+// sweetfunny
+        if (end) {
+            for (let j = 0; j < 2; j++) {
+                if(foodValArr1[j] == 0) {
+                        // alert("チェック漏れがあります.");
+                        sweetfunny ="ok";
+                        break;
+                }
+            }
 
-      for (let j = 0; j < foodValArr1.length; j++) {
-           if(foodValArr1[j] == 0) {
-                alert("チェック漏れがあります.");
-                end = false;
-                return false;
-           }
-       }
+            if(sweetfunny !="ok") {
+                    for (let j = 0; j < 2; j++) {
+                        if(foodValArr1[j] < 1) {
+                            alert("チェック漏れがあります.");
+                            end = false;
+                            break;
+                        }
+                    }
+            }
+        }
+// end sweetfunny
+// saltyfunny
+        if (end) {
+            for (let j = 2; j < 4; j++) {
+                if(foodValArr1[j] == 0) {
+                        // alert("チェック漏れがあります.");
+                        saltyfunny ="ok";
+                        break;
+                }
+            }
 
-       if (end) {
-          calculate();
-       }
+            if(saltyfunny !="ok") {
+                    for (let j = 2; j < 4; j++) {
+                        if(foodValArr1[j] < 1) {
+                            alert("チェック漏れがあります.");
+                            end = false;
+                            break;
+                        }
+                    }
+            }
+        }
+// end saltyfunny
+
+// juice
+        if (end) {
+            for (let j = 4; j < 6; j++) {
+                if(foodValArr1[j] == 0) {
+                        // alert("チェック漏れがあります.");
+                        juice ="ok";
+                        break;
+                }
+            }
+
+            if(juice !="ok") {
+                    for (let j = 4; j < 6; j++) {
+                        if(foodValArr1[j] < 1) {
+                            alert("チェック漏れがあります.");
+                            end = false;
+                            break;
+                        }
+                    }
+            }
+        }
+// end juice
+// friedfood
+        if (end) {
+            for (let j = 6; j < 7; j++) {
+                if(foodValArr1[j] == 0) {
+                        // alert("チェック漏れがあります.");
+                        friedfood ="ok";
+                        break;
+                }
+            }
+
+            if(friedfood !="ok") {
+                    for (let j = 6; j < 7; j++) {
+                        if(foodValArr1[j] < 1) {
+                            alert("チェック漏れがあります.");
+                            end = false;
+                            break;
+                        }
+                    }
+            }
+        }
+// end friedfood
+// fastfood
+        if (end) {
+            for (let j = 7; j < 8; j++) {
+                if(foodValArr1[j] == 0) {
+                        // alert("チェック漏れがあります.");
+                        fastfood ="ok";
+                        break;
+                }
+            }
+
+            if(fastfood !="ok") {
+                    for (let j = 7; j < 8; j++) {
+                        if(foodValArr1[j] < 1) {
+                            alert("チェック漏れがあります.");
+                            end = false;
+                            break;
+                        }
+                    }
+            }
+        }
+// end fastfood
+// soup
+        if (end) {
+            for (let j = 8; j < 9; j++) {
+                if(foodValArr1[j] == 0) {
+                        // alert("チェック漏れがあります.");
+                        soup ="ok";
+                        break;
+                }
+            }
+
+            if(soup !="ok") {
+                    for (let j = 8; j < 9; j++) {
+                        if(foodValArr1[j] < 1) {
+                            alert("チェック漏れがあります.");
+                            end = false;
+                            break;
+                        }
+                    }
+            }
+        }
+// end soup
+// m_soup
+        if (end) {
+            for (let j = 9; j < 10; j++) {
+                if(foodValArr1[j] == 0) {
+                        // alert("チェック漏れがあります.");
+                        m_soup ="ok";
+                        break;
+                }
+            }
+
+            if(m_soup !="ok") {
+                    for (let j = 9; j < 10; j++) {
+                        if(foodValArr1[j] < 1) {
+                            alert("チェック漏れがあります.");
+                            end = false;
+                            break;
+                        }
+                    }
+            }
+        }
+// end m_soup
+// supplements
+        if (end) {
+            for (let j = 10; j < 11; j++) {
+                if(foodValArr1[j] == 0) {
+                        // alert("チェック漏れがあります.");
+                        supplements ="ok";
+                        break;
+                }
+            }
+
+            if(supplements !="ok") {
+                for (let j = 10; j < 11; j++) {
+                    if(foodValArr1[j] < 1) {
+                        alert("チェック漏れがあります.");
+                        end = false;
+                        break;
+                    }
+                }
+            }
+        }
+        // if (end) {
+        //     if (energy ==0 & calcium ==0 & vitamin ==0 & others ==0 & unknown ==0) {
+        //             alert("チェック漏れがあります.");
+        //             end = false;
+        //             return false;
+        //         }
+        // }
+// end supplements
+
+        if (end) {
+            calculate();
+        }
    }
 
    function calculate() {
@@ -181,7 +453,7 @@
       for (var i = 0, length = radios.length; i < length; i++) {
          if (radios[i].checked) return radios[i].value;
       }
-      return 0;
+      return -1;
    }
 
    function others_check() {
