@@ -1884,9 +1884,9 @@
                                  <thead>
                                     <tr>
                                        <th style="width:17%;">エネルギー</th>
-                                       <th style="width:17%;">カルシウム铁など</th>
+                                       <th style="width:17%;">カルシウム・鉄など</th>
                                        <th style="width:17%;">ビタミン</th>
-                                       <th style="width:17%;">ブロチンアミノ酸等</th>
+                                       <th style="width:17%;">プロテイン・アミノ酸など</th>
                                        <th style="width:17%;">その他</th>
                                        <th style="width:17%;">わからない</th>
                                     </tr>
