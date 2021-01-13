@@ -100762,6 +100762,7 @@ body {
 
 .main-chai>img {
     width: 300px;
+    margin-bottom: 35px;
 }
 
 .side-one-chai {
@@ -100789,7 +100790,9 @@ body {
 #ok {
     display: none;
     position: absolute;
-    top: 250px;
+    right: 19vw;
+    width: 9vw;
+    bottom: 11vw;
 }
 
 #board {
@@ -100915,16 +100918,16 @@ body {
     }
 
     #dietgram {
-        widows: 300px;
-        height: 300px;
+        widows: 27vw;
+        height: 27vw;
     }
 
     .side-one-chai {
-        width: 250px;
+        width: 245px;
     }
 
     .main-chai>img {
-        width: 250px;
+        width: 244px;
     }
 
     .bottom-chai-left {
@@ -100945,8 +100948,8 @@ body {
 
 @media(max-width:1200px) {
     #dietgram {
-        widows: 200px;
-        height: 200px;
+        widows: 27vw;
+        height: 27vw;
     }
 
     .side-one-chai {
@@ -100971,7 +100974,7 @@ body {
     }
 
     #ok {
-        width: 200px;
+        width: 9vw;
     }
 
     .s-title {
@@ -100983,6 +100986,20 @@ body {
         top: 210px;
         width: 310px;
         right: 87px;
+    }
+}
+
+@media(max-width:1165px) {
+    #ok {
+        right: 18vw;
+        bottom: 11vw;
+    }
+}
+
+@media(max-width:990px) {
+    #ok {
+        right: 26vw;
+        bottom: 12vw;
     }
 }
 
@@ -101261,6 +101278,11 @@ body {
         left: 22%;
         width: 63%;
     }
+
+    #ok {
+        right: 26vw;
+        bottom: 14vw;
+    }
 }
 
 @media (max-width: 730px) {
@@ -101305,16 +101327,16 @@ body {
 
 @media(max-width:664px) {
     #dietgram {
-        widows: 130px;
-        height: 130px;
+        widows: 27vw;
+        height: 27vw;
     }
 
     .side-one-chai {
-        width: 90px;
+        width: 84px;
     }
 
     .main-chai>img {
-        width: 90px;
+        width: 88px;
     }
 
     .bottom-chai-left {
@@ -101326,13 +101348,17 @@ body {
         width: 90px;
     }
 
+    .main-chai>img {
+        margin-bottom: 9px;
+    }
+
     .item-1 {
         left: 21vh;
         width: 60vh;
     }
 
     #ok {
-        width: 140px;
+        width: 9vw;
     }
 
     .order-list-div {
@@ -101425,13 +101451,21 @@ body {
     #table-id {
         font-size: 10px;
     }
+
+    #ok {
+        right: 26vw;
+        bottom: 17vw;
+    }
+}
+
+@media (max-width: 442px) {
+    .bottom-chai-right {
+        margin-left: 19px;
+    }
 }
 
 @media (max-width: 435px) {
-    #ok {
-        width: 105px;
-        top: 279px;
-    }
+
 
     .s-title {
         font-size: 9px;
@@ -101439,7 +101473,7 @@ body {
 
     .notic-table-img {
         position: absolute;
-        top: 258px;
+        top: 278px;
         width: 143px;
         right: 37px;
     }
@@ -101451,8 +101485,15 @@ body {
     }
 
     #dietgram {
-        widows: 80px;
-        height: 80px;
+        widows: 27vw;
+        height: 27vw;
+    }
+}
+
+@media (max-width: 395px) {
+    #ok {
+        right: 24vw;
+        bottom: 20vw;
     }
 }
 
@@ -101460,6 +101501,10 @@ body {
     .reg-btn {
         margin-left: 0;
         width: 150px;
+    }
+
+    .order-title {
+        width: 100%;
     }
 }
 
@@ -101485,11 +101530,6 @@ body {
         width: 65px;
     }
 
-    #ok {
-        width: 79px;
-        top: 295px;
-    }
-
     .notic-table-img {
         position: absolute;
         top: 280px;
@@ -101508,5 +101548,12 @@ body {
 @media (max-width: 350px) {
     .order-title {
         width: 100%;
+    }
+}
+
+@media (max-width: 330px) {
+    #ok {
+        right: 24vw;
+        bottom: 23vw;
     }
 }

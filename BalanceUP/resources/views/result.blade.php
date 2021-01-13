@@ -63,7 +63,7 @@
       c.width = w;
       c.height = h;
 
-      var r = h * 0.8 / 2;
+      var r = h * 1 / 2;
       var ctx = c.getContext("2d");
       var x0 = w / 2;
       var y0 = h / 2 - r;

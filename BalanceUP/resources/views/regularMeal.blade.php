@@ -60,8 +60,9 @@
        if(mainfood !="ok") {
             for (let j = 0; j < 3; j++) {
                 if(foodValArr[j] < 1) {
-                    alert("チェック漏れがあります.");
+                    alert("主食チェック漏れがあります。");
                     next = false;
+                    window.location.href = '#p_title_1';
                     break;
                 }
             }
@@ -81,8 +82,9 @@
             if(mainDish !="ok") {
                     for (let j = 3; j < 10; j++) {
                         if(foodValArr[j] < 1) {
-                            alert("チェック漏れがあります.");
+                            alert("主菜チェック漏れがあります。");
                             next = false;
+                            window.location.href = '#p_title_2';
                             break;
                         }
                     }
@@ -102,8 +104,9 @@
             if(sideDish !="ok") {
                     for (let j = 10; j < 18; j++) {
                         if(foodValArr[j] < 1) {
-                            alert("チェック漏れがあります.");
+                            alert(" 副菜 チェック漏れがあります。");
                             next = false;
+                            window.location.href = '#p_title_3';
                             break;
                         }
                     }
@@ -123,8 +126,9 @@
             if(milk !="ok") {
                     for (let j = 18; j < 20; j++) {
                         if(foodValArr[j] < 1) {
-                            alert("チェック漏れがあります.");
+                            alert("牛乳•乳製品チェック漏れがあります.");
                             next = false;
+                            window.location.href = '#p_title_4';
                             break;
                         }
                     }
@@ -144,8 +148,9 @@
             if(fruit !="ok") {
                     for (let j = 20; j < 22; j++) {
                         if(foodValArr[j] < 1) {
-                            alert("チェック漏れがあります.");
+                            alert("果物チェック漏れがあります.");
                             next = false;
+                            window.location.href = '#p_title_5';
                             break;
                         }
                     }
@@ -202,8 +207,9 @@
             if(sweetfunny !="ok") {
                     for (let j = 0; j < 2; j++) {
                         if(foodValArr1[j] < 1) {
-                            alert("チェック漏れがあります.");
+                            alert("あまいおかしチェック漏れがあります.");
                             end = false;
+                            window.location.href = '#p_title_6';
                             break;
                         }
                     }
@@ -223,8 +229,9 @@
             if(saltyfunny !="ok") {
                     for (let j = 2; j < 4; j++) {
                         if(foodValArr1[j] < 1) {
-                            alert("チェック漏れがあります.");
+                            alert("しょっぱいおかしチェック漏れがあります.");
                             end = false;
+                            window.location.href = '#p_title_7';
                             break;
                         }
                     }
@@ -245,8 +252,9 @@
             if(juice !="ok") {
                     for (let j = 4; j < 6; j++) {
                         if(foodValArr1[j] < 1) {
-                            alert("チェック漏れがあります.");
+                            alert("ジュースチェック漏れがあります.");
                             end = false;
+                            window.location.href = '#p_title_8';
                             break;
                         }
                     }
@@ -266,8 +274,9 @@
             if(friedfood !="ok") {
                     for (let j = 6; j < 7; j++) {
                         if(foodValArr1[j] < 1) {
-                            alert("チェック漏れがあります.");
+                            alert("あげものチェック漏れがあります.");
                             end = false;
+                            window.location.href = '#p_title_9';
                             break;
                         }
                     }
@@ -287,8 +296,9 @@
             if(fastfood !="ok") {
                     for (let j = 7; j < 8; j++) {
                         if(foodValArr1[j] < 1) {
-                            alert("チェック漏れがあります.");
+                            alert("ファーストフードチェック漏れがあります.");
                             end = false;
+                            window.location.href = '#p_title_10';
                             break;
                         }
                     }
@@ -308,8 +318,9 @@
             if(soup !="ok") {
                     for (let j = 8; j < 9; j++) {
                         if(foodValArr1[j] < 1) {
-                            alert("チェック漏れがあります.");
+                            alert("みそ汁・スープチェック漏れがあります.");
                             end = false;
+                            window.location.href = '#p_title_11';
                             break;
                         }
                     }
@@ -329,8 +340,9 @@
             if(m_soup !="ok") {
                     for (let j = 9; j < 10; j++) {
                         if(foodValArr1[j] < 1) {
-                            alert("チェック漏れがあります.");
+                            alert("めん類のスープチェック漏れがあります.");
                             end = false;
+                            window.location.href = '#p_title_12';
                             break;
                         }
                     }
@@ -350,8 +362,9 @@
             if(supplements !="ok") {
                 for (let j = 10; j < 11; j++) {
                     if(foodValArr1[j] < 1) {
-                        alert("チェック漏れがあります.");
+                        alert("サプリメント•栄養補助食品 チェック漏れがあります.");
                         end = false;
+                        window.location.href = '#p_title_13';
                         break;
                     }
                 }
@@ -462,6 +475,10 @@
          $("#others_list").show();
       } else $("#others_list").hide();
    }
+
+   function showFocusItem(params) {
+       window.location.href = '#' + params;
+   }
 </script>
 
 <div class="container">
@@ -501,7 +518,7 @@
                            </div>
                            <br>
                            <div style="display: flex;">
-                              <p class="lable-p" style="font-size: 20px;font-weight: bold;">主食</p>
+                              <p class="lable-p" style="font-size: 20px;font-weight: bold;" id="p_title_1">主食</p>
                               <span style="margin-top: 10px;">(ご飯・パン・麺類・シリアル)</span>
                            </div>
                            <div style="display: block;">
@@ -609,7 +626,7 @@
                            </div>
                            <br>
                            <div style="display: flex;">
-                              <p class="lable-p" style="font-size: 20px;font-weight: bold;">主菜</p>
+                              <p class="lable-p" style="font-size: 20px;font-weight: bold;" id="p_title_2">主菜</p>
                               <span style="margin-top: 10px;">（肉・魚•卵•豆を便ったメインのおかず）</span>
                            </div>
                            <div style="display: block;">
@@ -851,7 +868,7 @@
                         </div>
                         <div class="right-row">
                            <div style="display: flex;">
-                              <p class="lable-p" style="font-size: 20px;font-weight: bold;">副菜</p>
+                              <p class="lable-p" style="font-size: 20px;font-weight: bold;" id="p_title_3">副菜</p>
                               <span style="margin-top: 10px;">（色のこい野菜・きのこ・海そう•いも）</span>
                            </div>
                            <div style="display: block;">
@@ -977,7 +994,7 @@
                                        </thead>
                                        <tbody>
                                           <tr>
-                                             <th scope="row">色のうすい<br>野菜</th>
+                                             <th scope="row">色の薄い<br>野菜</th>
                                              <td>
                                                 <label title="item1">
                                                    <input type="radio" name="foo14" value=0 />
@@ -1142,7 +1159,7 @@
                            </div>
                            <br>
                            <div>
-                              <p class="lable-p" style="font-size: 20px;font-weight: bold;">牛乳•乳製品</p>
+                              <p class="lable-p" style="font-size: 20px;font-weight: bold;" id="p_title_4">牛乳•乳製品</p>
                            </div>
                            <div class="row">
                                  <input type="radio" name="" disabled>&nbsp;&nbsp;
@@ -1234,7 +1251,7 @@
                            </div>
                            <br>
                            <div>
-                              <p class="lable-p" style="font-size: 20px;font-weight: bold;">果物</p>
+                              <p class="lable-p" style="font-size: 20px;font-weight: bold;" id="p_title_5">果物</p>
                            </div>
                            <div class="row">
                                 <input type="radio" name="" disabled>&nbsp;&nbsp;
@@ -1328,7 +1345,7 @@
                      </div>
                      <div style="text-align: right; padding-right: 100px;">
                         <div>
-                           <a href="#" onclick="nextPage();"><span class="btn btn-primary btn-lg" style="border-radius: 5px; min-width: 100px">次へ</span></a>
+                           <a onclick="nextPage();"><span class="btn btn-primary btn-lg" style="border-radius: 5px; min-width: 100px">次へ</span></a>
                         </div>
                      </div>
                   </div>
@@ -1343,7 +1360,7 @@
                            </div>
                            <br>
                            <div style="display: flex;">
-                              <p class="lable-p" style="font-size: 20px;font-weight: bold;">あまいおかし</p>
+                              <p class="lable-p" style="font-size: 20px;font-weight: bold;" id="p_title_6">あまいおかし</p>
                            </div>
                            <div style="display: block;">
                               <input type="radio" name="" disabled>&nbsp;&nbsp;
@@ -1437,7 +1454,7 @@
                            </div>
                            <br>
                            <div style="display: flex;">
-                              <p class="lable-p" style="font-size: 20px;font-weight: bold;">しょっぱいおかし</p>
+                              <p class="lable-p" style="font-size: 20px;font-weight: bold;" id="p_title_7">しょっぱいおかし</p>
                            </div>
                            <div style="display: block;">
                               <input type="radio" name="" disabled>&nbsp;&nbsp;
@@ -1531,7 +1548,7 @@
                            </div>
                            <br>
                            <div style="display: flex;">
-                              <p class="lable-p" style="font-size: 20px;font-weight: bold;">ジュース</p>
+                              <p class="lable-p" style="font-size: 20px;font-weight: bold;" id="p_title_8">ジュース</p>
                               <span style="margin-top: 10px;">（スポーツドリンクを含む）</span>
                            </div>
                            <div style="display: block;">
@@ -1627,7 +1644,7 @@
                         </div>
                         <div class="right-row">
                            <div style="display: flex;">
-                              <p class="lable-p" style="font-size: 20px;font-weight: bold;">あげもの</p>
+                              <p class="lable-p" style="font-size: 20px;font-weight: bold;" id="p_title_9">あげもの</p>
                            </div>
                            <div style="display: block;">
                               <input type="radio" name="" checked disabled>&nbsp;&nbsp;
@@ -1678,7 +1695,7 @@
                            </div>
                            <br>
                            <div style="display: flex;">
-                              <p class="lable-p" style="font-size: 20px;font-weight: bold;">ファーストフード</p>
+                              <p class="lable-p" style="font-size: 20px;font-weight: bold;" id="p_title_10">ファーストフード</p>
                            </div>
                            <div style="display: block;">
                               <input type="radio" name="" checked disabled>&nbsp;&nbsp;
@@ -1730,7 +1747,7 @@
                            </div>
                            <br>
                            <div style="display: flex;">
-                              <p class="lable-p" style="font-size: 20px;font-weight: bold;">みそ汁・スープ</p>
+                              <p class="lable-p" style="font-size: 20px;font-weight: bold;" id="p_title_11">みそ汁・スープ</p>
                            </div>
                            <div style="display: block;">
                               <input type="radio" name="" disabled>&nbsp;&nbsp;
@@ -1769,7 +1786,7 @@
                            </div>
                            <br>
                            <div style="display: flex;">
-                              <p class="lable-p" style="font-size: 20px;font-weight: bold;">めん類のスープ</p>
+                              <p class="lable-p" style="font-size: 20px;font-weight: bold;" id="p_title_12">めん類のスープ</p>
                            </div>
                            <div style="display: block;">
                               <input type="radio" name="" checked disabled>&nbsp;&nbsp;
@@ -1808,7 +1825,7 @@
                            </div>
                            <br>
                            <div style="display: flex;">
-                              <p class="lable-p" style="font-size: 20px;font-weight: bold;">サプリメント•栄養補助食品
+                              <p class="lable-p" style="font-size: 20px;font-weight: bold;" id="p_title_13">サプリメント•栄養補助食品
                               </p>
                            </div>
                            <div style="display: block;">
@@ -1869,7 +1886,7 @@
                                        <th style="width:17%;">エネルギー</th>
                                        <th style="width:17%;">カルシウム铁など</th>
                                        <th style="width:17%;">ビタミン</th>
-                                       <th style="width:17%;">ブロティンアミノ酸など</th>
+                                       <th style="width:17%;">ブロチンアミノ酸等</th>
                                        <th style="width:17%;">その他</th>
                                        <th style="width:17%;">わからない</th>
                                     </tr>
@@ -1926,8 +1943,8 @@
 
                      <div style="text-align: right; padding-right: 100px;">
                         <div>
-                           <a href="#" onclick="previousPage();"><span class="btn btn-primary btn-lg" style="border-radius: 5px; min-width: 100px">前へ戻る</span></a>
-                           <a href="#" onclick="end();"><span class="btn btn-primary btn-lg" style="border-radius: 5px; min-width: 100px">入力終了</span></a>
+                           <a onclick="previousPage();"><span class="btn btn-primary btn-lg" style="border-radius: 5px; min-width: 100px">前へ戻る</span></a>
+                           <a onclick="end();"><span class="btn btn-primary btn-lg" style="border-radius: 5px; min-width: 100px">入力終了</span></a>
                         </div>
                      </div>
                   </div>

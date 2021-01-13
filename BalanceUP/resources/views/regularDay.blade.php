@@ -44,7 +44,7 @@
                             <div class="col-md-6 sub-input">
                                 <span id="td-title">筋肉量</span>
                                 <input class="form-control" type="text" name="muscle">
-                                <span>%</span>
+                                <span>kg</span>
                             </div>
                             <div class="col-md-6 sub-input">
                                 <span id="td-title">練習頻度</span>
