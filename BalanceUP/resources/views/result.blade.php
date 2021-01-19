@@ -464,8 +464,8 @@
 
        if (mainfood < 3 & sideDish < 3 & milk < 3 & t_sport != null & f_sport !=null & mainchai > 3& fruit > 3) {
           statement = attach+"主食、副菜、牛乳・乳製品がたりていないようです。これらの食品がたりていないと、部活動やクラブチームでの練習や試合ですぐにバテたり、ケガをしやすくなったりします。朝・昼・夜の3食を残さずしっかり食べるようにしましょう！牛乳が飲めない人や苦手な人は、骨まで食べられる魚や緑のこい葉やさい（ほうれんそうなど）をできるだけ多く食べるようにしましょう。" + extraState;
-          commentTag.html(statement);
        }
+
 
        if (mainfood < 3 & milk < 3 & fruit < 3 & t_sport != null & f_sport !=null & mainchai > 3& sideDish > 3) {
           statement = attach+"主食、牛乳・乳製品、果物がたりていないようです。これらの食品がたりていないと、部活動やクラブチームでの練習や試合ですぐにバテたり、すばやい判断ができなくなったりします。朝・昼・夜の3食を残さずしっかり食べるようにしましょう！かんづめのフルーツをヨーグルトに入れて、フルーツヨーグルトにするとおいしいですよ。おやつや朝ごはんのときに作ってみましょう。" + extraState;
@@ -694,7 +694,7 @@
                               <td widtd="14%">身長(cm)</td>
                               <td widtd="14%">体重(kg)</td>
                               <td widtd="14%">体脂肪率(%)</td>
-                              <td widtd="14%">筋肉量(%)</td>
+                              <td widtd="14%">筋肉量(kg)</td>
                               <td widtd="*">チェック記入</td>
                            </tr>
                         </tbody>

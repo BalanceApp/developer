@@ -661,7 +661,7 @@
                            </div>
                            <div style="display: block;">
                                 <input type="radio" name="" checked disabled>&nbsp;&nbsp;
-                                <span style="margin-top: 10px;">あさ、ひる、よるどのくらい食ペましたか?</span>
+                                <span style="margin-top: 10px;">あさ、ひる、よるどのくらい食べましたか?</span>
                                 <div class="col-lg-12 col-md-12 col-sm-12 img-involve">
                                     <table class="table" style="text-align: center;">
                                         <thead>
@@ -765,7 +765,7 @@
                            <br>
                            <div style="display: flex;">
                               <p class="lable-p" style="font-size: 20px;font-weight: bold;" id="p_title_2">主菜</p>
-                              <span style="margin-top: 10px;">（肉・魚•卵•豆を便ったメインのおかず）</span>
+                              <span style="margin-top: 10px;">（肉・魚・卵・豆をつかったメインのおかず）</span>
                            </div>
                            <div style="display: block;">
                               <input type="radio" name="" checked disabled>&nbsp;&nbsp;
@@ -1007,11 +1007,11 @@
                         <div class="right-row">
                            <div style="display: flex;">
                               <p class="lable-p" style="font-size: 20px;font-weight: bold;" id="p_title_3">副菜</p>
-                              <span style="margin-top: 10px;">（色のこい野菜・きのこ・海そう•いも）</span>
+                              <span style="margin-top: 10px;">（野菜・きのこ・海そう•いもをつかった料理）</span>
                            </div>
                            <div style="display: block;">
                               <input type="radio" name="" checked disabled>&nbsp;&nbsp;
-                              <span style="margin-top: 10px;">あさ、ひる、よるどのくらい食ペましたか?</span>
+                              <span style="margin-top: 10px;">あさ、ひる、よるどのくらい食べましたか?</span>
                               <div class="row">
                                  <div class="col-lg-12 col-md-12 col-sm-12 img-involve">
                                     <table class="table" style="text-align: center;">
@@ -1125,14 +1125,14 @@
                                           <tr>
                                              <th scope="col">#</th>
                                              <th scope="col">食べなかった</th>
-                                             <th scope="col">1〜2日</th>
-                                             <th scope="col">3〜4日</th>
-                                             <th scope="col">5日以上</th>
+                                             <th scope="col">1回</th>
+                                             <th scope="col">2回</th>
+                                             <th scope="col">3回以上</th>
                                           </tr>
                                        </thead>
                                        <tbody>
                                           <tr>
-                                             <th scope="row">色の薄い<br>野菜</th>
+                                             <th scope="row">色のうすい<br>野菜</th>
                                              <td>
                                                 <label title="item1">
                                                    <input type="radio" name="foo14" value=0 />
@@ -1182,7 +1182,7 @@
                                        </thead>
                                        <tbody>
                                           <tr>
-                                             <th scope="row">色のうすい<br>野菜</th>
+                                             <th scope="row">色のこい<br>野菜</th>
                                              <td>
                                                 <label title="item1">
                                                    <input type="radio" name="foo15" value=0 />
