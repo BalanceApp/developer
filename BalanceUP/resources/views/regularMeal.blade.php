@@ -390,28 +390,166 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
          }
       });
-      let stapleFood = (parseInt(getradioval("foo1")) + parseInt(getradioval("foo2")) + parseInt(getradioval("foo3"))) / 2;
-      let mainDish = (parseInt(getradioval("foo4")) + parseInt(getradioval("foo5")) + parseInt(getradioval("foo6"))) / 2;
-      let sideDish = (parseInt(getradioval("foo11")) + parseInt(getradioval("foo12")) + parseInt(getradioval("foo13"))) / 2;
-      let meat = getradioval("foo7") / 2;
-      let seafood = getradioval("foo8") / 2;
-      let eggs = getradioval("foo9") / 2;
-      let beans = getradioval("foo10") / 2;
-      let LCvegetables = getradioval("foo14") / 2;
-      let GYvegetables = getradioval("foo15") / 2;
-      let mushrooms = getradioval("foo16") / 2;
-      let seaweeds = getradioval("foo17") / 2;
-      let potatoes = getradioval("foo18") / 2;
-      let milk = getradioval("foo19") * getradioval("foo20") / 2;
-      let fruit = getradioval("foo21") * getradioval("foo22") / 2;
-      let sweets = getradioval("foo23") * getradioval("foo24") / 2;
-      let saltSweets = getradioval("foo25") * getradioval("foo26") / 2;
-      let juice = getradioval("foo27") * getradioval("foo28") / 2;
-      let friedFood = getradioval("foo29") / 2;
-      let fastFood = getradioval("foo30") / 2;
-      let misoSoup = getradioval("foo31") / 2;
-      let MenSoup = getradioval("foo32") / 2;
-      let supply = getradioval("foo33") / 2;
+
+      let f1= parseInt(getradioval("foo1"));
+      if (f1 < 0) {
+          f1 = 0;
+      }
+
+      let f2= parseInt(getradioval("foo2"));
+      if (f2 < 0) {
+          f2 = 0;
+      }
+
+      let f3= parseInt(getradioval("foo3"));
+      if (f3 < 0) {
+          f3 = 0;
+      }
+
+      let f4= parseInt(getradioval("foo4"));
+      if (f4 < 0) {
+          f4 = 0;
+      }
+      let f5= parseInt(getradioval("foo5"));
+      if (f5 < 0) {
+          f5 = 0;
+      }
+      let f6= parseInt(getradioval("foo6"));
+      if (f6 < 0) {
+          f6 = 0;
+      }
+      let f7= parseInt(getradioval("foo7"));
+      if (f7 < 0) {
+          f7 = 0;
+      }
+      let f8= parseInt(getradioval("foo8"));
+      if (f8 < 0) {
+          f8 = 0;
+      }
+      let f9= parseInt(getradioval("foo9"));
+      if (f9 < 0) {
+          f9 = 0;
+      }
+      let f10= parseInt(getradioval("foo10"));
+      if (f10 < 0) {
+          f10 = 0;
+      }
+      let f11= parseInt(getradioval("foo11"));
+      if (f11 < 0) {
+          f11 = 0;
+      }
+      let f12= parseInt(getradioval("foo12"));
+      if (f12 < 0) {
+          f12 = 0;
+      }
+      let f13= parseInt(getradioval("foo13"));
+      if (f13 < 0) {
+          f13 = 0;
+      }
+      let f14= parseInt(getradioval("foo14"));
+      if (f14 < 0) {
+          f14 = 0;
+      }
+      let f15= parseInt(getradioval("foo15"));
+      if (f15 < 0) {
+          f15 = 0;
+      }
+      let f16= parseInt(getradioval("foo16"));
+      if (f16 < 0) {
+          f16 = 0;
+      }
+      let f17= parseInt(getradioval("foo17"));
+      if (f17 < 0) {
+          f17 = 0;
+      }
+      let f18= parseInt(getradioval("foo18"));
+      if (f18 < 0) {
+          f18 = 0;
+      }
+      let f19= parseInt(getradioval("foo19"));
+      if (f19 < 0) {
+          f19 = 0;
+      }
+      let f20= parseInt(getradioval("foo20"));
+      if (f20 < 0) {
+          f20 = 0;
+      }
+      let f21= parseInt(getradioval("foo21"));
+      if (f21 < 0) {
+          f21 = 0;
+      }
+      let f22= parseInt(getradioval("foo22"));
+      if (f22 < 0) {
+          f22 = 0;
+      }
+      let f23= parseInt(getradioval("foo23"));
+      if (f23 < 0) {
+          f23 = 0;
+      }
+      let f24= parseInt(getradioval("foo24"));
+      if (f24 < 0) {
+          f24 = 0;
+      }
+      let f25= parseInt(getradioval("foo25"));
+      if (f25 < 0) {
+          f25 = 0;
+      }
+      let f26= parseInt(getradioval("foo26"));
+      if (f26 < 0) {
+          f26 = 0;
+      }
+      let f27= parseInt(getradioval("foo27"));
+      if (f27 < 0) {
+          f27 = 0;
+      }
+      let f28= parseInt(getradioval("foo28"));
+      if (f28 < 0) {
+          f28 = 0;
+      }
+      let f29= parseInt(getradioval("foo29"));
+      if (f29 < 0) {
+          f29 = 0;
+      }
+      let f30= parseInt(getradioval("foo30"));
+      if (f30 < 0) {
+          f30 = 0;
+      }
+      let f31= parseInt(getradioval("foo31"));
+      if (f31 < 0) {
+          f31 = 0;
+      }
+      let f32= parseInt(getradioval("foo32"));
+      if (f32 < 0) {
+          f32 = 0;
+      }
+      let f33= parseInt(getradioval("foo33"));
+      if (f33 < 0) {
+          f33 = 0;
+      }
+
+
+      let stapleFood = (f1 + f2 + f3) / 2;
+      let mainDish = (f4 + f5 + f6) / 2;
+      let sideDish = (f11 + f12 + f13) / 2;
+      let meat = f7 / 2;
+      let seafood = f8 / 2;
+      let eggs = f9 / 2;
+      let beans = f10 / 2;
+      let LCvegetables = f14 / 2;
+      let GYvegetables = f15 / 2;
+      let mushrooms = f16 / 2;
+      let seaweeds = f17 / 2;
+      let potatoes = f18 / 2;
+      let milk = f19 * f20 / 2;
+      let fruit = f21 * f22 / 2;
+      let sweets = f23 * f24 / 2;
+      let saltSweets = f25 * f26 / 2;
+      let juice = f27 * f28 / 2;
+      let friedFood = f29 / 2;
+      let fastFood = f30 / 2;
+      let misoSoup = f31 / 2;
+      let MenSoup = f32 / 2;
+      let supply = f33 / 2;
       let energy = ($("#energy").val() ? 1 : 0) / 2;
       let calcium = ($("#calcium").val() ? 1 : 0) / 2;
       let vitamin = ($("#vitamin").val() ? 1 : 0) / 2;
