@@ -108,18 +108,17 @@
                         </div>
                         <form method="POST" class="form" action="{{ url('/userinfocheck') }}" id="kt_login_signin_form">
                             @csrf
-                            <div class="col-md-12" style="display:flex;">
-                                <a style="padding-top:10px; min-width:25px;max-width:26px;width:100%;">期間</a>
+                            <div class="row container"> 
+                                <h3 class="col-md-1" style="padding-top:10px;text-align:center;">期間</h3>
                                 <div class="col-md-2">
                                     <input id ="startyear" class="form-control" type="date" name="">
                                 </div>
-                                <a style="padding-top:10px">年</a>
-                                <a style="float: right; margin-left: 5%;">
-                                <a style="padding-top:10px"> ~ </a>
-                                <div class="col-md-3" style="margin-left:5%">
+                                <p class="col-md-1" style="padding-top:10px">年</p> 
+                                <p class="col-md-1" style="padding-top:10px"> ~ </p>
+                                <div class="col-md-3">
                                     <input id="endyear" class="form-control" type="date" name="">
                                 </div>
-                                <a style="padding-top:10px">年</a>
+                                <p class="col-md-1" style="padding-top:10px">年</p> 
                             </div>
                             <div class="card-scroll col-md-12" id="staffinfo" style="font-size:18px; margin-left: 10%;margin-top: 50px">
                                 <div class="container">
@@ -141,14 +140,24 @@
                                 <a style="margin-left: 5%">全て選択</a>
                             </div>
                             <div class="row">
-                                <h3 class="col-lg-2 col-md-2 col-sm-2" style="text-align: start;padding-left: 40px;">項目</h3>
-                                <div class="col-lg-4 col-md-4 col-sm-4" style="display:flex;margin-left: 40px;">
+                                <h3 class="col-lg-1 col-md-1 col-sm-1" style="text-align: start;padding-left: 40px;">項目</h3>
+                                <div class="col-lg-2 col-md-2 col-sm-2" style="display:flex;margin-left: 40px;">
                                     <input id="saveDiet" type="checkbox" style="margin-top: 3px;margin-right: 13px;">
                                     <h3>食事チェック結果</h3>
                                 </div>
-                                <div class="col-lg-4 col-md-4 col-sm-4" style="display:flex;margin-left: 40px;">
+                                <div class="col-lg-2 col-md-2 col-sm-2" style="display:flex;margin-left: 40px;">
                                     <input id="saveChange" type="checkbox" style="margin-top: 3px;margin-right: 13px;">
                                     <h3 style="text-decoration:underline">からだの変化</h3>
+                                </div>
+
+                                <div class="col-lg-2 col-md-2 col-sm-2" style="display:flex;margin-left: 40px;">
+                                    <input id="changeData" type="checkbox" style="margin-top: 3px;margin-right: 13px;">
+                                    <h3 style="text-decoration:underline">入力未修正データ</h3>
+                                </div>
+
+                                <div class="col-lg-3 col-md-3 col-sm-3" style="display:flex;margin-left: 40px;">
+                                    <input id="evaluatedData" type="checkbox" style="margin-top: 3px;margin-right: 13px;">
+                                    <h3 style="text-decoration:underline">栄養評価式による得点</h3>
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12" style="text-align: end;margin-right: 35px;margin-top: 10px;">

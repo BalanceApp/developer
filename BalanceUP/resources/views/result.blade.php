@@ -436,7 +436,7 @@
           statement = attach + "主食以外は、たりていないようです。毎日元気にすごすために、5つの食品のグループをどれもしっかり食べるようにしましょう！家や学校で出る食事は、残さず食べるようにしましょう。" + extraState;
           commentTag.html(statement);
        }
-
+       // condition 7
        if (mainfood < 3 & sideDish < 3 & milk < 3 & fruit < 3 & mainchai > 3) {
           statement = attach+"主菜以外は、たりていないようです。毎日元気にすごすために、5つの食品のグループをどれもしっかり食べるようにしましょう！家や学校で出る食事は、残さず食べるようにしましょう。" + extraState;
           commentTag.html(statement);

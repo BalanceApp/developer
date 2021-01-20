@@ -25,7 +25,9 @@ class Condition extends Controller
     public function insertDiet(Request $req)
     {
         $dietData = $req->all();
+
         DB::delete('delete from diet where regDate = ? and userid = ?',[date("y-m-d"),$req->session()->get('userid')]);
+
         $result = DB::insert('INSERT INTO diet(userid, stapleFood, mainDish, sideDish,
         meat, seafood, eggs, beans, LCvegetables, GYvegetables, mushrooms, seaweeds,
         potatoes, milk, fruit, sweets, saltSweets, juice, friedFood, fastFood, misoSoup,
@@ -38,6 +40,156 @@ class Condition extends Controller
          $dietData['misoSoup'], $dietData['MenSoup'], $dietData['supply'], $dietData['energy'],
          $dietData['calcium'],$dietData['vitamin'],$dietData['others'],$dietData['unknown'], $dietData['otherslist'],
          $dietData['description'], date("y-m-d")]);
+
+        /* mainfood */
+        // morning
+        $dietData["f1"] = $dietData['f1']+1;
+        // lunch
+        $dietData["f2"] = $dietData['f2']+1;
+        // dinner
+        $dietData['f3'] = $dietData["f3"]+1;
+
+        /* main chai */
+        // morning
+        $dietData["f4"] = $dietData['f4']+1;
+        // lunch
+        $dietData["f5"] = $dietData['f5']+1;
+        // dinner
+        $dietData['f6'] = $dietData["f6"]+1;
+
+        /* meat */
+        $dietData["f7"] = $dietData['f7']+1;
+        /* fish */
+        $dietData["f8"] = $dietData['f8']+1;
+        /* egg */
+        $dietData["f9"] = $dietData['f9']+1;
+        /* bean */
+        $dietData["f10"] = $dietData['f10']+1;
+
+        /* side chai */
+        // morning
+        $dietData["f11"] = $dietData['f11']+1;
+        // lunch
+        $dietData["f12"] = $dietData['f12']+1;
+        // dinner
+        $dietData['f13'] = $dietData["f13"]+1;
+
+        /* lc_vergetable */
+        $dietData['f14'] = $dietData["f14"]+1;
+
+        /* dc_vergetable */
+        $dietData['f15'] = $dietData["f15"]+1;
+
+        /* mushroom */
+        $dietData['f16'] = $dietData["f16"]+1;
+
+        /* seafood */
+        $dietData['f17'] = $dietData["f17"]+1;
+
+        /* potato */
+        $dietData['f18'] = $dietData["f18"]+1;
+
+        /* milk */
+        // amount
+        $dietData['f19'] = $dietData["f19"]+1;
+        // frequency
+        $dietData['f20'] = $dietData["f20"]+1;
+
+        /* fruit */
+        // amount
+        $dietData['f21'] = $dietData["f21"]+1;
+        // frequency
+        $dietData['f22'] = $dietData["f22"]+1;
+
+        /* sweet candy */
+        // amount
+        $dietData['f23'] = $dietData["f23"]+1;
+        // frequency
+        $dietData['f24'] = $dietData["f24"]+1;
+
+        /* salty candy */
+        // amount
+        $dietData['f25'] = $dietData["f25"]+1;
+        // frequency
+        $dietData['f26'] = $dietData["f26"]+1;
+
+        /* juice */
+        // amount
+        $dietData['f27'] = $dietData["f27"]+1;
+        // frequency
+        $dietData['f28'] = $dietData["f28"]+1;
+
+        /* fried food */
+        $dietData['f29'] = $dietData["f29"]+1;
+
+        /* fast food */
+        $dietData['f30'] = $dietData["f30"]+1;
+
+        /* soup */
+        $dietData['f31'] = $dietData["f31"]+1;
+
+        /* m soup */
+        $dietData['f32'] = $dietData["f32"]+1;
+
+        /* suplement */
+        $dietData['f33'] = $dietData["f33"]+1;
+
+        /* energy */
+        if ($dietData['energy'] == 0.5) {
+            $dietData['energy'] = 1;
+        }
+        else {
+            $dietData['energy'] = 0;
+        }
+
+        if ($dietData['calcium'] == 0.5) {
+            $dietData['calcium'] = 1;
+        }
+        else {
+            $dietData['calcium'] = 0;
+        }
+
+        if ($dietData['vitamin'] == 0.5) {
+            $dietData['vitamin'] = 1;
+        }
+        else {
+            $dietData['vitamin'] = 0;
+        }
+
+        if ($dietData['others'] == 0.5) {
+            $dietData['others'] = 1;
+        }
+        else {
+            $dietData['others'] = 0;
+        }
+
+        if ($dietData['unknown'] == 0.5) {
+            $dietData['unknown'] = 1;
+        }
+        else {
+            $dietData['unknown'] = 0;
+        }
+
+        if ($dietData['otherslist'] == 0.5) {
+            $dietData['otherslist'] = 1;
+        }
+        else {
+            $dietData['otherslist'] = 0;
+        }
+
+        DB::delete('delete from changedDatas where regDate = ? and userid = ?',[date("y-m-d"),$req->session()->get('userid')]);
+
+        $result = DB::insert('INSERT INTO changedDatas(userid, f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12, f13, f14, f15, f16, f17, f18, f19, f20,
+         f21, f22,f23,f24,f25,f26,f27, f28, f29, f30, f31, f32, f33, energy, calcium, vitamin, others, unknown, otherslist, description, regDate) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?, ?, ?,?,?,?,?,?,?,?,?,?)',
+        [$req->session()->get('userid'), $dietData['f1'], $dietData['f2'],
+        $dietData['f3'],$dietData['f4'], $dietData['f5'], $dietData['f6'],
+         $dietData['f7'], $dietData['f8'], $dietData['f9'], $dietData['f10'],
+         $dietData['f11'], $dietData['f12'], $dietData['f13'],$dietData['f14'], $dietData['f15'],
+         $dietData['f16'], $dietData['f17'], $dietData['f18'], $dietData['f19'],
+         $dietData['f20'], $dietData['f21'], $dietData['f22'], $dietData['f23'],
+         $dietData['f24'],$dietData['f25'],$dietData['f26'],$dietData['f27'], $dietData['f28'],$dietData['f29'], $dietData['f30'], $dietData['f31'], $dietData['f32'],
+         $dietData['f33'],$dietData['energy'],$dietData['calcium'],$dietData['vitamin'],$dietData['others'],$dietData['unknown'], $dietData['otherslist'],$dietData['description'], date("y-m-d")]);
+
         echo $result;
     }
 
