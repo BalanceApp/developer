@@ -70,6 +70,7 @@ Route::get('/nextMeal', function(){
     return view("nextMeal");
 });
 Route::post('/savenextMeal', [Condition::class,'nextMeal']);
+Route::post('/saveSixValues', [Condition::class,'saveEvaluateValues']);
 
 Route::get('/indiv1', [UserCtrl::class, 'getplayerList']);
 Route::get('/indiv2', [UserCtrl::class, 'getplayerList']);

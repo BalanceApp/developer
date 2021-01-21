@@ -27,6 +27,10 @@ class Controller extends BaseController
         DB::statement('CREATE TABLE IF NOT EXISTS changedDatas(id int primary key NOT NULL AUTO_INCREMENT, userid varchar(255), f1 float, f2 float, f3 float, f4 float, f5 float, f6 float, f7 float, f8 float, f9 float, f10 float, f11 float, f12 float, f13 float, f14 float, f15 float, f16 float, f17 float, f18 float, f19 float, f20 float, f21 float, f22 float, f23 float, f24 float, f25 float, f26 float, f27 float, f28 float, f29 float, f30 float, f31 float, f32 float, f33 float, energy float, calcium float, vitamin float, others float, unknown float, otherslist float, description varchar(255), regDate date)');
 
         DB::statement('CREATE TABLE IF NOT EXISTS nextmeal(id int primary key NOT NULL AUTO_INCREMENT, userid varchar(255), goodfood1 varchar(255), goodfood2 varchar(255), goodfood3 varchar(255), nextfood1 varchar(255), nextfood2 varchar(255), nextfood3 varchar(255), whe varchar(255), wher varchar(255), how varchar(255), regDate date)');
+
+
+        DB::statement('CREATE TABLE IF NOT EXISTS evaluateDatas(id int primary key NOT NULL AUTO_INCREMENT, userid varchar(255), stapleFood float, mainDish float, sideDish float, milk float, fruit float, energy float, protein float, fat float, vitamin float, mineral float, fiber float, regDate date)'); 
+        
         return view('index');
     }
 }

@@ -372,6 +372,8 @@ class Condition extends Controller
         $dietData = array();
         $changeData = array();
         $files = array();
+        $changeNumber = array();
+        $eval_data = array();
 
         for($i=0; $i<count($data['userlist']); $i++){
 
@@ -384,6 +386,12 @@ class Condition extends Controller
 
             $result = DB::select("select userid, height, weight, fat,muscle, date from everyday where userid=? and date BETWEEN ? AND  ?",[$data['userlist'][$i], $data['startyear'], $data['endyear']]);
             $changeData= array_merge($changeData,$result);
+
+            $result = DB::select("select * from changeddatas where userid=? and regDate BETWEEN ? AND  ?",[$data['userlist'][$i], $data['startyear'], $data['endyear']]);
+            $changeNumber= array_merge($changeNumber,$result);
+
+            $result = DB::select("select * from evaluatedatas where userid=? and regDate BETWEEN ? AND  ?",[$data['userlist'][$i], $data['startyear'], $data['endyear']]);
+            $eval_data= array_merge($eval_data,$result);
 
         }
         if($data['dietData']==1){
@@ -436,6 +444,65 @@ class Condition extends Controller
             $file = $filename.'.csv';
             array_push($files,$file);
         }
+
+        if ($data['changeDatacheck'] == 1) {
+
+            $filename = 'Uncorrected_data'.date('Y-m-d').'_'.date('his').'';
+            $fp2 = fopen('./CSV/'.$filename.'.csv','w');
+            $columnNames = array('ID', '主食-朝', '主食-昼', '主食-夜', '主菜-朝', '主菜-昼', '主菜-夜', '肉', '魚介類', '卵', '豆・豆製品', '副菜-朝', '副菜-昼', '副菜-夜', '色のうすい野', '色のこい野菜', 'きのこ', '海藻', 'いも','牛乳・乳製品 - 量', '牛乳・乳製品 - 頻度', '果物-量', '果物 - 頻度' , '甘いお菓子-量', '甘いお菓子 - 頻度', 'しょっぱいお菓子-量', 'しょっぱいお菓子 - 頻度', 'ジュース-量', 'ジュース - 頻度', '揚げ物', 'ファーストフード', '汁物', 'スープ', 'サプリ', 'エネルギー', 'ミネラル', 'ビタミン', 'タンパク質・アミノ酸', 'その他', 'わからない');
+            setlocale(LC_ALL, 'SJIS');
+            $headers = array(
+                'Content-Type'        => 'text/csv;charset=Shift_JIS',
+                'Cache-Control'       => 'must-revalidate, post-check=0, pre-check=0',
+                'Content-Disposition' => 'attachment; filename="' . $filename . '";',
+                'Expires'             => '0',
+                'Pragma'              => 'public',
+            );
+            fputcsv($fp2, $columnNames);
+            foreach ($changeNumber as $row) {
+                $lineData = array($row->userid, $row->f1, $row->f2, $row->f3, $row->f4,$row->f5, $row->f6, $row->f7, $row->f8, $row->f9, $row->f10, $row->f11, $row->f12, $row->f13, $row->f14, $row->f15, $row->f16, $row->f17, $row->f18, $row->f19, $row->f20, $row->f21, $row->f22, $row->f23, $row->f24, $row->f25, $row->f26, $row->f27, $row->f28, $row->f29, $row->f30, $row->f31, $row->f32, $row->f33, $row->energy, $row->calcium, $row->vitamin, $row->others, $row->unknown, $row->otherslist);
+                fputcsv($fp2, $lineData);
+                $i++;
+            }
+
+            fclose($fp2);
+            $file = $filename.'.csv';
+            array_push($files,$file);
+        }
+
+        if ($data['evaluatedDatacheck'] == 1) {
+            
+            $filename = 'Score_by_nutrition_evaluation'.date('Y-m-d').'_'.date('his').'';
+            $fp1 = fopen('./CSV/'.$filename.'.csv','w');
+            $columnNames = array('ID', '主食', '主菜', '副菜','牛乳・乳製品', '果物', 'エネルギー源', 'タンパク質源', '脂質源', 'ビタミン源', 'ミネラル源','食物繊維源');
+            $headers = array(
+                'Content-Type'        => 'text/csv',
+                'Cache-Control'       => 'must-revalidate, post-check=0, pre-check=0',
+                'Content-Disposition' => 'attachment; filename="' . $filename . '";',
+                'Expires'             => '0',
+                'Pragma'              => 'public',
+            );
+            fputcsv($fp1, $columnNames);
+            foreach ($eval_data as $row) {
+                $lineData = array($row->userid, $row->stapleFood, $row->mainDish, $row->sideDish,
+                $row->milk, $row->fruit, $row->energy , $row->protein, $row->fat, $row->vitamin, $row->mineral, $row->fiber);
+                fputcsv($fp1, $lineData);
+                $i++;
+            }
+            fclose($fp1);
+            $file = $filename.'.csv';
+            array_push($files,$file);
+        }
         echo json_encode($files);
+    }
+
+    public function saveEvaluateValues(Request $req)
+    {
+        $data = $req->all();
+        DB::delete('delete from evaluateDatas where regDate = ? and userid = ?',[date("y-m-d"),$req->session()->get('userid')]);
+
+        $result = DB::insert('INSERT INTO evaluateDatas(userid, stapleFood, mainDish, sideDish, milk, fruit,energy,protein,fat,vitamin,mineral, fiber, regDate) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)',
+        [$req->session()->get('userid'), $data['main_food'], $data['main_dish'],$data['side_dish'],$data['milk'], $data['fruit'], $data['energy'],$data['protein'],$data['fat'],$data['vitamin'],$data['mineral'], $data['fiber'], date("y-m-d")]);
+        echo('OK!');
     }
 }

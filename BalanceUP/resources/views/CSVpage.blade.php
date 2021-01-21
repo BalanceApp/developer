@@ -8,12 +8,16 @@
         var checkbox = document.getElementsByName("users");
         var diet = document.getElementById("saveDiet");
         var change = document.getElementById("saveChange");
+        var changeDataCheck = document.getElementById("changeData");
+        var evaluatedDataCheck = document.getElementById("evaluatedData");
         var startyear = document.getElementById("startyear").value;
         var endyear = document.getElementById("endyear").value;
 
         var userlist = new Array();
         var dietData = diet.checked ? 1 : 0;
         var changeData= change.checked ? 1 : 0;
+        var changeDatacheck= changeDataCheck.checked ? 1 : 0;
+        var evaluatedDatacheck= evaluatedDataCheck.checked ? 1 : 0;
 
         for(var i=0; i<checkbox.length;i++)
         {
@@ -35,7 +39,7 @@
             return false;
         }
 
-        else if(!diet.checked && !change.checked) {
+        else if(!diet.checked && !change.checked && ! changeDataCheck.checked && !evaluatedDataCheck.checked) {
             alert("csv出力項目を選択してください。");
             return false;
         }
@@ -48,7 +52,9 @@
                 endyear:endyear,
                 userlist:userlist,
                 dietData:dietData,
-                changeData:changeData
+                changeData:changeData,
+                changeDatacheck:changeDatacheck,
+                evaluatedDatacheck:evaluatedDatacheck
             },function sucess(response){
                 const data = JSON.parse(response);
                 for(i=0;i<data.length; i++)

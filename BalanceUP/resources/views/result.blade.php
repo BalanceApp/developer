@@ -198,7 +198,8 @@
       }
       if (isNaN(calcData[5])) {
           calcData[5] = Math.random();
-      }
+      }  
+
       protein = calcData[2];
       var c = document.getElementById("intakegram");
       c.width = w;
@@ -286,6 +287,9 @@
          ctx.fill();
          ctx.closePath();
       }
+
+      /*Save the 6 kinds of values */ 
+      $.post("{{ url('/saveSixValues')}}", {energy: calcData[0], protein: calcData[1], fat:calcData[2], vitamin: calcData[3], mineral: calcData[4], fiber: calcData[5], main_food:values['stapleFood'], main_dish:values['mainDish'], side_dish:values['sideDish'], milk:values['milk'], fruit:values['fruit'], "_token": "{{ csrf_token() }}"}, function(res){console.log(res)});
    }
 
    function writeComment() {
