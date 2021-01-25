@@ -13,7 +13,8 @@ class Condition extends Controller
         $regularData = $req->all();
 
         DB::insert('INSERT INTO everyday(userid, height, weight, fat, muscle, regulardata, frequency, time, date) VALUES(?,?,?,?,?,1,?,?,?)', [$req->session()->get('userid'), $regularData['height'], $regularData['weight'], $regularData['fat'], $regularData['muscle'], $regularData['frequency'], $regularData['time'], date("y-m-d")]);
-        return view('regularMeal');
+        $userid = $req->session()->get('userid');
+        return view('regularMeal', compact('userid'));
     }
 
     public function everydayInput(Request $req){
@@ -471,7 +472,7 @@ class Condition extends Controller
         }
 
         if ($data['evaluatedDatacheck'] == 1) {
-            
+
             $filename = 'Score_by_nutrition_evaluation'.date('Y-m-d').'_'.date('his').'';
             $fp1 = fopen('./CSV/'.$filename.'.csv','w');
             $columnNames = array('ID', '主食', '主菜', '副菜','牛乳・乳製品', '果物', 'エネルギー源', 'タンパク質源', '脂質源', 'ビタミン源', 'ミネラル源','食物繊維源');

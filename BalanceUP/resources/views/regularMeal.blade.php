@@ -28,10 +28,65 @@
 </style>
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script>
+
+   var values;
+
    $(document).ready(function() {
-      $("#second").hide();
-      $("#others_list").hide();
+    $("#second").hide();
+    $("#others_list").hide();
+
+    $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') } });
+        var useridinput = document.getElementById("userid")
+        var userid = useridinput.value;
+        $.get("{{url('/getDiet')}}", { userid: userid }, function sucess(result) {
+            values = JSON.parse(result)['data'][0];
+        });
+        /* ========================
+        Calculattion for Emulation
+        ========================== */
+        var meat = [0, 1, 3.5, 7];
+      var seafood = [0, 1, 3.5, 7];
+      var eggs = [0, 1, 3.5, 7];
+      var beans = [0, 1, 3.5, 7];
+      var LCvegetables = [0, 1, 2, 3];
+      var GYvegetables = [0, 1, 1, 3];
+      var mushrooms = [0, 1.5, 3, 3];
+      var seaweeds = [0, 1.5, 3, 3];
+      var potatoes = [0, 1.5, 3, 3];
+      var friedFood = [3, 3, 4.5, 6];
+      var sweets = [3, 3, 4.5, 6];
+      var meatforLipid = [3, 3, 3, 6];
+      var calcData = new Array();
+      calcData[0] = values['stapleFood'];
+      calcData[1] = values['mainDish'] * (meat[values['meat'] * 2] + seafood[values['seafood'] * 2] + eggs[values['eggs'] * 2] + beans[values['beans'] * 2]) / 21;
+      calcData[2] = (meatforLipid[values['meat'] * 2] + friedFood[values['friedFood'] * 2] + sweets[values['sweets'] * 2]) / 3;
+      calcData[3] = (LCvegetables[values['LCvegetables'] * 2] + GYvegetables[values['GYvegetables'] * 2] + mushrooms[values['mushrooms'] * 2] + seaweeds[values['seaweeds'] * 2] + potatoes[values['potatoes'] * 2] + values['fruit']) / 6;
+      calcData[4] = (LCvegetables[values['LCvegetables'] * 2] + GYvegetables[values['GYvegetables'] * 2] + mushrooms[values['mushrooms'] * 2] + seaweeds[values['seaweeds'] * 2] + potatoes[values['potatoes'] * 2] + values['milk']) / 6;
+      calcData[5] = (LCvegetables[values['LCvegetables'] * 2] + GYvegetables[values['GYvegetables'] * 2] + mushrooms[values['mushrooms'] * 2] + seaweeds[values['seaweeds'] * 2] + potatoes[values['potatoes'] * 2]) / 5;
+
+      if (calcData[0] < 0 | isNaN(calcData[0])) {
+          calcData[0] = Math.random();
+      }
+      if (isNaN(calcData[1])) {
+          calcData[1] = Math.random();
+      }
+      if (isNaN(calcData[2])) {
+          calcData[2] = Math.random();
+      }
+      if (isNaN(calcData[3])) {
+          calcData[3] = Math.random();
+      }
+      if (isNaN(calcData[4])) {
+          calcData[4] = Math.random();
+      }
+      if (isNaN(calcData[5])) {
+          calcData[5] = Math.random();
+      }
+
+      $.post("{{ url('/saveSixValues')}}", {energy: calcData[0], protein: calcData[1], fat:calcData[2], vitamin: calcData[3], mineral: calcData[4], fiber: calcData[5], main_food:values['stapleFood'], main_dish:values['mainDish'], side_dish:values['sideDish'], milk:values['milk'], fruit:values['fruit'], "_token": "{{ csrf_token() }}"}, function(res){console.log(res)});
+
    });
+
 
    function nextPage() {
 
@@ -652,6 +707,7 @@
    }
 </script>
 
+<input id="userid" type="hidden" value="@isset($userid){{$userid}}@endisset">
 <div class="container">
    <!--begin::Dashboard-->
    <!--begin::Row-->
