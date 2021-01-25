@@ -542,7 +542,7 @@
       let potatoes = f18 / 2;
       let milk = f19 * f20 / 2;
       let fruit = f21 * f22 / 2;
-      let sweets = f23 * f24 / 2;
+      let sweets = f24 / 2;
       let saltSweets = f25 * f26 / 2;
       let juice = f27 * f28 / 2;
       let friedFood = f29 / 2;
