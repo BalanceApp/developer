@@ -401,9 +401,12 @@
        if (highValue.length > 0) {
 
            for (let index = 0; index < highValue.length; index++) {
+               if (index != 0) {
+                   sub_text += "、"
+               } 
                sub_text+= highValue[index];
            }
-          attach = "【"+sub_text+"】はしっかりとれています！！ ";
+          attach = sub_text + "はしっかりとれています！！ ";
        }
 
        if (mainchai < 3 & sideDish < 3 & milk < 3 & fruit < 3 & mainfood >= 3) {
