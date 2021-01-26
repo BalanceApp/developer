@@ -405,9 +405,12 @@
        if (highValue.length > 0) {
 
            for (let index = 0; index < highValue.length; index++) {
+               if (index != 0) {
+                   sub_text += "、"
+               } 
                sub_text+= highValue[index];
            }
-          attach = "【"+sub_text+"】はしっかりとれています！！ ";
+          attach = sub_text + "はしっかりとれています！！ ";
        }
 
        if (mainchai < 3 & sideDish < 3 & milk < 3 & fruit < 3 & mainfood >= 3) {
@@ -442,6 +445,7 @@
 
        if (mainfood < 3 & sideDish < 3 & milk < 3 & t_sport != null & f_sport !=null & mainchai >= 3& fruit >= 3) {
           statement = attach+"主食、副菜、牛乳・乳製品がたりていないようです。これらの食品がたりていないと、部活動やクラブチームでの練習や試合ですぐにバテたり、ケガをしやすくなったりします。朝・昼・夜の3食を残さずしっかり食べるようにしましょう！牛乳が飲めない人や苦手な人は、骨まで食べられる魚や緑のこい葉やさい（ほうれんそうなど）をできるだけ多く食べるようにしましょう。";
+          commentTag.html(statement);
        }
 
 
