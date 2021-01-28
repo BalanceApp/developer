@@ -352,19 +352,19 @@
 
        if (never_food.length > 0) {
             for(var i = 0; i < never_food.length; i++) {
-                food_grp += never_food[i]+"・";
+                food_grp += never_food[i]+"、";
             }
         }
 
         if (never_food35.length > 0) {
             for(var i = 0; i < never_food35.length; i++) {
-                food_grp35 += never_food35[i]+"・";
+                food_grp35 += never_food35[i]+"、";
             }
         }
 
         if (never_food36.length > 0) {
             for(var i = 0; i < never_food36.length; i++) {
-                food_grp36 += never_food36[i]+"・";
+                food_grp36 += never_food36[i]+"、";
             }
         }
 // end for 34 pattern
@@ -474,7 +474,7 @@
           statement = attach+"主菜、副菜、牛乳・乳製品がたりていないようです。部活動やクラブチームの練習・試合で常にいいプレーができるように、いろいろな種類の食品をバランスよく食べるようにしましょう！クリームシチューやサンドイッチなどは、この3つが一緒にとれます。おうちの人に作ってもらうようにお願いしてみましょう。";
 
           if (food_grp !="") {
-            statement1 = statement + "今回、【"+food_grp+"】があまりとれていなかったので、もっとしっかり食べるようにしましょう！";
+            statement1 = statement + "今回、"+food_grp+"があまりとれていなかったので、もっとしっかり食べるようにしましょう！";
             commentTag.html(statement1);
           }
           else {
@@ -486,7 +486,7 @@
           statement = attach+"主菜、副菜、果物がたりていないようです。これらをしっかり食べていないと、部活動やクラブチームの練習でつかれやすくなったり、ケガをしやすくなったりします。常にいいプレーができるように、いろいろな種類の食品をバランスよく食べるようにしましょう！";
 
           if (food_grp !="") {
-            statement1 = statement + "今回、【"+food_grp+"】があまりとれていなかったので、もっとしっかり食べるようにしましょう！";
+            statement1 = statement + "今回、"+food_grp+"があまりとれていなかったので、もっとしっかり食べるようにしましょう！";
             commentTag.html(statement1);
           }
           else {
@@ -498,7 +498,7 @@
           statement = attach+"主菜、牛乳・乳製品、果物がたりていないようです。部活動やクラブチームの練習・試合で常にいいプレーができるように、いろいろな種類の食品をバランスよく食べるようにしましょう！かんづめのフルーツをヨーグルトに入れて、フルーツヨーグルトにするとおいしいですよ。おやつや朝ごはんのときに作ってみましょう。";
 
           if (food_grp35 !="") {
-            statement1 = statement + "今回、【"+food_grp35+"】があまりとれていなかったので、もっとしっかり食べるようにしましょう！";
+            statement1 = statement + "今回、"+food_grp35+"があまりとれていなかったので、もっとしっかり食べるようにしましょう！";
             commentTag.html(statement1);
           }
           else {
@@ -510,7 +510,7 @@
           statement = attach+"副菜、牛乳・乳製品、果物がたりていないようです。これらの食品には、体の調子をととのえてくれる「ビタミン」・「ミネラル」・「食物せんい」が多くふくまれています。体がつかれているときや、かぜをひきそうなときは、とくにしっかりとるようにしましょう！";
 
           if (food_grp36 !="") {
-            statement1 = statement + "今回、【"+food_grp36+"】があまりとれていなかったので、もっとしっかり食べるようにしましょう！";
+            statement1 = statement + "今回、"+food_grp36+"があまりとれていなかったので、もっとしっかり食べるようにしましょう！";
             commentTag.html(statement1);
           }
           else {
@@ -527,7 +527,7 @@
           statement = attach+"主菜と副菜がたりていないようです。ごはんだけでなく、おかずもしっかり食べるようにしましょう。カレーや肉じゃがなどは、主菜と副菜が両方入っています。おうちの人に作ってもらうようにお願いしてみましょう。";
 
           if (food_grp !="") {
-            statement1 = statement+ "今回、【"+food_grp+"】があまりとれていなかったので、もっとしっかり食べるようにしましょう！";
+            statement1 = statement+ "今回、"+food_grp+"があまりとれていなかったので、もっとしっかり食べるようにしましょう！";
             commentTag.html(statement1);
           }
           else {
@@ -540,7 +540,7 @@
           statement = attach+"副菜と牛乳・乳製品がたりていないようです。これらには、体の調子をととのえる栄養素が多く入っています。しっかりとれていないと、体調をくずしやすくなったり、ケガがなおりにくくなったりするので、気をつけましょう！クリームシチューやきのこのグラタンなどは、副菜と牛乳・乳製品を一緒にとることができます。お家の人に作ってもらうようにお願いしてみましょう。";
 
           if (food_grp36 !="") {
-            statement1 = statement + "今回、【"+food_grp36+"】があまりとれていなかったので、もっとしっかり食べるようにしましょう！";
+            statement1 = statement + "今回、"+food_grp36+"があまりとれていなかったので、もっとしっかり食べるようにしましょう！";
             commentTag.html(statement1);
           }
           else {
@@ -557,7 +557,7 @@
           statement = attach+"副菜と果物がたりていないようです。副菜と果物には、体の調子をととのえてくれる「ビタミン」や「食物せんい」が多く入っています。しっかりとれていないと、かぜをひきやすくなったり、つかれやすくなったりします。";
 
           if (food_grp36 !="") {
-            statement1 = statement + "今回、【"+food_grp36+"】があまりとれていなかったので、もっとしっかり食べるようにしましょう！";
+            statement1 = statement + "今回、"+food_grp36+"があまりとれていなかったので、もっとしっかり食べるようにしましょう！";
             commentTag.html(statement1);
           }
           else {
@@ -569,7 +569,7 @@
           statement = attach+"主菜と牛乳・乳製品がたりていないようです。主菜と牛乳・乳製品には、筋肉や骨などをつくるもとが多く入っていて、体をじょうぶにしてくれます。しっかりとれていないとめまいがしたり、ケガがなおりにくくなったりします。クリームシチューやシーフードグラタンなどは、この2つを一緒にとることができるので、お家の人に作ってもらうようお願いしてみましょう。";
 
           if (food_grp35 !="") {
-            statement1 = statement + "今回、【"+food_grp35+"】があまりとれていなかったので、もっとしっかり食べるようにしましょう！";
+            statement1 = statement + "今回、"+food_grp35+"があまりとれていなかったので、もっとしっかり食べるようにしましょう！";
             commentTag.html(statement1);
           }
           else {
@@ -582,6 +582,28 @@
           commentTag.html(statement);
        }
 
+       if (mainchai < 3 & fruit < 3 & t_sport != null & f_sport !=null & sideDish >= 3 & milk >= 3 & mainfood >= 3) {
+          statement = attach+"主菜は、筋肉や骨・皮ふ・かみの毛など体の多くの部分をつくる材料になるので、体を大きくするために必要な食品です。しっかりとれていないと、ひん血になったり、ケガがなおりにくくなったりします。家や学校で出る食事は残さず食べるようにしましょう。";
+
+          if (food_grp35 !="") {
+            statement1 = statement + "今回、"+food_grp35+"があまりとれていなかったので、もっとしっかり食べるようにしましょう！";
+            commentTag.html(statement1);
+          }
+          else {
+            commentTag.html(statement);
+          }
+       }
+
+       if (mainfood < 3 & fruit < 3 & f_sport != null & t_sport !=null  & mainchai >= 3 & sideDish >= 3 & milk >= 3) {
+          statement = attach+"主食が足りていないようです。ごはん・パン・めん類などは、頭をはたらかせたり、体を動かしたりするためのエネルギーになります。主食がたりていないと、部活動やクラブチームでの練習・試合で、すぐにバテたり、すばやい判断ができなくなったりします。食欲がないときは、食べやすいうどんやそうめんなどのめん類にしてもらうようにお家の人にお願いしてみましょう。";
+          commentTag.html(statement);
+       }
+
+       if (mainfood < 3 & milk < 3 & f_sport != null & t_sport !=null  & mainchai >= 3 & sideDish >= 3 & fruit >= 3) {
+          statement = attach+"主食が足りていないようです。ごはん・パン・めん類などは、頭をはたらかせたり、体を動かしたりするためのエネルギーになります。主食がたりていないと、部活動やクラブチームでの練習・試合で、すぐにバテたり、すばやい判断ができなくなったりします。食欲がないときは、食べやすいうどんやそうめんなどのめん類にしてもらうようにお家の人にお願いしてみましょう。";
+          commentTag.html(statement);
+       }
+
        if (mainfood < 3 & f_sport != null & t_sport !=null & mainchai >= 3 & sideDish >= 3 & milk >= 3 & fruit >= 3) {
           statement = attach+"主食が足りていないようです。ごはん・パン・めん類などは、頭をはたらかせたり、体を動かしたりするためのエネルギーになります。主食がたりていないと、部活動やクラブチームでの練習・試合で、すぐにバテたり、すばやい判断ができなくなったりします。食欲がないときは、食べやすいうどんやそうめんなどのめん類にしてもらうようにお家の人にお願いしてみましょう。";
           commentTag.html(statement);
@@ -590,7 +612,7 @@
        if (mainchai < 3 & f_sport != null & t_sport !=null & mainfood >= 3 & sideDish >= 3 & milk >= 3 & fruit >= 3) {
           statement = attach+"主菜は、筋肉や骨・皮ふ・かみの毛など体の多くの部分をつくる材料になるので、体を大きくするために必要な食品です。しっかりとれていないと、ひん血になったり、ケガがなおりにくくなったりします。家や学校で出る食事は残さず食べるようにしましょう。";
           if (food_grp35 !="") {
-            statement1 = statement+"今回、【"+food_grp35+"】があまりとれていなかったので、もっとしっかり食べるようにしましょう！";
+            statement1 = statement+"今回、"+food_grp35+"があまりとれていなかったので、もっとしっかり食べるようにしましょう！";
             commentTag.html(statement1);
           }
           else {
@@ -602,7 +624,7 @@
           statement = attach+"副菜は、体の調子をととのえてくれる「ビタミン」や「ミネラル」、「食物せんい」が多くふくまれています。しっかりとれていないと、かぜをひきやすくなったり、つかれやすくなったりするので、気をつけましょう！";
 
           if (food_grp36 !="") {
-            statement1 = statement + "今回、【"+food_grp36+"】があまりとれていなかったので、もっとしっかり食べるようにしましょう！";
+            statement1 = statement + "今回、"+food_grp36+"があまりとれていなかったので、もっとしっかり食べるようにしましょう！";
             commentTag.html(statement1);
           }
           else {
@@ -621,7 +643,7 @@
        }
 
        if (protein >= 5.0 & 2 * fastfood >= 2 & 2 * friedfood >= 2 & 2 * sweetCake >=3) {
-          statement = "【ファーストフード・あげもの・あまいおかし】はとりすぎないように気をつけましょう！";
+          statement = "ファーストフード、あげもの、あまいおかしはとりすぎないように気をつけましょう！";
           commentTag.append(statement);
        }
 
