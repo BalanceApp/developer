@@ -1,2 +1,3 @@
 BalanceUP/.env
 BalanceUP/vendor
+BalanceUP/public/CSV/*

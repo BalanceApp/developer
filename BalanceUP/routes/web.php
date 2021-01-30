@@ -2,10 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
-
-use App\Http\Controllers\UserCtrl;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Condition;
+use App\Http\Controllers\UserCtrl;
+use App\Http\Controllers\PlayerController;
+use App\Http\Controllers\StaffController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,70 +21,70 @@ use App\Http\Controllers\Condition;
 Route::get('/', function(){
     return view('index');
 });
+
 Route::get('/player', function () {
-    return view('login');
+    return view('login_player');
 });
-Route::get('/staff', function () {
-    return view('loginStaff');});
-Route::post('/check', [UserCtrl::class, 'loginPlayer']);
-Route::post('/checkStaff', [UserCtrl::class, 'loginStaff']);
-Route::get('/register', function () {
-    return view('register');
+Route::post('/login-player', [PlayerController::class, 'login']);
+
+Route::get('/register-player', function () {
+    return view('register_player');
 });
-Route::get('/registerStaff', function () {
-    return view('registerStaff');
+Route::post('/store-player', [PlayerController::class, 'store']);
+
+
+Route::get('/toscreen', function(){
+    return view('sub_item_page');
 });
-Route::post('/userinfocheck', [UserCtrl::class, 'registerPlayer']);
-Route::post('/staffinfocheck', [UserCtrl::class, 'registerStaff']);
-Route::get('/regular',function (){
-    return view("regularDay");
+
+Route::get('/daily-body-record', function (){
+    return view('daily_body_record');
 });
-Route::get('/everyday', function (){
-    return view('everyDay');
+Route::post('/input-daily-body-record', [Condition::class, 'inputDailyBodyRecord']);
+
+Route::get('/regular-record',function (){
+    return view("regular_body_record");
 });
-Route::post('/inputEveryday', [Condition::class, 'everydayInput']);
-Route::post('/inputRegular', [Condition::class, 'regularInput']);
+Route::post('/input-regular-body-record', [Condition::class, 'inputRegularBodyRecord']);
+Route::post('/input-nutrition-score', [Condition::class,'inputNutritionScore']);
+Route::get('/finish-inputing' , function(){
+    return view('finish_inputing_1');
+});
 
 Route::get('/history',[Condition::class,'setResult']);
-Route::get('/toscreen', function(){
-    return view('subItemPage');
-});
-Route::post('/dietData', [Condition::class,'insertDiet']);
-Route::get('/finishInputing' , function(){
-    // [Condition::class,'setResult']
-    return view('finishInputing1');
-});
-Route::get('/getGraphData', [Condition::class, 'getGraphData']);
-Route::get('/getDiet', [Condition::class,'getDiet']);
-Route::get('/viewGraph', [Condition::class,'setGraph']);
+Route::get('/get-nutrition-score', [Condition::class,'getNutritionScore']);
+Route::get('/view-body-graph', [Condition::class,'setBodyGraph']);
+Route::get('/get-graph-data', [Condition::class, 'getGraphData']);
 
-Route::get('/finishInputing/{userid}',function($userid){
+
+
+Route::get('/view-body-graph/{userid}',  function($userid){
+    $userid=$userid;
+    return view('body_graph',compact('userid'));
+});
+Route::get('/result/{userid}',function($userid){
     $userid=$userid;
     return view('result',compact('userid'));
 });
 
-
-Route::get('/viewGraph/{userid}',  function($userid){
-    $userid=$userid;
-    return view('graphPage',compact('userid'));
+Route::get('/staff', function () {
+    return view('login_staff');});
+Route::post('/login-staff', [StaffController::class, 'login']);
+Route::get('/register-staff', function () {
+    return view('register_staff');
 });
+Route::post('/store-staff', [StaffController::class, 'store']);
+Route::get('/staff-page', function(){
+    return view('staff_page');
+});
+Route::get('/playerlist', [PlayerController::class, 'index']);
+Route::get('/outputCSV' ,[UserCtrl::class,'csvOut']);
+Route::post('/saveCSV', [Condition::class,'csvSave']);
 
+Route::get('/indiv1', [UserCtrl::class, 'getplayerList']);
+Route::get('/indiv2', [UserCtrl::class, 'getplayerList']);
 Route::get('/nextMeal', function(){
     return view("nextMeal");
 });
 Route::post('/savenextMeal', [Condition::class,'nextMeal']);
-Route::post('/saveSixValues', [Condition::class,'saveEvaluateValues']);
-
-Route::get('/indiv1', [UserCtrl::class, 'getplayerList']);
-Route::get('/indiv2', [UserCtrl::class, 'getplayerList']);
-Route::get('/playerlist', [UserCtrl::class, 'getplayerList']);
-
-Route::get('/outputCSV' ,[UserCtrl::class,'csvOut']);
-Route::post('/saveCSV', [Condition::class,'csvSave']);
-
-
-
-
-
-
- 
+Route::post('/saveSixValues', [Condition::class,'saveEvaluateValues']); 

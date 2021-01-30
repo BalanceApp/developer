@@ -1,10 +1,27 @@
 @extends('app')
 @section('title', 'ログイン')
 @section('content')
-<script src="{{asset('js/jquery.min.js')}}"></script>
-<script src="{{asset('js/login.js')}}"></script>
+<script src="js/jquery.min.js"></script>
+<script>
+	function validateform()
+	{
+		if($('#username').val()=="" || $('#password').val()=="")
+		{
+			$('#error').html("名前とパスワードを入力してください");
+			return false;
+		}
+		else{
+			$('#submit').click();
+		}
+	}
 
-<!--begin::Container-->
+	function clearerror()
+	{
+		$('#error').html("");
+		$('#unkown').html("");
+	}
+</script>
+
 <div class="container">
 	<!--begin::Dashboard-->
 	<!--begin::Row-->
@@ -19,8 +36,7 @@
 				</div>
 				<!--end::Header-->
 				<!--begin::Body-->
-				<div class="card-body d-flex flex-column px-0"
-					style="text-align: center; min-height:400px">
+				<div class="card-body d-flex flex-column px-0" style="text-align: center; min-height:400px">
 					<div class="row">
 						<div class="col-sm-3"></div>
 						<div class="col-sm-6">
@@ -28,26 +44,29 @@
 								<div class="mb-20">
 									<h3>ログイン</h3>
 									<!-- <div class="text-muted font-weight-bold">Enter your details to login
-										to your account:</div> -->
+																to your account:</div> -->
 								</div>
-								
-								<center><p id="error" style="color: #0c3392; padding: 20px;"></p></center>
+
+								<center>
+									<p id="error" style="color: #0c3392; padding: 20px;"></p>
+								</center>
 								@isset($data_erro)
-									<center><p id="unkown" style="color: #0c3392; padding: 20px;">{{ $data_erro }}</p></center>
+								<center>
+									<p id="unkown" style="color: #0c3392; padding: 20px;">{{ $data_erro }}</p>
+								</center>
 								@endisset
-								<form method="POST" class="form" action="{{ url('/check') }}"
+								<form method="POST" class="form" action="{{ url('/login-staff') }}"
 									id="kt_login_signin_form">
 									@csrf
 									<div class="form-group mb-5">
-										<input
-											onclick="clearerror();" class="form-control h-auto form-control-solid py-4 px-8"
-											type="text" placeholder="ID" name="userid" id="username"
-											autocomplete="off" />
+										<input onclick="clearerror();"
+											class="form-control h-auto form-control-solid py-4 px-8" type="text"
+											placeholder="ID" name="userid" id="username" autocomplete="off" />
 									</div>
 									<div class="form-group mb-5">
-										<input
-											onclick="clearerror();" class="form-control h-auto form-control-solid py-4 px-8"
-											type="password" placeholder="PW" name="password" id="password"/>
+										<input onclick="clearerror();"
+											class="form-control h-auto form-control-solid py-4 px-8" type="password"
+											placeholder="PW" name="password" id="password" />
 									</div>
 									<button type="submit" id="submit" style="display: none;"></button>
 									<a id="kt_login_signin_submit" onclick="validateform();"
@@ -55,7 +74,7 @@
 								</form>
 								<div class="mt-10">
 									<span class="text-muted mr-2">初めての方</span>
-									<a href="/register" id="kt_login_signup" class="font-weight-bold">アカウント作成</a>
+									<a href="/register-staff" id="kt_login_signup" class="font-weight-bold">アカウント作成</a>
 								</div>
 							</div>
 						</div>

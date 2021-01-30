@@ -1,10 +1,10 @@
 @extends('app')
-@section('title', '先頭ページ')
+@section('title', 'からだの変化')
 @section('content')
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script src="{{asset('js/canvasjs.min.js')}}"></script>
 <script>
-    var everydayData;
+   var everydayData;
    var weekData;
    var monthlyData;
    var yearData;
@@ -13,7 +13,7 @@
       $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }});
       var useridinput = document.getElementById("userid")
       var userid = useridinput.value;
-      $.get("{{url('/getGraphData')}}",{userid:userid}, function sucess(result){
+      $.get("{{url('/get-graph-data')}}",{userid:userid}, function sucess(result){
             everydayData = JSON.parse(result)['everydaydata'];
             everydayhData = everydayData['hdata'];
             everydaywData = everydayData['wdata'];
@@ -392,86 +392,88 @@
    }
 </script>
 @isset($userid)
-   <input id="userid" type="hidden" value="{{$userid}}">
+<input id="userid" type="hidden" value="{{$userid}}">
 @endisset
 
-      <!--begin::Container-->
-      <div class="container">
-         <!--begin::Dashboard-->
-         <!--begin::Row-->
-         <div class="row">
-            <div class="col-xl-12">
-               <!--begin::Tiles Widget 1-->
-                  <div class="card card-custom gutter-b card-stretch">
-                  <!--begin::Body-->
-                     <div id="board" class="card-body d-flex flex-column px-0"
-                     style="text-align: center; min-height:400px">
-                        <div>
-                           <h1 id="board" class="headBtn">からだの変化</h1>
-                        </div>
-                     <div class="example-preview">
-                        <ul class="nav nav-tabs" id="myTab" role="tablist">
-                              <li class="nav-item">
-                                 <a class="nav-link active" id="home-tab" data-toggle="tab" onclick="everyday();">
-                                    <span class="nav-icon">
-                                          <i class="flaticon2-layers-1"></i>
-                                    </span>
-                                    <span class="nav-text" style="font-size: 28px">日</span>
-                                 </a>
-                              </li>
-                              <li class="nav-item">
-                                 <a class="nav-link" id="profile-tab" data-toggle="tab" onclick="week();" aria-controls="profile">
-                                    <span class="nav-icon">
-                                          <i class="flaticon2-layers-1"></i>
-                                    </span>
-                                    <span class="nav-text" style="font-size: 28px">週</span>
-                                 </a>
-                              </li>
-                              <li class="nav-item">
-                                 <a class="nav-link" id="profile-tab" data-toggle="tab" onclick="month();" aria-controls="profile">
-                                    <span class="nav-icon">
-                                          <i class="flaticon2-layers-1"></i>
-                                    </span>
-                                    <span class="nav-text" style="font-size: 28px">月</span>
-                                 </a>
-                              </li>
-                              <li class="nav-item">
-                                 <a class="nav-link" id="profile-tab" data-toggle="tab" onclick="year();" aria-controls="profile">
-                                    <span class="nav-icon">
-                                          <i class="flaticon2-layers-1"></i>
-                                    </span>
-                                    <span class="nav-text" style="font-size: 28px">年</span>
-                                 </a>
-                              </li>
-                        </ul>
+<!--begin::Container-->
+<div class="container">
+   <!--begin::Dashboard-->
+   <!--begin::Row-->
+   <div class="row">
+      <div class="col-xl-12">
+         <!--begin::Tiles Widget 1-->
+         <div class="card card-custom gutter-b card-stretch">
+            <!--begin::Body-->
+            <div id="board" class="card-body d-flex flex-column px-0" style="text-align: center; min-height:400px">
+               <div>
+                  <h1 id="board" class="headBtn">からだの変化</h1>
+               </div>
+               <div class="example-preview">
+                  <ul class="nav nav-tabs" id="myTab" role="tablist">
+                     <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" onclick="everyday();">
+                           <span class="nav-icon">
+                              <i class="flaticon2-layers-1"></i>
+                           </span>
+                           <span class="nav-text" style="font-size: 28px">日</span>
+                        </a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" onclick="week();"
+                           aria-controls="profile">
+                           <span class="nav-icon">
+                              <i class="flaticon2-layers-1"></i>
+                           </span>
+                           <span class="nav-text" style="font-size: 28px">週</span>
+                        </a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" onclick="month();"
+                           aria-controls="profile">
+                           <span class="nav-icon">
+                              <i class="flaticon2-layers-1"></i>
+                           </span>
+                           <span class="nav-text" style="font-size: 28px">月</span>
+                        </a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" onclick="year();"
+                           aria-controls="profile">
+                           <span class="nav-icon">
+                              <i class="flaticon2-layers-1"></i>
+                           </span>
+                           <span class="nav-text" style="font-size: 28px">年</span>
+                        </a>
+                     </li>
+                  </ul>
 
-                        <div id="height" style="margin-top:50px;height: 200px; width: 100%;"></div>
+                  <div id="height" style="margin-top:50px;height: 200px; width: 100%;"></div>
 
-                        <div id="weight" style="margin-top:50px;height: 200px; width: 100%;"></div>
-                        <div id="fat" style="margin-top:50px;height: 200px; width: 100%;"></div>
-                        <div id="muscle" style="margin-top:50px;height: 200px; width: 100%;"></div>
+                  <div id="weight" style="margin-top:50px;height: 200px; width: 100%;"></div>
+                  <div id="fat" style="margin-top:50px;height: 200px; width: 100%;"></div>
+                  <div id="muscle" style="margin-top:50px;height: 200px; width: 100%;"></div>
 
-                        <div style="text-align: right;padding-right: 100px;margin-top: 10px;">
-                           <div>
-                           @isset($userid)
-                              <a href="/playerlist"><span class="btn btn-primary btn-lg"
-                                    style="border-radius: 5px; min-width: 100px">戻る</span></a>
-                           @else
-                              <a href="/nextMeal"><span class="btn btn-primary btn-lg"
-                                    style="border-radius: 5px; min-width: 100px">次へ</span></a>
-                           @endisset
-                           </div>
-                        </div>
+                  <div style="text-align: right;padding-right: 100px;margin-top: 10px;">
+                     <div>
+                        @isset($player)
+                        <a href="{{url('/toscreen')}}"><span class="btn btn-primary btn-lg"
+                              style="border-radius: 5px; min-width: 100px">戻る</span></a>
+                        @else
+                        <a href="{{url('/playerlist')}}"><span class=" btn btn-primary btn-lg"
+                              style="border-radius: 5px; min-width: 100px">戻る</span></a>
+                        @endisset
                      </div>
                   </div>
-                  <!--end::Body-->
                </div>
-               <!--end::Tiles Widget 1-->
             </div>
+            <!--end::Body-->
          </div>
-         <!--end::Row-->
-         <!--end::Dashboard-->
+         <!--end::Tiles Widget 1-->
       </div>
-      <!--end::Container-->
+   </div>
+   <!--end::Row-->
+   <!--end::Dashboard-->
+</div>
+<!--end::Container-->
 
 @stop

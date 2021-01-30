@@ -19,7 +19,7 @@ class CreateAllergiesTable extends Migration
             $table->boolean('shrimp');
             $table->boolean('crab');
             $table->boolean('wheat');
-            $table->boolean('saba');
+            $table->boolean('soba');
             $table->boolean('milk');
             $table->boolean('egg');
             $table->boolean('squid');

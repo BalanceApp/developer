@@ -18,8 +18,8 @@ class CreateStaffsTable extends Migration
             $table->char('userid',255);
             $table->char('password',255);
             $table->char('name',255);
-            $table->date('birthday',255);
-            $table->boolean('sex');
+            $table->date('birthday',255)->nullable();
+            $table->boolean('sex')->nullable();
             $table->date('registered_date');
             $table->timestamps();
         });

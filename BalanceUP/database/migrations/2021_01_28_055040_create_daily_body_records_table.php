@@ -18,11 +18,11 @@ class CreateDailyBodyRecordsTable extends Migration
             $table->char('userid',255);
             $table->float('height',8,2);
             $table->float('weight',8,2);
-            $table->float('fat',8,2);
-            $table->float('mascle',8,2);
+            $table->float('fat',8,2)->nullable();
+            $table->float('muscle',8,2)->nullable();
             $table->boolean('is_regular');
-            $table->integer('practice_frequency');
-            $table->integer('practice_time');
+            $table->integer('practice_frequency')->nullable();
+            $table->integer('practice_time')->nullable();
             $table->date('registered_date');
             $table->timestamps();
         });
