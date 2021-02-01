@@ -263,7 +263,7 @@ class Condition extends Controller
                     $lineData = array($userinfo["userid"],$userinfo["sex"]+1,$foodInput["registered_date"]);
                     $foodInputKeys = array_keys($foodInput);
                     for($k=2; $k<=34;$k++){
-                        array_push($lineData,(int)$foodInput[$foodInputKeys[$k]]+1);
+                        array_push($lineData,(int)$foodInput[$foodInputKeys[$k]]);
                     }
                     for($k=35; $k<=41;$k++){
                         array_push($lineData,$foodInput[$foodInputKeys[$k]]);
