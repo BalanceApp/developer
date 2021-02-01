@@ -595,7 +595,7 @@
          commentTag.html(statement);
       }
 
-      if (protein >= 5.0 & fastFood >= 2 & friedFood >= 2 & sweetFrequency >= 3) {
+      if (protein >= 5.0 & fastFood >= 3 & friedFood >= 3 & sweetFrequency >= 4) {
          statement = "ファーストフード、あげもの、あまいおかしはとりすぎないように気をつけましょう！";
          commentTag.append(statement);
       }
