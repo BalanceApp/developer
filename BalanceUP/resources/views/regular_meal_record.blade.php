@@ -120,7 +120,7 @@
       let mushrooms = f[15];
       let seaweeds = f[16];
       let potatoes = f[17];
-      let sweets = f[23];
+      let sweets = f[22];
       let friedFood = f[28];
 
       let energy = mainMeal;
