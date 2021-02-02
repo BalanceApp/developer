@@ -540,8 +540,8 @@
       }
       if (mainDish < 3 & fruit < 3 & t_sport != null & f_sport != null & sideDish >= 3 & milk >= 3 & mainMeal >= 3) {
          statement = attach + "主菜は、筋肉や骨・皮ふ・かみの毛など体の多くの部分をつくる材料になるので、体を大きくするために必要な食品です。しっかりとれていないと、ひん血になったり、ケガがなおりにくくなったりします。家や学校で出る食事は残さず食べるようにしましょう。";
-         if (food_grp35 != "") {
-            statement1 = statement + "今回、" + food_grp35 + "があまりとれていなかったので、もっとしっかり食べるようにしましょう！";
+         if (foodGrp35 != "") {
+            statement1 = statement + "今回、" + foodGrp35 + "があまりとれていなかったので、もっとしっかり食べるようにしましょう！";
             commentTag.html(statement1);
          }
          else {
