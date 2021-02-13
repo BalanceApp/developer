@@ -10,9 +10,9 @@
       var t = document.forms["playInfo"]["time"].value;
       
       if(h=="" || w=="" || f == "" || t == ""){
-         alert("身長、体重、練習頻度、練習時間の値を全て入力してください。")
+         alert("身長、体重、練習頻度、練習時間の値を全て入力してください。");
+         return false;
       }
-      return false;
    }
 </script>
 
