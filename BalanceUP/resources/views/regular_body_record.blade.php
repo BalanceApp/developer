@@ -4,17 +4,15 @@
 
 <script>
    function validateForm() {
-           var h = document.forms["playInfo"]["height"].value;
-           var w = document.forms["playInfo"]["weight"].value;
-           if (h == "") {
-               alert("身長の値を入力してください");
-               return false;
-           }
-
-           if (w == "") {
-               alert("体重の値を入力してください");
-               return false;
-           }
+      var h = document.forms["playInfo"]["height"].value;
+      var w = document.forms["playInfo"]["weight"].value;
+      var f = document.forms["playInfo"]["frequency"].value;
+      var t = document.forms["playInfo"]["time"].value;
+      
+      if(h=="" || w=="" || f == "" || t == ""){
+         alert("身長、体重、練習頻度、練習時間の値を全て入力してください。")
+      }
+      return false;
    }
 </script>
 
