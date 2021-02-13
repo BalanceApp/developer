@@ -63,6 +63,7 @@
    function end() {
       let foodValArr1 = new Array();
       let end = true;
+      let check = document.getElementById("others");
 
       for (let i = 23; i < 34; i++) {
          let foodName = "foo";
@@ -73,6 +74,11 @@
       if (foodValArr1.includes(-1)) {
          alert("チェック漏れがあります!");
          end = false;
+      }
+
+      if (check.checked == true && $("#otherslist").val() =="") {
+            alert("その他にチェックを入れた時は、その名前を入力してください。");
+            end = false;  
       }
 
       if (end) {
@@ -1618,7 +1624,7 @@
                               <p id="others_list">
                                  <label style="font-size: 11px;"><span
                                        style="color: red;">*</span>その他にチェックをつけた場合には、その成分を書いてください</label>
-                                 <input style="width: 100%;" type="text" name="otherslist" id="otherslist" />
+                                 <input style="width: 100%;" type="text" name="otherslist" id="otherslist"/>
                               </p>
                            </div>
                            <div class="float-right mt-10">
