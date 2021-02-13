@@ -44,8 +44,8 @@
       }
 
       if (foodValArr.includes(-1)) {
-         //alert("チェック漏れがあります!");
-         //next = false;
+         alert("チェック漏れがあります!");
+         next = false;
       }
 
       if (next) {
