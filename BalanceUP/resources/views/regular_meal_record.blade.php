@@ -44,8 +44,8 @@
       }
 
       if (foodValArr.includes(-1)) {
-         alert("チェック漏れがあります!");
-         next = false;
+         //alert("チェック漏れがあります!");
+         //next = false;
       }
 
       if (next) {
@@ -201,7 +201,7 @@
          <div class="card card-custom gutter-b card-stretch">
             <form id="regular" method="POST">
                @csrf
-               <div class="card-body d-flex flex-column px-0" style="min-height:400px">
+               <div class="card-body d-flex flex-column px-0" >
                   <center>
                      <p style="letter-spacing: 5px;font-size: 20px;font-weight: bold;">
                         最近1週間の食事でどのくらい食べたか思い出して<br>
@@ -214,139 +214,139 @@
                   <div id="first">
                      <div class="row">
                         <div class="left-row">
-                           <div style="display: flex;" class="pad-left20">
-                              <input type="radio" name="" checked disabled>&nbsp;&nbsp;<span>は1週間分の食事について、</span>
+                           <div>
+                              <input type="radio" name="" checked disabled><span class="ml-1">は1週間分の食事について、</span>
                            </div>
-                           <div style="display: flex;" class="pad-left20">
-                              <input type="radio" name="" disabled>&nbsp;&nbsp;<span>は1日分の食事についての質問です。</span>
+                           <div>
+                              <input type="radio" name="" disabled><span class="ml-1">は1日分の食事についての質問です。</span>
                            </div>
-                           <br>
-                           <div style="display: flex;">
+                           <div class="mt-10" style="display: flex;">
                               <p class="lable-p" style="font-size: 20px;font-weight: bold;" id="p_title_1">主食</p>
-                              <span style="margin-top: 10px;">(ご飯・パン・麺類・シリアル)</span>
+                              <span class="mt-3 ml-3">(ご飯・パン・麺類・シリアル)</span>
                            </div>
                            <div style="display: block;">
-                              <input type="radio" name="" checked disabled>&nbsp;&nbsp;
-                              <span>あさ、ひる、よるどのくらい食べましたか?</span>
-                              <div class="col-lg-12 col-md-12 col-sm-12 img-involve">
-                                 <table class="table" style="text-align: center;">
-                                    <thead>
-                                       <tr>
-                                          <th scope="col">#</th>
-                                          <th scope="col">食ベない</th>
-                                          <th scope="col">ふつう量<br><span style="font-size: 12px">より少ない</span>
-                                          </th>
-                                          <th scope="col">ふつう量</th>
-                                          <th scope="col">ふつう量<br><span style="font-size: 12px">より多い</span>
-                                          </th>
-                                       </tr>
-                                    </thead>
-                                    <tbody>
-                                       <tr>
-                                          <th scope="row">あさ</th>
-                                          <td>
-                                             <label title="item1">
-                                                <input type="radio" name="foo1" value=0 />
-                                                <img />
-                                             </label>
-                                          </td>
-                                          <td>
-                                             <label title="item1">
-                                                <input type="radio" name="foo1" value=1 />
-                                                <img />
-                                             </label>
-                                          </td>
-                                          <td>
-                                             <label title="item1">
-                                                <input type="radio" name="foo1" value=2 />
-                                                <img />
-                                             </label>
-                                          </td>
-                                          <td>
-                                             <label title="item1">
-                                                <input type="radio" name="foo1" value=3 />
-                                                <img />
-                                             </label>
-                                          </td>
-                                       </tr>
-                                       <tr>
-                                          <th scope="row">ひる</th>
-                                          <td>
-                                             <label title="item1">
-                                                <input type="radio" name="foo2" value=0 />
-                                                <img />
-                                             </label>
-                                          </td>
-                                          <td>
-                                             <label title="item1">
-                                                <input type="radio" name="foo2" value=1 />
-                                                <img />
-                                             </label>
-                                          </td>
-                                          <td>
-                                             <label title="item1">
-                                                <input type="radio" name="foo2" value=2 />
-                                                <img />
-                                             </label>
-                                          </td>
-                                          <td>
-                                             <label title="item1">
-                                                <input type="radio" name="foo2" value=3 />
-                                                <img />
-                                             </label>
-                                          </td>
-                                       </tr>
-                                       <tr>
-                                          <th scope="row">よる</th>
-                                          <td>
-                                             <label title="item1">
-                                                <input type="radio" name="foo3" value=0 />
-                                                <img />
-                                             </label>
-                                          </td>
-                                          <td>
-                                             <label title="item1">
-                                                <input type="radio" name="foo3" value=1 />
-                                                <img />
-                                             </label>
-                                          </td>
-                                          <td>
-                                             <label title="item1">
-                                                <input type="radio" name="foo3" value=2 />
-                                                <img />
-                                             </label>
-                                          </td>
-                                          <td>
-                                             <label title="item1">
-                                                <input type="radio" name="foo3" value=3 />
-                                                <img />
-                                             </label>
-                                          </td>
-                                       </tr>
-                                    </tbody>
-                                 </table>
-                                 <img src="{{asset('images/meal11.png')}}" alt="ごはんの量" style="width: 200px;">
+                              <input type="radio" name="" checked disabled><span class="ml-1">あさ、ひる、よるどのくらい食べましたか?</span>
+                              <div class="row">         
+                                 <div class="col-lg-12 col-md-12 col-sm-12 img-involve">
+                                    <img class="d-sm-none" src="{{asset('images/meal11.png')}}" alt="ごはんの量">
+                                    <table class="table" style="text-align: center;">
+                                       <thead>
+                                          <tr>
+                                             <th scope="col">#</th>
+                                             <th scope="col">食ベない</th>
+                                             <th scope="col">ふつう量<br><span>より少ない</span>
+                                             </th>
+                                             <th scope="col">ふつう量</th>
+                                             <th scope="col">ふつう量<br><span>より多い</span>
+                                             </th>
+                                          </tr>
+                                       </thead>
+                                       <tbody>
+                                          <tr>
+                                             <th scope="row">あさ</th>
+                                             <td>
+                                                <label title="item1">
+                                                   <input type="radio" name="foo1" value=0 />
+                                                   <img />
+                                                </label>
+                                             </td>
+                                             <td>
+                                                <label title="item1">
+                                                   <input type="radio" name="foo1" value=1 />
+                                                   <img />
+                                                </label>
+                                             </td>
+                                             <td>
+                                                <label title="item1">
+                                                   <input type="radio" name="foo1" value=2 />
+                                                   <img />
+                                                </label>
+                                             </td>
+                                             <td>
+                                                <label title="item1">
+                                                   <input type="radio" name="foo1" value=3 />
+                                                   <img />
+                                                </label>
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <th scope="row">ひる</th>
+                                             <td>
+                                                <label title="item1">
+                                                   <input type="radio" name="foo2" value=0 />
+                                                   <img />
+                                                </label>
+                                             </td>
+                                             <td>
+                                                <label title="item1">
+                                                   <input type="radio" name="foo2" value=1 />
+                                                   <img />
+                                                </label>
+                                             </td>
+                                             <td>
+                                                <label title="item1">
+                                                   <input type="radio" name="foo2" value=2 />
+                                                   <img />
+                                                </label>
+                                             </td>
+                                             <td>
+                                                <label title="item1">
+                                                   <input type="radio" name="foo2" value=3 />
+                                                   <img />
+                                                </label>
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <th scope="row">よる</th>
+                                             <td>
+                                                <label title="item1">
+                                                   <input type="radio" name="foo3" value=0 />
+                                                   <img />
+                                                </label>
+                                             </td>
+                                             <td>
+                                                <label title="item1">
+                                                   <input type="radio" name="foo3" value=1 />
+                                                   <img />
+                                                </label>
+                                             </td>
+                                             <td>
+                                                <label title="item1">
+                                                   <input type="radio" name="foo3" value=2 />
+                                                   <img />
+                                                </label>
+                                             </td>
+                                             <td>
+                                                <label title="item1">
+                                                   <input type="radio" name="foo3" value=3 />
+                                                   <img />
+                                                </label>
+                                             </td>
+                                          </tr>
+                                       </tbody>
+                                    </table>
+                                    <img class="d-none d-sm-block" src="{{asset('images/meal11.png')}}" alt="ごはんの量">
+                                 </div>
                               </div>
                            </div>
-                           <br>
                            <div style="display: flex;">
                               <p class="lable-p" style="font-size: 20px;font-weight: bold;" id="p_title_2">主菜</p>
-                              <span style="margin-top: 10px;">（肉・魚・卵・豆をつかったメインのおかず）</span>
+                              <span class="mt-3 ml-3">（肉・魚・卵・豆をつかったメインのおかず）</span>
                            </div>
                            <div style="display: block;">
-                              <input type="radio" name="" checked disabled>&nbsp;&nbsp;
-                              <span>あさ、ひる、よるどのくらい食べましたか?</span>
+                              <input type="radio" name="" checked disabled><span class="ml-1">あさ、ひる、よるどのくらい食べましたか?</span>
                               <div class="row">
                                  <div class=" col-lg-12 col-md-12 col-sm-12 img-involve">
+                                    <img class="d-sm-none" src="{{asset('images/meal21.png')}}" alt="主菜の量">
                                     <table class="table" style="text-align: center;">
                                        <thead>
                                           <tr>
                                              <th scope="col">#</th>
                                              <th scope="col">食べない</th>
-                                             <th scope="col">ふつう量<br><span style="font-size: 12px">より少ない</span>
+                                             <th scope="col">ふつう量<br><span >より少ない</span>
                                              </th>
                                              <th scope="col">ふつう量</th>
-                                             <th scope="col">ふつう量<br><span style="font-size: 12px">より多い</span>
+                                             <th scope="col">ふつう量<br><span >より多い</span>
                                              </th>
                                           </tr>
                                        </thead>
@@ -434,16 +434,15 @@
                                           </tr>
                                        </tbody>
                                     </table>
-                                    <img src="{{asset('images/meal21.png')}}" alt="主菜の量">
+                                    <img class="d-none d-sm-block" src="{{asset('images/meal21.png')}}" alt="主菜の量">
                                  </div>
                               </div>
-                           </div>
-                           <br>
-                           <div style="display: block;">
-                              <input type="radio" name="" checked disabled>&nbsp;&nbsp;
-                              <span>1週間のあいだで、それぞれどのくらい食べましたか?</span>
+                           </div>                          
+                           <div  class="mt-10" style="display: block;">
+                              <input type="radio" name="" checked disabled><span class="ml-1">1週間のあいだで、それぞれどのくらい食べましたか?</span>
                               <div class="row">
                                  <div class=" col-lg-12 col-md-12 col-sm-12 img-involve">
+                                    <img class="d-sm-none" src="{{asset('images/meal22.png')}}" alt="主菜の種類">
                                     <table class="table" style="text-align: center;">
                                        <thead>
                                           <tr>
@@ -565,7 +564,7 @@
                                           </tr>
                                        </tbody>
                                     </table>
-                                    <img src="{{asset('images/meal22.png')}}" alt="主菜の種類">
+                                    <img class="d-none d-sm-block" src="{{asset('images/meal22.png')}}" alt="主菜の種類">
                                  </div>
                               </div>
                            </div>
@@ -573,22 +572,22 @@
                         <div class="right-row">
                            <div style="display: flex;">
                               <p class="lable-p" style="font-size: 20px;font-weight: bold;" id="p_title_3">副菜</p>
-                              <span style="margin-top: 10px;">（野菜・きのこ・海そう•いもをつかった料理）</span>
+                              <span class="mt-3 ml-3">（野菜・きのこ・海そう•いもをつかった料理）</span>
                            </div>
                            <div style="display: block;">
-                              <input type="radio" name="" checked disabled />&nbsp;&nbsp;
-                              <span style="margin-top: 10px;">あさ、ひる、よるどのくらい食べましたか?</span>
+                              <input type="radio" name="" checked disabled /><span class="ml-1">あさ、ひる、よるどのくらい食べましたか?</span>
                               <div class="row">
                                  <div class="col-lg-12 col-md-12 col-sm-12 img-involve">
+                                    <img class="d-sm-none" src="{{asset('images/meal31.png')}}" alt="副菜の量">
                                     <table class="table" style="text-align: center;">
                                        <thead>
                                           <tr>
                                              <th scope="col">#</th>
                                              <th scope="col">食べない</th>
-                                             <th scope="col">ふつう量<br><span style="font-size: 12px">より少ない</span>
+                                             <th scope="col">ふつう量<br><span >より少ない</span>
                                              </th>
                                              <th scope="col">ふつう量</th>
-                                             <th scope="col">ふつう量<br><span style="font-size: 12px">より多い</span>
+                                             <th scope="col">ふつう量<br><span >より多い</span>
                                              </th>
                                           </tr>
                                        </thead>
@@ -676,16 +675,15 @@
                                           </tr>
                                        </tbody>
                                     </table>
-                                    <img src="{{asset('images/meal31.png')}}" alt="副菜の量">
+                                    <img class="d-none d-sm-block" src="{{asset('images/meal31.png')}}" alt="副菜の量">
                                  </div>
                               </div>
                            </div>
-                           <br>
-                           <div style="display: block;">
-                              <input type="radio" name="" checked disabled>&nbsp;&nbsp;
-                              <span style="margin-top: 10px;">1日でどのくらい食べましたか?</span>
+                           <div class="mt-5" style="display: block;">
+                              <input type="radio" name="" checked disabled><span class="ml-1">1日でどのくらい食べましたか?</span>
                               <div class="row">
                                  <div class="col-lg-12 col-md-12 col-sm-12 img-involve">
+                                    <img class="d-sm-none"  src="{{asset('images/meal32.png')}}" alt="色のうすい野菜の量" id="1-tr">
                                     <table class="table" style="text-align: center;">
                                        <thead>
                                           <tr>
@@ -726,16 +724,15 @@
                                           </tr>
                                        </tbody>
                                     </table>
-                                    <img src="{{asset('images/meal32.png')}}" alt="色のうすい野菜の量" id="1-tr">
+                                    <img class="d-none d-sm-block" src="{{asset('images/meal32.png')}}" alt="色のうすい野菜の量" id="1-tr">
                                  </div>
                               </div>
                            </div>
-                           <br>
-                           <div style="display: block;">
-                              <input type="radio" name="" checked disabled>&nbsp;&nbsp;
-                              <span style="margin-top: 10px;">1週間のあいだで、それぞれどのくらい食べましたか?</span>
+                           <div class="mt-5" style="display: block;">
+                              <input type="radio" name="" checked disabled><span class="ml-1">1週間のあいだで、それぞれどのくらい食べましたか?</span>
                               <div class="row">
                                  <div class="col-lg-12 col-md-12 col-sm-12 img-involve">
+                                    <img class="d-sm-none" src="{{asset('images/meal33.png')}}" alt="色のうすいやさいの量こまかく">
                                     <table class="table" style="text-align: center;">
                                        <thead>
                                           <tr>
@@ -857,26 +854,25 @@
                                           </tr>
                                        </tbody>
                                     </table>
-                                    <img src="{{asset('images/meal33.png')}}" alt="色のうすいやさいの量こまかく">
+                                    <img class="d-none d-sm-block" src="{{asset('images/meal33.png')}}" alt="色のうすいやさいの量こまかく">
                                  </div>
                               </div>
                            </div>
-                           <br>
-                           <div style="display: flex;">
+                           <div class="mt-5" style="display: flex;">
                               <p class="lable-p" style="font-size: 20px;font-weight: bold;" id="p_title_4">牛乳・乳製品</p>
                            </div>
-                           <div  style="display: block;">
-                              <input type="radio" name="" checked disabled>&nbsp;&nbsp;
-                              <span style="margin-top: 10px;">1日でどのくらい食べましたか?</span>
+                           <div style="display: block;">
+                              <input type="radio" name="" checked disabled><span class="ml-1">1日でどのくらい食べましたか?</span>
                               <div class="col-lg-12 col-md-12 col-sm-12 img-involve">
+                                 <img class="d-sm-none" src="{{asset('images/meal41.png')}}" alt="乳製品の量" id="1-tr">
                                  <table class="table" style="text-align: center;">
                                     <thead>
                                        <tr>
                                           <th scope="col">食べない</th>
-                                          <th scope="col">ふつう量<br><span style="font-size: 12px">より少ない</span>
+                                          <th scope="col">ふつう量<br><span >より少ない</span>
                                           </th>
                                           <th scope="col">ふつう量</th>
-                                          <th scope="col">ふつう量<br><span style="font-size: 12px">より多い</span>
+                                          <th scope="col">ふつう量<br><span >より多い</span>
                                           </th>
                                        </tr>
                                     </thead>
@@ -909,12 +905,10 @@
                                        </tr>
                                     </tbody>
                                  </table>
-                                 <img src="{{asset('images/meal41.png')}}" alt="乳製品の量" id="1-tr">
+                                 <img class="d-none d-sm-block" src="{{asset('images/meal41.png')}}" alt="乳製品の量" id="1-tr">
                               </div>
                               <br>
-                              <input type="radio" name="" checked disabled>&nbsp;&nbsp;
-                              <span
-                                 style="margin-top: 10px;">1週間のあいだで、どのくらい食べましたか?</span>
+                              <input type="radio" name="" checked disabled><span class="ml-1">1週間のあいだで、どのくらい食べましたか?</span>
                               <table class="table" style="text-align: center;">
                                  <thead>
                                     <tr>
@@ -954,22 +948,21 @@
                                  </tbody>
                               </table>
                            </div>
-                           <br>
-                           <div style="display: flex;">
+                           <div class="mt-5" style="display: flex;">
                               <p class="lable-p" style="font-size: 20px;font-weight: bold;" id="p_title_5">果物</p>
                            </div>
                            <div style="display: block;">
-                              <input type="radio" name="" disabled>&nbsp;&nbsp;
-                              <span>1日でどのくらい食べましたか?</span>
+                              <input type="radio" name="" disabled><span class="ml-1">1日でどのくらい食べましたか?</span>
                               <div class="col-lg-12 col-md-12 col-sm-12 img-involve">
+                                 <img class="d-sm-none" src="{{asset('images/meal51.png')}}" alt="くだものの量" id='1-tr'>
                                  <table class="table" style="text-align: center;">
                                     <thead>
                                        <tr>
                                           <th scope="col">食べない</th>
-                                          <th scope="col">ふつう量<br><span style="font-size: 12px">より少ない</span>
+                                          <th scope="col">ふつう量<br><span >より少ない</span>
                                           </th>
                                           <th scope="col">ふつう量</th>
-                                          <th scope="col">ふつう量<br><span style="font-size: 12px">より多い</span>
+                                          <th scope="col">ふつう量<br><span >より多い</span>
                                           </th>
                                        </tr>
                                     </thead>
@@ -1002,11 +995,10 @@
                                        </tr>
                                     </tbody>
                                  </table>
-                                 <img src="{{asset('images/meal51.png')}}" alt="くだものの量" id='1-tr'>
+                                 <img class="d-none d-sm-block" src="{{asset('images/meal51.png')}}" alt="くだものの量" id='1-tr'>
                               </div>
                               <br>
-                              <input type="radio" name="" checked disabled>&nbsp;&nbsp;
-                              <span>1週間のあいだで、どのくらい食べましたか?</span>
+                              <input type="radio" name="" checked disabled><span class="ml-1">1週間のあいだで、どのくらい食べましたか?</span>
                               <table class="table" style="text-align: center;">
                                  <thead>
                                     <tr>
@@ -1046,41 +1038,39 @@
                                  </tbody>
                               </table>
                            </div>
-                        </div>
-                     </div>
-                     <div style="text-align: right; padding-right: 100px;">
-                        <div>
-                           <a onclick="nextPage();"><span class="btn btn-primary btn-lg"
-                                 style="border-radius: 5px; min-width: 100px">次へ</span></a>
+                           <div class="float-right mt-10">
+                              <div>
+                                 <a onclick="nextPage();"><span class="btn btn-primary btn-lg">次へ</span></a>
+                              </div>
+                           </div>
                         </div>
                      </div>
                   </div>
                   <div id="second">
                      <div class="row">
                         <div class="left-row">
-                           <div style="display: flex;" class="pad-left20">
-                              <input type="radio" name="" checked disabled>&nbsp;&nbsp;<span>は1週間分の食事について、</span>
+                           <div>
+                              <input type="radio" name="" checked disabled><span class="ml-1">は1週間分の食事について、</span>
                            </div>
-                           <div style="display: flex;" class="pad-left20">
-                              <input type="radio" name="" disabled>&nbsp;&nbsp;<span>は1日分の食事についての質問です。</span>
+                           <div>
+                              <input type="radio" name="" disabled><span class="ml-1">は1日分の食事についての質問です。</span>
                            </div>
-                           <br>
-                           <div style="display: flex;">
+                           <div class="mt-10" style="display: flex;">
                               <p class="lable-p" style="font-size: 20px;font-weight: bold;" id="p_title_6">あまいおかし</p>
                            </div>
                            <div style="display: block;">
-                              <input type="radio" name="" disabled>&nbsp;&nbsp;
-                              <span style="margin-top: 10px;">1日でどのくらい食べしたか?</span>
+                              <input type="radio" name="" disabled><span class="ml-1">1日でどのくらい食べしたか?</span>
                               <div class="row">
                                  <div class="col-lg-12 col-md-12 col-sm-12 img-involve">
+                                    <img class="d-sm-none" src="{{asset('images/meal61.png')}}" alt="あまいおかしの量">
                                     <table class="table" style="text-align: center;">
                                        <thead>
                                           <tr>
                                              <th scope="col">食べない</th>
-                                             <th scope="col">ふつう量<br><span style="font-size: 12px">より少ない</span>
+                                             <th scope="col">ふつう量<br><span >より少ない</span>
                                              </th>
                                              <th scope="col">ふつう量</th>
-                                             <th scope="col">ふつう量<br><span style="font-size: 12px">より多い</span>
+                                             <th scope="col">ふつう量<br><span >より多い</span>
                                              </th>
                                           </tr>
                                        </thead>
@@ -1113,13 +1103,11 @@
                                           </tr>
                                        </tbody>
                                     </table>
-                                    <img src="{{asset('images/meal61.png')}}" alt="あまいおかしの量">
+                                    <img class="d-none d-sm-block" src="{{asset('images/meal61.png')}}" alt="あまいおかしの量">
                                  </div>
                               </div>
                               <br>
-                              <input type="radio" name="" checked disabled>&nbsp;&nbsp;
-                              <span
-                                 style="margin-top: 10px;font-size: 12px;margin-top: 10px;">1週間のあいだで、どのくらい食べましたか?</span>
+                              <input type="radio" name="" checked disabled><span class="ml-1">1週間のあいだで、どのくらい食べましたか?</span>
                               <table class="table" style="text-align: center;">
                                  <thead>
                                     <tr>
@@ -1159,23 +1147,22 @@
                                  </tbody>
                               </table>
                            </div>
-                           <br>
-                           <div style="display: flex;">
+                           <div class="mt-5" style="display: flex;">
                               <p class="lable-p" style="font-size: 20px;font-weight: bold;" id="p_title_7">しょっぱいおかし</p>
                            </div>
                            <div style="display: block;">
-                              <input type="radio" name="" disabled>&nbsp;&nbsp;
-                              <span style="margin-top: 10px;">1日でどのくらい食べしたか?</span>
+                              <input type="radio" name="" checked disabled><span class="ml-1">1日でどのくらい食べしたか?</span>
                               <div class="row">
                                  <div class="col-lg-12 col-md-12 col-sm-12 img-involve">
+                                    <img class="d-sm-none" src="{{asset('images/meal71.png')}}" alt="しょっぱいおかしの量">
                                     <table class="table" style="text-align: center;">
                                        <thead>
                                           <tr>
                                              <th scope="col">食べない</th>
-                                             <th scope="col">ふつう量<br><span style="font-size: 12px">より少ない</span>
+                                             <th scope="col">ふつう量<br><span >より少ない</span>
                                              </th>
                                              <th scope="col">ふつう量</th>
-                                             <th scope="col">ふつう量<br><span style="font-size: 12px">より多い</span>
+                                             <th scope="col">ふつう量<br><span >より多い</span>
                                              </th>
                                           </tr>
                                        </thead>
@@ -1208,13 +1195,11 @@
                                           </tr>
                                        </tbody>
                                     </table>
-                                    <img src="{{asset('images/meal71.png')}}" alt="しょっぱいおかしの量">
+                                    <img class="d-none d-sm-block" src="{{asset('images/meal71.png')}}" alt="しょっぱいおかしの量">
                                  </div>
                               </div>
                               <br>
-                              <input type="radio" name="" checked disabled>&nbsp;&nbsp;
-                              <span
-                                 style="margin-top: 10px;font-size: 12px;margin-top: 10px;">1週間のあいだで、どのくらい食べましたか?</span>
+                              <input type="radio" name="" checked disabled><span class="ml-1">1週間のあいだで、どのくらい食べましたか?</span>
                               <table class="table" style="text-align: center;">
                                  <thead>
                                     <tr>
@@ -1254,24 +1239,23 @@
                                  </tbody>
                               </table>
                            </div>
-                           <br>
-                           <div style="display: flex;">
+                           <div class="mt-5" style="display: flex;">
                               <p class="lable-p" style="font-size: 20px;font-weight: bold;" id="p_title_8">ジュース</p>
-                              <span style="margin-top: 10px;">（スポーツドリンクを含む）</span>
+                              <span class="mt-5 ml-1">（スポーツドリンクを含む）</span>
                            </div>
                            <div style="display: block;">
-                              <input type="radio" name="" disabled>&nbsp;&nbsp;
-                              <span style="margin-top: 10px;">1日でどのくらいのみましたか?</span>
+                              <input type="radio" name="" disabled><span class="ml-1">1日でどのくらいのみましたか?</span>
                               <div class="row">
                                  <div class="col-lg-12 col-md-12 col-sm-12 img-involve">
+                                    <img class="d-sm-none" src="{{asset('images/meal81.png')}}" alt="ジュースの量">
                                     <table class="table" style="text-align: center;">
                                        <thead>
                                           <tr>
                                              <th scope="col">のまない</th>
-                                             <th scope="col">ふつう量<br><span style="font-size: 12px">より少ない</span>
+                                             <th scope="col">ふつう量<br><span >より少ない</span>
                                              </th>
                                              <th scope="col">ふつう量</th>
-                                             <th scope="col">ふつう量<br><span style="font-size: 12px">より多い</span>
+                                             <th scope="col">ふつう量<br><span >より多い</span>
                                              </th>
                                           </tr>
                                        </thead>
@@ -1304,13 +1288,11 @@
                                           </tr>
                                        </tbody>
                                     </table>
-                                    <img src="{{asset('images/meal81.png')}}" alt="ジュースの量">
+                                    <img class="d-none d-sm-block" src="{{asset('images/meal81.png')}}" alt="ジュースの量">
                                  </div>
                               </div>
                               <br>
-                              <input type="radio" name="" checked disabled>&nbsp;&nbsp;
-                              <span
-                                 style="margin-top: 10px;font-size: 12px;margin-top: 10px;">1週間のあいだで、どのくらいのみましたか?</span>
+                              <input type="radio" name="" checked disabled><span class="ml-1">1週間のあいだで、どのくらいのみましたか?</span>
                               <table class="table" style="text-align: center;">
                                  <thead>
                                     <tr>
@@ -1356,11 +1338,10 @@
                               <p class="lable-p" style="font-size: 20px;font-weight: bold;" id="p_title_9">あげもの</p>
                            </div>
                            <div style="display: block;">
-                              <input type="radio" name="" checked disabled>&nbsp;&nbsp;
-                              <span
-                                 style="margin-top: 10px;font-size: 12px;margin-top: 10px;">1週間のあいだで、どのくらい食べましたか?</span>
+                              <input type="radio" name="" checked disabled><span class="ml-1">1週間のあいだで、どのくらい食べましたか?</span>
                               <div class="row">
                                  <div class="col-lg-12 col-md-12 col-sm-12 img-involve">
+                                    <img class="d-sm-none" src="{{asset('images/meal91.png')}}" alt="あげものの量">
                                     <table class="table" style="text-align: center;">
                                        <thead>
                                           <tr>
@@ -1399,21 +1380,18 @@
                                           </tr>
                                        </tbody>
                                     </table>
-                                    <img src="{{asset('images/meal91.png')}}" alt="あげものの量">
+                                    <img class="d-none d-sm-block" src="{{asset('images/meal91.png')}}" alt="あげものの量">
                                  </div>
                               </div>
                            </div>
-                           <br>
-                           <div style="display: flex;">
+                           <div class="mt-5" style="display: flex;">
                               <p class="lable-p" style="font-size: 20px;font-weight: bold;" id="p_title_10">ファーストフード</p>
                            </div>
                            <div style="display: block;">
-                              <input type="radio" name="" checked disabled>&nbsp;&nbsp;
-                              <span
-                                 style="margin-top: 10px;font-size: 12px;margin-top: 10px;">1週間のあいだで、どのくらい食べましたか?</span>
+                              <input type="radio" name="" checked disabled><span class="ml-1">1週間のあいだで、どのくらい食べましたか?</span>
                               <div class="row">
                                  <div class=" col-lg-12 col-md-12 col-sm-12 img-involve">
-
+                                    <img class="d-sm-none" src="{{asset('images/meal101.png')}}" alt="ファーストフードの量">
                                     <table class="table" style="text-align: center;">
                                        <thead>
                                           <tr>
@@ -1452,17 +1430,15 @@
                                           </tr>
                                        </tbody>
                                     </table>
-                                    <img src="{{asset('images/meal101.png')}}" alt="ファーストフードの量">
+                                    <img class="d-none d-sm-block" src="{{asset('images/meal101.png')}}" alt="ファーストフードの量">
                                  </div>
                               </div>
                            </div>
-                           <br>
-                           <div style="display: flex;">
+                           <div class="mt-5" style="display: flex;">
                               <p class="lable-p" style="font-size: 20px;font-weight: bold;" id="p_title_11">みそ汁・スープ</p>
                            </div>
                            <div style="display: block;">
-                              <input type="radio" name="" disabled>&nbsp;&nbsp;
-                              <span style="margin-top: 10px;font-size: 12px;margin-top: 10px;">1日で、どのくらいのみますか?</span>
+                              <input type="radio" name="" disabled><span class="ml-1">1日で、どのくらいのみますか?</span>
                               <table class="table" style="text-align: center;">
                                  <thead>
                                     <tr>
@@ -1495,14 +1471,11 @@
                                  </tbody>
                               </table>
                            </div>
-                           <br>
-                           <div style="display: flex;">
+                           <div class="mt-5" style="display: flex;">
                               <p class="lable-p" style="font-size: 20px;font-weight: bold;" id="p_title_12">めん類のスープ</p>
                            </div>
                            <div style="display: block;">
-                              <input type="radio" name="" checked disabled>&nbsp;&nbsp;
-                              <span
-                                 style="margin-top: 10px;font-size: 12px;margin-top: 10px;">普段めん類を食べる時、どのくらいスープを飲みますか?</span>
+                              <input type="radio" name="" checked disabled><span class="ml-1">普段めん類を食べる時、どのくらいスープを飲みますか?</span>
                               <table class="table" style="text-align: center;">
                                  <thead>
                                     <tr>
@@ -1535,19 +1508,16 @@
                                  </tbody>
                               </table>
                            </div>
-                           <br>
-                           <div style="display: flex;">
+                           <div class="mt-5" style="display: flex;">
                               <p class="lable-p" style="font-size: 20px;font-weight: bold;" id="p_title_13">
                                  サプリメント•栄養補助食品
                               </p>
                            </div>
                            <div style="display: block;">
-                              <input type="radio" name="" checked disabled>&nbsp;&nbsp;
-                              <span
-                                 style="margin-top: 10px;font-size: 12px;margin-top: 10px;">1週間のあいだで、どのくらい食べましたか?</span>
+                              <input type="radio" name="" checked disabled><span class="ml-1">1週間のあいだで、どのくらい食べましたか?</span>
                               <div class="row">
                                  <div class="col-lg-12 col-md-12 col-sm-12 img-involve">
-
+                                    <img class="d-sm-none" src="{{asset('images/meal131.png')}}" alt="サプリメントの量">
                                     <table class="table" style="text-align: center;">
                                        <thead>
                                           <tr>
@@ -1586,14 +1556,12 @@
                                           </tr>
                                        </tbody>
                                     </table>
-                                    <img src="{{asset('images/meal131.png')}}" alt="サプリメントの量">
+                                    <img class="d-none d-sm-block" src="{{asset('images/meal131.png')}}" alt="サプリメントの量">
                                  </div>
                               </div>
                            </div>
-                           <br>
-                           <div style="display: block;">
-                              <input type="radio" name="" checked disabled>&nbsp;&nbsp;
-                              <span style="margin-top: 10px;font-size: 12px;margin-top: 10px;">おもにふくまれている成分は?</span>
+                           <div class="mt-5" style="display: block;">
+                              <input type="radio" name="" checked disabled><span class="ml-1">おもにふくまれている成分は?</span>
                               <table class="table" style="text-align: center;">
                                  <thead>
                                     <tr>
@@ -1653,16 +1621,10 @@
                                  <input style="width: 100%;" type="text" name="otherslist" id="otherslist" />
                               </p>
                            </div>
-                           <br>
-                        </div>
-                     </div>
-
-                     <div style="text-align: right; padding-right: 100px;">
-                        <div>
-                           <a onclick="previousPage();"><span class="btn btn-primary btn-lg"
-                                 style="border-radius: 5px; min-width: 100px">前へ戻る</span></a>
-                           <a onclick="end();"><span class="btn btn-primary btn-lg"
-                                 style="border-radius: 5px; min-width: 100px">入力終了</span></a>
+                           <div class="float-right mt-10">
+                              <a onclick="previousPage();"><span class="btn btn-primary btn-lg">前へ戻る</span></a>
+                              <a onclick="end();"><span class="btn btn-primary btn-lg">入力終了</span></a>
+                           </div>
                         </div>
                      </div>
                   </div>
