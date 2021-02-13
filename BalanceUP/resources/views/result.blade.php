@@ -3,7 +3,7 @@
 @section('content')
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script>
-   var nutritionScore;
+   var nutritionScores;
    var foodInput;
    var five_two_player;
    var playerName;
@@ -15,7 +15,7 @@
 
       $.get("{{url('/get-nutrition-score')}}", { userid: userid }, function sucess(result) {
 
-         nutritionScore = JSON.parse(result)['nutritionScore'][0];
+         nutritionScores = JSON.parse(result)['nutritionScore'];
          foodInput = JSON.parse(result)['foodInput'][0];
          five_two_player = JSON.parse(result)['five_two'][0];
          playerName = JSON.parse(result)['userName'][0];
@@ -98,7 +98,7 @@
          ctx.lineTo(x, y);
       }
 
-      ctx.fillStyle = "PaleTurquoise";
+      ctx.fillStyle = "#D0E9D5";
       ctx.fill();
       ctx.closePath();
 
@@ -116,21 +116,65 @@
       ctx.fill();
       ctx.closePath();
 
-      x0 = w / 2;
-      y0 = h / 2 - r * nutritionScore['main_meal'] / 4.5;
-      ctx.beginPath();
-      ctx.moveTo(x0, y0);
+      nutritionScores.forEach(function(nutritionScore,i){
+         if(i==0){
+            x0 = w / 2;
+            y0 = h / 2 - r * nutritionScore['main_meal'] / 4.5;
+            ctx.beginPath();
+            ctx.setLineDash([0, 0]);
+            ctx.lineWidth = 5.0;
+            ctx.strokeStyle = "#EB45A2";
+            ctx.moveTo(x0, y0);
 
-      for (i = 1; i < 5; i++) {
-         x = w / 2 + Math.cos(2 * pi / 5 * i - pi / 2) * r * nutritionScore[texten[i]] / 4.5;
-         y = h / 2 + Math.sin(2 * pi / 5 * i - pi / 2) * r * nutritionScore[texten[i]] / 4.5;
-         ctx.lineTo(x, y);
-      }
+            for (i = 1; i < 5; i++) {
+               x = w / 2 + Math.cos(2 * pi / 5 * i - pi / 2) * r * nutritionScore[texten[i]] / 4.5;
+               y = h / 2 + Math.sin(2 * pi / 5 * i - pi / 2) * r * nutritionScore[texten[i]] / 4.5;
+               ctx.lineTo(x, y);
+            }
 
-      ctx.closePath();
-      ctx.stroke();
+            ctx.closePath();
+            ctx.stroke();
+         }
+         if(i==1){
+            x0 = w / 2;
+            y0 = h / 2 - r * nutritionScore['main_meal'] / 4.5;
+            ctx.beginPath();
+            ctx.setLineDash([30, 30]);
+            ctx.lineWidth = 5.0;
+            ctx.strokeStyle = "#595757";
+            ctx.moveTo(x0, y0);
 
-      if (nutritionScore['main_meal'] >= 3 && nutritionScore['main_dish'] >= 3 && nutritionScore['side_dish'] >= 3 && nutritionScore['milk'] >= 3 && nutritionScore['fruit'] >= 3) {
+            for (i = 1; i < 5; i++) {
+               x = w / 2 + Math.cos(2 * pi / 5 * i - pi / 2) * r * nutritionScore[texten[i]] / 4.5;
+               y = h / 2 + Math.sin(2 * pi / 5 * i - pi / 2) * r * nutritionScore[texten[i]] / 4.5;
+               ctx.lineTo(x, y);
+            }
+
+            ctx.closePath();
+            ctx.stroke();
+         }
+         if(i==2){
+            x0 = w / 2;
+            y0 = h / 2 - r * nutritionScore['main_meal'] / 4.5;
+            ctx.beginPath();
+            ctx.setLineDash([5, 5]);
+            ctx.lineWidth = 5.0;
+            ctx.strokeStyle ="#B0B4B7";
+            ctx.moveTo(x0, y0);
+
+            for (i = 1; i < 5; i++) {
+               x = w / 2 + Math.cos(2 * pi / 5 * i - pi / 2) * r * nutritionScore[texten[i]] / 4.5;
+               y = h / 2 + Math.sin(2 * pi / 5 * i - pi / 2) * r * nutritionScore[texten[i]] / 4.5;
+               ctx.lineTo(x, y);
+            }
+
+            ctx.closePath();
+            ctx.stroke();
+         }
+      });
+
+
+      if (nutritionScores[0]['main_meal'] >= 3 && nutritionScores[0]['main_dish'] >= 3 && nutritionScores[0]['side_dish'] >= 3 && nutritionScores[0]['milk'] >= 3 && nutritionScores[0]['fruit'] >= 3) {
          $("#ok").show();
       }
 
@@ -146,7 +190,7 @@
       let texten = ['energy', 'protein', 'fat', 'vitamin', 'mineral', 'fiber'];
       let calcData = Array(6);
       for (i = 0; i < 6; i++) {
-         calcData[i] = nutritionScore[texten[i]]
+         calcData[i] = nutritionScores[0][texten[i]]
       }
       let c = document.getElementById("intakegram");
       c.width = w;
@@ -241,12 +285,12 @@
       let neverFood35 = new Array();
       let neverFood36 = new Array();
 
-      let mainMeal = nutritionScore['main_meal'];
-      let mainDish = nutritionScore['main_dish'];
-      let sideDish = nutritionScore['side_dish'];
-      let milk = nutritionScore['milk'];
-      let fruit = nutritionScore['fruit'];
-      let protein = nutritionScore['protein'];
+      let mainMeal = nutritionScores[0]['main_meal'];
+      let mainDish = nutritionScores[0]['main_dish'];
+      let sideDish = nutritionScores[0]['side_dish'];
+      let milk = nutritionScores[0]['milk'];
+      let fruit = nutritionScores[0]['fruit'];
+      let protein = nutritionScores[0]['protein'];
 
       let meat = foodInput['meat'];
       let seafood = foodInput['seafood'];

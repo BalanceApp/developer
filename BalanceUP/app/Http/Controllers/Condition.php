@@ -50,7 +50,7 @@ class Condition extends Controller
         $returndata=array();
 
         $returndata['nutritionScore'] = DB::select('SELECT main_meal,main_dish,side_dish,milk,fruit,energy,protein,fat,vitamin,mineral,fiber,salt 
-        FROM nutrition_scores WHERE userid = ? AND id = (SELECT MAX(id) FROM nutrition_scores WHERE userid =?)',[$myuserid,$myuserid]);
+        FROM nutrition_scores WHERE userid = ? ORDER BY id DESC LIMIT 3',[$myuserid]);
 
         $returndata['foodInput'] = DB::select('SELECT userid,meat,seafood,egg,bean,LCvegetable,GYvegetable,mushroom,seaweed,potato,sweet_frequency,fried_food,fast_food
         FROM food_inputs WHERE userid = ? AND id = (SELECT MAX(id) FROM food_inputs WHERE userid =?)',[$myuserid,$myuserid]);
