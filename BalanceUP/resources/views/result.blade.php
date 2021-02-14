@@ -1,6 +1,13 @@
 @extends('app')
 @section('title', '結果ページ')
 @section('content')
+
+<style>
+td{
+   white-space: nowrap;
+}
+
+</style>
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script>
    var nutritionScores;
@@ -674,17 +681,17 @@
                         <p id="board" class="page-content-title">食生活バランスチェック結果</p>
                      </center>
                   </div>
-                  <div style="margin-top: 10px;">
-                     <table border="1" width="100%" style="text-align:center;">
+                  <div class="mt-5 table-responsive">
+                     <table class="table table-bordered text-nowrap">
                         <tbody>
-                           <tr height="24px">
-                              <td widtd="14%">所属</td>
-                              <td widtd="14%">氏名</td>
-                              <td widtd="14%">身長(cm)</td>
-                              <td widtd="14%">体重(kg)</td>
-                              <td widtd="14%">体脂肪率(%)</td>
-                              <td widtd="14%">筋肉量(kg)</td>
-                              <td widtd="*">チェック記入</td>
+                           <tr>
+                              <td>所属</td>
+                              <td>氏名</td>
+                              <td >身長(cm)</td>
+                              <td>体重(kg)</td>
+                              <td>体脂肪率(%)</td>
+                              <td>筋肉量(kg)</td>
+                              <td>チェック記入</td>
                            </tr>
                         </tbody>
                         <tbody>
@@ -700,11 +707,15 @@
                         </tbody>
                      </table>
                   </div>
-                  <div style="margin-top: 10px;margin-bottom: 100px;">
-                     <p class="s-title">①5つの食品のグループをどのくらい食べているかな?</p>
+                  <div class="mt-5 row">
+                     <div class="col-8">
+                        <p class="s-title">①5つの食品のグループをどのくらい食べているかな?</p>
+                     </div>
+                     <div class="col-4">
+                        <img class="img-fluid" src="{{ asset('images/img-1.png') }}" alt="notic-table">
+                     </div>
                   </div>
                   <div>
-                     <img class="notic-table-img" src="{{ asset('images/img-1.png') }}" alt="notic-table">
                      <div class="main-chai">
                         <img src="{{ asset('images/img-2.png') }}" alt="mainchai">
                      </div>

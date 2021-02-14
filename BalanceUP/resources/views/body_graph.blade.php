@@ -409,13 +409,13 @@
                   <h1 id="board" class="headBtn">からだの変化</h1>
                </div>
                <div class="example-preview">
-                  <ul class="nav nav-tabs" id="myTab" role="tablist">
+                  <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
                      <li class="nav-item">
                         <a class="nav-link active" id="home-tab" data-toggle="tab" onclick="everyday();">
                            <span class="nav-icon">
                               <i class="flaticon2-layers-1"></i>
                            </span>
-                           <span class="nav-text" style="font-size: 28px">日</span>
+                           <span class="nav-text">日</span>
                         </a>
                      </li>
                      <li class="nav-item">
@@ -424,7 +424,7 @@
                            <span class="nav-icon">
                               <i class="flaticon2-layers-1"></i>
                            </span>
-                           <span class="nav-text" style="font-size: 28px">週</span>
+                           <span class="nav-text">週</span>
                         </a>
                      </li>
                      <li class="nav-item">
@@ -433,7 +433,7 @@
                            <span class="nav-icon">
                               <i class="flaticon2-layers-1"></i>
                            </span>
-                           <span class="nav-text" style="font-size: 28px">月</span>
+                           <span class="nav-text">月</span>
                         </a>
                      </li>
                      <li class="nav-item">
@@ -442,7 +442,7 @@
                            <span class="nav-icon">
                               <i class="flaticon2-layers-1"></i>
                            </span>
-                           <span class="nav-text" style="font-size: 28px">年</span>
+                           <span class="nav-text">年</span>
                         </a>
                      </li>
                   </ul>
