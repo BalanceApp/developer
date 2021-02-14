@@ -570,7 +570,9 @@
                                           </tr>
                                        </tbody>
                                     </table>
-                                    <img class="d-none d-sm-block" src="{{asset('images/meal22.png')}}" alt="主菜の種類">
+                                    <div>
+                                       <img class="d-none d-sm-block" style="height: 150px; margin-top:70px" src="{{asset('images/meal22.png')}}" alt="主菜の種類">
+                                    </div>
                                  </div>
                               </div>
                            </div>
@@ -860,7 +862,7 @@
                                           </tr>
                                        </tbody>
                                     </table>
-                                    <img class="d-none d-sm-block" src="{{asset('images/meal33.png')}}" alt="色のうすいやさいの量こまかく">
+                                    <img class="d-none d-sm-block" style="height: 150px; margin-top:70px" src="{{asset('images/meal33.png')}}" alt="色のうすいやさいの量こまかく">
                                  </div>
                               </div>
                            </div>
