@@ -2,12 +2,6 @@
 @section('title', '結果ページ')
 @section('content')
 
-<style>
-td{
-   white-space: nowrap;
-}
-
-</style>
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script>
    var nutritionScores;
@@ -123,64 +117,114 @@ td{
       ctx.fill();
       ctx.closePath();
 
-      nutritionScores.forEach(function(nutritionScore,i){
-         if(i==0){
-            x0 = w / 2;
-            y0 = h / 2 - r * nutritionScore['main_meal'] / 4.5;
-            ctx.beginPath();
-            ctx.setLineDash([0, 0]);
-            ctx.lineWidth = 5.0;
-            ctx.strokeStyle = "#EB45A2";
-            ctx.moveTo(x0, y0);
+      if(nutritionScores.length == 1){
+         x0 = w / 2;
+         y0 = h / 2 - r * nutritionScores[0]['main_meal'] / 4.5;
+         ctx.beginPath();
+         ctx.setLineDash([0, 0]);
+         ctx.lineWidth = 5.0;
+         ctx.strokeStyle = "#EB45A2";
+         ctx.moveTo(x0, y0);
 
-            for (i = 1; i < 5; i++) {
-               x = w / 2 + Math.cos(2 * pi / 5 * i - pi / 2) * r * nutritionScore[texten[i]] / 4.5;
-               y = h / 2 + Math.sin(2 * pi / 5 * i - pi / 2) * r * nutritionScore[texten[i]] / 4.5;
-               ctx.lineTo(x, y);
-            }
-
-            ctx.closePath();
-            ctx.stroke();
+         for (i = 1; i < 5; i++) {
+            x = w / 2 + Math.cos(2 * pi / 5 * i - pi / 2) * r * nutritionScores[0][texten[i]] / 4.5;
+            y = h / 2 + Math.sin(2 * pi / 5 * i - pi / 2) * r * nutritionScores[0][texten[i]] / 4.5;
+            ctx.lineTo(x, y);
          }
-         if(i==1){
-            x0 = w / 2;
-            y0 = h / 2 - r * nutritionScore['main_meal'] / 4.5;
-            ctx.beginPath();
-            ctx.setLineDash([30, 30]);
-            ctx.lineWidth = 5.0;
-            ctx.strokeStyle = "#595757";
-            ctx.moveTo(x0, y0);
 
-            for (i = 1; i < 5; i++) {
-               x = w / 2 + Math.cos(2 * pi / 5 * i - pi / 2) * r * nutritionScore[texten[i]] / 4.5;
-               y = h / 2 + Math.sin(2 * pi / 5 * i - pi / 2) * r * nutritionScore[texten[i]] / 4.5;
-               ctx.lineTo(x, y);
-            }
+         ctx.closePath();
+         ctx.stroke();
+      }
+      else if(nutritionScores.length == 2){
+         x0 = w / 2;
+         y0 = h / 2 - r * nutritionScores[1]['main_meal'] / 4.5;
+         ctx.beginPath();
+         ctx.setLineDash([30, 30]);
+         ctx.lineWidth = 5.0;
+         ctx.strokeStyle = "#595757";
+         ctx.moveTo(x0, y0);
 
-            ctx.closePath();
-            ctx.stroke();
+         for (i = 1; i < 5; i++) {
+            x = w / 2 + Math.cos(2 * pi / 5 * i - pi / 2) * r * nutritionScores[1][texten[i]] / 4.5;
+            y = h / 2 + Math.sin(2 * pi / 5 * i - pi / 2) * r * nutritionScores[1][texten[i]] / 4.5;
+            ctx.lineTo(x, y);
          }
-         if(i==2){
-            x0 = w / 2;
-            y0 = h / 2 - r * nutritionScore['main_meal'] / 4.5;
-            ctx.beginPath();
-            ctx.setLineDash([5, 5]);
-            ctx.lineWidth = 5.0;
-            ctx.strokeStyle ="#B0B4B7";
-            ctx.moveTo(x0, y0);
 
-            for (i = 1; i < 5; i++) {
-               x = w / 2 + Math.cos(2 * pi / 5 * i - pi / 2) * r * nutritionScore[texten[i]] / 4.5;
-               y = h / 2 + Math.sin(2 * pi / 5 * i - pi / 2) * r * nutritionScore[texten[i]] / 4.5;
-               ctx.lineTo(x, y);
-            }
+         ctx.closePath();
+         ctx.stroke();
 
-            ctx.closePath();
-            ctx.stroke();
+         x0 = w / 2;
+         y0 = h / 2 - r * nutritionScores[0]['main_meal'] / 4.5;
+         ctx.beginPath();
+         ctx.setLineDash([0, 0]);
+         ctx.lineWidth = 5.0;
+         ctx.strokeStyle = "#EB45A2";
+         ctx.moveTo(x0, y0);
+
+         for (i = 1; i < 5; i++) {
+            x = w / 2 + Math.cos(2 * pi / 5 * i - pi / 2) * r * nutritionScores[0][texten[i]] / 4.5;
+            y = h / 2 + Math.sin(2 * pi / 5 * i - pi / 2) * r * nutritionScores[0][texten[i]] / 4.5;
+            ctx.lineTo(x, y);
          }
-      });
 
+         ctx.closePath();
+         ctx.stroke();
 
+      }
+
+      else if(nutritionScores.length == 3){
+         x0 = w / 2;
+         y0 = h / 2 - r * nutritionScores[2]['main_meal'] / 4.5;
+         ctx.beginPath();
+         ctx.setLineDash([5, 5]);
+         ctx.lineWidth = 5.0;
+         ctx.strokeStyle = "#B0B4B7";
+         ctx.moveTo(x0, y0);
+
+         for (i = 1; i < 5; i++) {
+            x = w / 2 + Math.cos(2 * pi / 5 * i - pi / 2) * r * nutritionScores[2][texten[i]] / 4.5;
+            y = h / 2 + Math.sin(2 * pi / 5 * i - pi / 2) * r * nutritionScores[2][texten[i]] / 4.5;
+            ctx.lineTo(x, y);
+         }
+
+         ctx.closePath();
+         ctx.stroke();
+
+         x0 = w / 2;
+         y0 = h / 2 - r * nutritionScores[1]['main_meal'] / 4.5;
+         ctx.beginPath();
+         ctx.setLineDash([30, 30]);
+         ctx.lineWidth = 5.0;
+         ctx.strokeStyle = "#595757";
+         ctx.moveTo(x0, y0);
+
+         for (i = 1; i < 5; i++) {
+            x = w / 2 + Math.cos(2 * pi / 5 * i - pi / 2) * r * nutritionScores[1][texten[i]] / 4.5;
+            y = h / 2 + Math.sin(2 * pi / 5 * i - pi / 2) * r * nutritionScores[1][texten[i]] / 4.5;
+            ctx.lineTo(x, y);
+         }
+
+         ctx.closePath();
+         ctx.stroke();
+
+         x0 = w / 2;
+         y0 = h / 2 - r * nutritionScores[0]['main_meal'] / 4.5;
+         ctx.beginPath();
+         ctx.setLineDash([0, 0]);
+         ctx.lineWidth = 5.0;
+         ctx.strokeStyle = "#EB45A2";
+         ctx.moveTo(x0, y0);
+
+         for (i = 1; i < 5; i++) {
+            x = w / 2 + Math.cos(2 * pi / 5 * i - pi / 2) * r * nutritionScores[0][texten[i]] / 4.5;
+            y = h / 2 + Math.sin(2 * pi / 5 * i - pi / 2) * r * nutritionScores[0][texten[i]] / 4.5;
+            ctx.lineTo(x, y);
+         }
+
+         ctx.closePath();
+         ctx.stroke();
+      }
+      
       if (nutritionScores[0]['main_meal'] >= 3 && nutritionScores[0]['main_dish'] >= 3 && nutritionScores[0]['side_dish'] >= 3 && nutritionScores[0]['milk'] >= 3 && nutritionScores[0]['fruit'] >= 3) {
          $("#ok").show();
       }
@@ -681,20 +725,18 @@ td{
                         <p id="board" class="page-content-title">食生活バランスチェック結果</p>
                      </center>
                   </div>
-                  <div class="mt-5 table-responsive">
-                     <table class="table table-bordered text-nowrap">
+                  <div class="mt-5">
+                     <table border="1" width="100%" style="text-align:center;">
                         <tbody>
-                           <tr>
-                              <td>所属</td>
-                              <td>氏名</td>
-                              <td >身長(cm)</td>
-                              <td>体重(kg)</td>
-                              <td>体脂肪率(%)</td>
-                              <td>筋肉量(kg)</td>
-                              <td>チェック記入</td>
-                           </tr>
+                           <tr height="24px">
+                              <td widtd="14%">所属</td>
+                              <td widtd="14%">氏名</td>
+                              <td widtd="14%">身長(cm)</td>
+                              <td widtd="14%">体重(kg)</td>
+                              <td widtd="14%">体脂肪率(%)</td>
+                              <td widtd="14%">筋肉量(kg)</td>
+                              <td widtd="*">チェック記入</td>
                         </tbody>
-                        <tbody>
                            <tr>
                               <td id="p_group"></td>
                               <td id="p_name"></td>
