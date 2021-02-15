@@ -4,18 +4,16 @@
 
 <style>
    label>input {
-      visibility: hidden;
+      display:none;
       border: none;
    }
 
    label>img {
       display: inline-block;
-      padding: 0px;
       height: 20px;
       width: 20px;
       background: none;
       border: none;
-      margin-left: -10px;
    }
 
    label>input:checked+img {
@@ -209,17 +207,17 @@
                @csrf
                <div class="card-body d-flex flex-column px-0" >
                   <center>
-                     <p style="letter-spacing: 5px;font-size: 20px;font-weight: bold;">
-                        最近1週間の食事でどのくらい食べたか思い出して<br>
+                     <p class="ml-20 mr-20" style="letter-spacing: 5px;font-size: 20px;font-weight: bold;">
+                        最近1週間の食事でどのくらい食べたか思い出して<br/>
                         <img src="{{asset('images/square.png')}}" alt="Square" style="width: 20px;">
-                        の中に当てはまるところに
+                        の中の当てはまるところに
                         <img src="{{asset('images/tick.png')}}" alt="Tick" style="width: 20px;">
                         をつけてみましょう
                      </p>
                   </center>
                   <div id="first">
                      <div class="row">
-                        <div class="left-row">
+                        <div class="left-row mt-5">
                            <div>
                               <input type="radio" name="" checked disabled><span class="ml-1">は1週間分の食事について、</span>
                            </div>
@@ -240,11 +238,9 @@
                                           <tr>
                                              <th scope="col">#</th>
                                              <th scope="col">食ベない</th>
-                                             <th scope="col">ふつう量<br><span>より少ない</span>
-                                             </th>
+                                             <th scope="col">ふつう量より少ない</th>
                                              <th scope="col">ふつう量</th>
-                                             <th scope="col">ふつう量<br><span>より多い</span>
-                                             </th>
+                                             <th scope="col">ふつう量より多い</th>
                                           </tr>
                                        </thead>
                                        <tbody>
@@ -349,11 +345,9 @@
                                           <tr>
                                              <th scope="col">#</th>
                                              <th scope="col">食べない</th>
-                                             <th scope="col">ふつう量<br><span >より少ない</span>
-                                             </th>
+                                             <th scope="col">ふつう量より少ない</th>
                                              <th scope="col">ふつう量</th>
-                                             <th scope="col">ふつう量<br><span >より多い</span>
-                                             </th>
+                                             <th scope="col">ふつう量より多い</th>
                                           </tr>
                                        </thead>
                                        <tbody>
@@ -577,7 +571,7 @@
                               </div>
                            </div>
                         </div>
-                        <div class="right-row">
+                        <div class="right-row mt-26">
                            <div style="display: flex;">
                               <p class="lable-p" style="font-size: 20px;font-weight: bold;" id="p_title_3">副菜</p>
                               <span class="mt-3 ml-3">（野菜・きのこ・海そう•いもをつかった料理）</span>
@@ -592,11 +586,9 @@
                                           <tr>
                                              <th scope="col">#</th>
                                              <th scope="col">食べない</th>
-                                             <th scope="col">ふつう量<br><span >より少ない</span>
-                                             </th>
+                                             <th scope="col">ふつう量より少ない</th>
                                              <th scope="col">ふつう量</th>
-                                             <th scope="col">ふつう量<br><span >より多い</span>
-                                             </th>
+                                             <th scope="col">ふつう量より多い</th>
                                           </tr>
                                        </thead>
                                        <tbody>
@@ -704,7 +696,7 @@
                                        </thead>
                                        <tbody>
                                           <tr>
-                                             <th scope="row">色の<br>うすい<br>やさい</th>
+                                             <th scope="row">色のうすいやさい</th>
                                              <td>
                                                 <label title="item1">
                                                    <input type="radio" name="foo14" value=0 />
@@ -753,7 +745,7 @@
                                        </thead>
                                        <tbody>
                                           <tr>
-                                             <th scope="row">色の<br>こい<br>野菜</th>
+                                             <th scope="row">色のこい野菜</th>
                                              <td>
                                                 <label title="item1">
                                                    <input type="radio" name="foo15" value=0 />
@@ -877,11 +869,9 @@
                                     <thead>
                                        <tr>
                                           <th scope="col">食べない</th>
-                                          <th scope="col">ふつう量<br><span >より少ない</span>
-                                          </th>
+                                          <th scope="col">ふつう量より少ない</th>
                                           <th scope="col">ふつう量</th>
-                                          <th scope="col">ふつう量<br><span >より多い</span>
-                                          </th>
+                                          <th scope="col">ふつう量より多い</th>
                                        </tr>
                                     </thead>
                                     <tbody>
@@ -967,11 +957,9 @@
                                     <thead>
                                        <tr>
                                           <th scope="col">食べない</th>
-                                          <th scope="col">ふつう量<br><span >より少ない</span>
-                                          </th>
+                                          <th scope="col">ふつう量より少ない</th>
                                           <th scope="col">ふつう量</th>
-                                          <th scope="col">ふつう量<br><span >より多い</span>
-                                          </th>
+                                          <th scope="col">ふつう量より多い</th>
                                        </tr>
                                     </thead>
                                     <tbody>
@@ -1056,7 +1044,7 @@
                   </div>
                   <div id="second">
                      <div class="row">
-                        <div class="left-row">
+                        <div class="left-row mt-5">
                            <div>
                               <input type="radio" name="" checked disabled><span class="ml-1">は1週間分の食事について、</span>
                            </div>
@@ -1075,11 +1063,9 @@
                                        <thead>
                                           <tr>
                                              <th scope="col">食べない</th>
-                                             <th scope="col">ふつう量<br><span >より少ない</span>
-                                             </th>
+                                             <th scope="col">ふつう量より少ない</th>
                                              <th scope="col">ふつう量</th>
-                                             <th scope="col">ふつう量<br><span >より多い</span>
-                                             </th>
+                                             <th scope="col">ふつう量より多い</th>
                                           </tr>
                                        </thead>
                                        <tbody>
@@ -1167,11 +1153,9 @@
                                        <thead>
                                           <tr>
                                              <th scope="col">食べない</th>
-                                             <th scope="col">ふつう量<br><span >より少ない</span>
-                                             </th>
+                                             <th scope="col">ふつう量より少ない</th>
                                              <th scope="col">ふつう量</th>
-                                             <th scope="col">ふつう量<br><span >より多い</span>
-                                             </th>
+                                             <th scope="col">ふつう量より多い</th>
                                           </tr>
                                        </thead>
                                        <tbody>
@@ -1260,11 +1244,9 @@
                                        <thead>
                                           <tr>
                                              <th scope="col">のまない</th>
-                                             <th scope="col">ふつう量<br><span >より少ない</span>
-                                             </th>
+                                             <th scope="col">ふつう量より少ない</th>
                                              <th scope="col">ふつう量</th>
-                                             <th scope="col">ふつう量<br><span >より多い</span>
-                                             </th>
+                                             <th scope="col">ふつう量より多い</th>
                                           </tr>
                                        </thead>
                                        <tbody>
@@ -1341,7 +1323,7 @@
                               </table>
                            </div>
                         </div>
-                        <div class="right-row">
+                        <div class="right-row mt-27">
                            <div style="display: flex;">
                               <p class="lable-p" style="font-size: 20px;font-weight: bold;" id="p_title_9">あげもの</p>
                            </div>
@@ -1573,11 +1555,11 @@
                               <table class="table" style="text-align: center;">
                                  <thead>
                                     <tr>
-                                       <th style="width:17%;">エネルギー</th>
-                                       <th style="width:17%;">カルシウム・鉄など</th>
-                                       <th style="width:17%;">ビタミン</th>
-                                       <th style="width:17%;">プロテイン・アミノ酸など</th>
-                                       <th style="width:17%;">その他</th>
+                                       <th>エネルギー</th>
+                                       <th>カルシウム・鉄など</th>
+                                       <th>ビタミン</th>
+                                       <th>プロテイン・アミノ酸など</th>
+                                       <th>その他</th>
                                        <th>わからない</th>
                                     </tr>
                                  </thead>
