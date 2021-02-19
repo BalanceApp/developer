@@ -117,12 +117,11 @@
       ctx.fill();
       ctx.closePath();
 
-      ctx.save();
       if(nutritionScores.length == 1){
          x0 = w / 2;
          y0 = h / 2 - r * nutritionScores[0]['main_meal'] / 4.5;
          ctx.beginPath();
-         ctx.setLineDash([0, 0]);
+         ctx.setLineDash([1, 0]);
          ctx.lineWidth = 5.0;
          ctx.strokeStyle = "#EB45A2";
          ctx.moveTo(x0, y0);
@@ -135,7 +134,6 @@
 
          ctx.closePath();
          ctx.stroke();
-         ctx.restore()
       }
       else if(nutritionScores.length == 2){
          x0 = w / 2;
@@ -154,12 +152,11 @@
 
          ctx.closePath();
          ctx.stroke();
-         ctx.restore();
 
          x0 = w / 2;
          y0 = h / 2 - r * nutritionScores[0]['main_meal'] / 4.5;
          ctx.beginPath();
-         ctx.setLineDash([0, 0]);
+         ctx.setLineDash([1, 0]);
          ctx.lineWidth = 5.0;
          ctx.strokeStyle = "#EB45A2";
          ctx.moveTo(x0, y0);
@@ -172,7 +169,6 @@
 
          ctx.closePath();
          ctx.stroke();
-         ctx.restore();
 
       }
 
@@ -193,7 +189,6 @@
 
          ctx.closePath();
          ctx.stroke();
-         ctx.restore();
 
          x0 = w / 2;
          y0 = h / 2 - r * nutritionScores[1]['main_meal'] / 4.5;
@@ -211,12 +206,11 @@
 
          ctx.closePath();
          ctx.stroke();
-         ctx.restore();
 
          x0 = w / 2;
          y0 = h / 2 - r * nutritionScores[0]['main_meal'] / 4.5;
          ctx.beginPath();
-         ctx.setLineDash([0, 0]);
+         ctx.setLineDash([1,0]);
          ctx.lineWidth = 5.0;
          ctx.strokeStyle = "#EB45A2";
          ctx.moveTo(x0, y0);
@@ -229,7 +223,6 @@
 
          ctx.closePath();
          ctx.stroke();
-         ctx.restore();
       }
       
       if (nutritionScores[0]['main_meal'] >= 3 && nutritionScores[0]['main_dish'] >= 3 && nutritionScores[0]['side_dish'] >= 3 && nutritionScores[0]['milk'] >= 3 && nutritionScores[0]['fruit'] >= 3) {
