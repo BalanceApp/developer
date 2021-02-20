@@ -233,7 +233,6 @@
 
 
    function intakeSourcegram() {
-
       let w = $('#board').width();
       let h = w / 2;
 
@@ -243,6 +242,7 @@
       for (i = 0; i < 6; i++) {
          calcData[i] = nutritionScores[0][texten[i]]
       }
+      let items = new Image();
       let c = document.getElementById("intakegram");
       c.width = w;
       c.height = h;
@@ -329,6 +329,11 @@
          ctx.fill();
          ctx.closePath();
       }
+
+      items.src = "images/items.png";
+      items.onload = () => {
+         ctx.drawImage(items,0.16 * w,0.76 * h, 0.77 * w , 0.77 / 8 * w);
+      };
    }
 
    function writeComment() {
@@ -782,8 +787,6 @@
                   <center>
                      <canvas id="intakegram">
                   </center>
-                  <img class="item-1" src="{{ asset('images/items.png') }}" alt="">
-                  <!-- <img class="item-2" src="{{ asset('images/img-8.png') }}" alt=""> -->
                </div>
                <div style="margin: 10px 10%; ">
                   <div style="margin-top: 10px; background-color: #c9f8f9; padding:15px;" id="comment">
