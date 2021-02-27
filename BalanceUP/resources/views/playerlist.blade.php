@@ -20,24 +20,6 @@
                </div>
                <div class="card-scroll col-md-10" id="staffinfo" style="font-size:18px; margin-top: 50px">
                   <div class="container">
-                     <div class="row">
-                        <div class="col-md-3 form-group">
-                           <!--		Show Numbers Of Rows 		-->
-                           <select class="form-control" name="state" id="maxRows">
-                              <option value="5000">Show ALL Rows</option>
-                              <option value="5">5</option>
-                              <option value="10">10</option>
-                              <option value="15">15</option>
-                              <option value="20">20</option>
-                              <option value="50">50</option>
-                              <option value="70">70</option>
-                              <option value="100">100</option>
-                           </select>
-                        </div>
-                        <div style="padding-top:10px">
-                           <h6 class="">:列数</h6>
-                        </div>
-                     </div>
                      <table id="table-id" class="table table-bordered gridview">
                         <thead>
                            <tr>
@@ -58,19 +40,6 @@
                            @endisset
                         </tbody>
                      </table>
-                     <div class='pagination-container'>
-                        <nav>
-                           <ul class="pagination">
-                              <li data-page="prev">
-                                 <span><span class="sr-only">(current)</span></span>
-                              </li>
-                              <!--	Here the JS Function Will Add the Rows -->
-                              <li data-page="next" id="prev">
-                                 <span><span class="sr-only">(current)</span></span>
-                              </li>
-                           </ul>
-                        </nav>
-                     </div>
                      <div style="text-align: right;padding-right: 100px;margin-top: 30px;">
                         <div>
                            <a href="{{url('/staff-page')}}"><span class="btn btn-primary btn-lg"

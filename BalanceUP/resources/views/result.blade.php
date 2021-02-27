@@ -330,7 +330,7 @@
          ctx.closePath();
       }
 
-      items.src = "images/items.png";
+      items.src = "{{asset('images/items.png')}}";
       items.onload = () => {
          ctx.drawImage(items,0.16 * w,0.76 * h, 0.77 * w , 0.77 / 8 * w);
       };

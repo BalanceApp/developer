@@ -68,12 +68,13 @@ class Condition extends Controller
             $userNutritionScore = DB::select('SELECT main_meal,main_dish,side_dish,milk,fruit
                                      FROM nutrition_scores 
                                      WHERE userid = ? AND id = (SELECT MAX(id) FROM nutrition_scores WHERE userid =?)',[$userid->userid,$userid->userid]);
-            
-            $userNutritionScore = $userNutritionScore[0];
-            foreach($userNutritionScore as $item){
-                $score += $item;
-            }
-            $userScores[] = ["name" => $userid->userid, "score" => $score];   
+            if(count($userNutritionScore) != 0){
+                $userNutritionScore = $userNutritionScore[0];
+                foreach($userNutritionScore as $item){
+                    $score += $item;
+                }
+                $userScores[] = ["name" => $userid->userid, "score" => $score];  
+            } 
         }
         array_multisort(array_column($userScores, 'score'), SORT_DESC, $userScores);
 
@@ -91,7 +92,6 @@ class Condition extends Controller
             $cnt++;
         }
 
-        clock($grade);
         $returndata['grade'] = $grade;
         $returndata['count'] = $userCount[0]->count;
         
