@@ -132,8 +132,8 @@ class Condition extends Controller
             if($result) array_push($week['mdata'], $result[0]);
         }
 
-        $yy = (int)date("Y");
-        $mm = (int)date("m");
+        $yy = date("Y");
+        $mm = date("m");
 
         $month = array();
         $month['hdata'] = array();
@@ -158,6 +158,7 @@ class Condition extends Controller
                 $yy--;
             }
         }
+        clock($month);
         $year = array();
         $year['hdata'] = array();
         $year['wdata'] = array();
