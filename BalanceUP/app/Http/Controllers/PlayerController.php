@@ -11,7 +11,7 @@ class PlayerController extends Controller
         if( $req->session()->get('role')!='staff'){
             return redirect('/');
         }
-        $playerlist = DB::select('select userid, name from players');
+        $playerlist = DB::select('select userid, name, team from players');
         return view('playerlist', compact('playerlist'));
     }
 
@@ -41,7 +41,7 @@ class PlayerController extends Controller
         else{
             $now = date("y-m-d");
             DB::insert('INSERT INTO allergies(userid,shrimp, crab, wheat, soba, milk, egg,squid, orange, beef, salmon, mackerel, soybeans, chicken,banana,peache) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [$userdata['userid'], isset($userdata['shrimp']), isset($userdata['crab']), isset($userdata['wheat']), isset($userdata['soba']), isset($userdata['milk']), isset($userdata['egg']), isset($userdata['squid']), isset($userdata['orange']), isset($userdata['beef']), isset($userdata['salmon']), isset($userdata['mackerel']), isset($userdata['soybeans']), isset($userdata['chicken']), isset($userdata['banana']), isset($userdata['peache'])]);
-            DB::insert('INSERT INTO players(userid, password, name, birthday, sex, sport, registered_date) VALUES(?,md5(?),?,?,?,?,?)', [$userdata['userid'],$userdata['password'], $userdata['name'],$userdata['birthday'], $userdata['sex']=="male" ? 1:0, $userdata['sport'],$now]);
+            DB::insert('INSERT INTO players(userid, password, name, birthday, sex, sport, team, registered_date) VALUES(?,md5(?),?,?,?,?,?,?)', [$userdata['userid'],$userdata['password'], $userdata['name'],$userdata['birthday'], $userdata['sex']=="male" ? 1:0, $userdata['sport'],$userdata['team'],$now]);
             
             $req->session()->put('userid', $userdata['userid']);
             $req->session()->put('userpwd', $userdata['password']);

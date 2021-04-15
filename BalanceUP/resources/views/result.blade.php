@@ -50,6 +50,7 @@
    function drawAttribute() {
       $("#p_name").html(playerName['name']);
       $("#p_group").html(playerName['sport']);
+      $("#p_team").html(playerName['team']);
       $("#p_height").html(five_two_player['height']);
       $("#p_weight").html(five_two_player['weight']);
       $("#p_fat").html(five_two_player['fat']);
@@ -736,6 +737,7 @@
                            <tr height="24px">
                               <td widtd="14%">所属</td>
                               <td widtd="14%">氏名</td>
+                              <td widtd="14%">チーム名</td>
                               <td widtd="14%">身長(cm)</td>
                               <td widtd="14%">体重(kg)</td>
                               <td widtd="14%">体脂肪率(%)</td>
@@ -745,6 +747,7 @@
                            <tr>
                               <td id="p_group"></td>
                               <td id="p_name"></td>
+                              <td id="p_team"></td>
                               <td id="p_height"></td>
                               <td id="p_weight"></td>
                               <td id="p_fat"></td>

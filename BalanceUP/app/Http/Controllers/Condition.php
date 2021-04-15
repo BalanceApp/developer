@@ -57,7 +57,7 @@ class Condition extends Controller
 
         $returndata['five_two'] = DB::select('SELECT practice_frequency, practice_time, height, weight, fat, muscle, registered_date FROM daily_body_records WHERE userid = ? AND id = (SELECT MAX(id) FROM daily_body_records WHERE userid =?)',[$myuserid,$myuserid]);
 
-        $returndata['userName'] = DB::select('SELECT name, sport from players WHERE userid=?', [$myuserid]);
+        $returndata['userName'] = DB::select('SELECT name, sport, team from players WHERE userid=?', [$myuserid]);
 
         
         $userCount = DB::select('SELECT count(*) as count from players'); #全員が何人いるか

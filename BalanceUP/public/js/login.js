@@ -1,17 +1,14 @@
-function validateform()
-{
-    if($('#username').val()=="" || $('#password').val()=="")
-    {
-        $('#error').html("名とパスワードを入力してください");
+function validateform() {
+    if ($('#username').val() == "" || $('#password').val() == "") {
+        $('#error').html("名前とパスワードを入力してください");
         return false;
     }
-    else{
+    else {
         $('#submit').click();
     }
 }
 
-function clearerror()
-{
+function clearerror() {
     $('#error').html("");
     $('#unkown').html("");
 }

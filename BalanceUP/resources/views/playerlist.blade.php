@@ -21,6 +21,7 @@
                            <tr>
                               <th>ユーザーID</th>
                               <th>氏名</th>
+                              <th>チーム名</th>
                               <th>食事チェック結果</th>
                               <th>からだの変化</th>
                            </tr>
@@ -31,6 +32,7 @@
                            <tr>
                               <td> {{ $value->userid }} </td>
                               <td> {{ $value->name }} </td>
+                              <td> {{ $value->team }} </td>
                               <td><a href="{{url('/result/'.$value->userid)}}">食事チェック結果</a></td>
                               <td><a href="{{url('/view-body-graph/'.$value->userid)}}">からだの変化</a></td>
                            </tr>

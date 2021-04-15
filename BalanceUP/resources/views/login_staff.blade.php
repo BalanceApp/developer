@@ -1,27 +1,10 @@
 @extends('app')
 @section('title', 'ログイン')
 @section('content')
-<script src="js/jquery.min.js"></script>
-<script>
-	function validateform()
-	{
-		if($('#username').val()=="" || $('#password').val()=="")
-		{
-			$('#error').html("名前とパスワードを入力してください");
-			return false;
-		}
-		else{
-			$('#submit').click();
-		}
-	}
+<script src="{{asset('js/jquery.min.js')}}"></script>
+<script src="{{asset('js/login.js')}}"></script>
 
-	function clearerror()
-	{
-		$('#error').html("");
-		$('#unkown').html("");
-	}
-</script>
-
+<!--begin::Container-->
 <div class="container">
 	<!--begin::Dashboard-->
 	<!--begin::Row-->

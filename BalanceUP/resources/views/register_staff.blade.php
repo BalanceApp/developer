@@ -79,6 +79,13 @@
 													<span></span>女</label>
 											</div>
 										</div>
+										<div style="margin-top: 20px;" class="row">
+											<div class="col-lg-2 col-md-2 col-sm-2"></div>
+											<div class="col-lg-8 col-md-8 col-sm-8" style="text-align:start;">
+												<label for="team" style="padding-right:48px;">チーム名</label>
+												<input class="m-input" type="text" id="team" name="team">
+											</div>
+										</div>										
 										<div style="display: flex;margin-top: 20px;" class="form-group row">
 											<label class="col-sm-3 py-4 px-8 text-right">ログイン情報</label>
 											<input onclick="clearerror();" type="text"

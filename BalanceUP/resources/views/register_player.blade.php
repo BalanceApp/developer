@@ -85,6 +85,13 @@
                                     <div style="margin-top: 20px;" class="row">
                                         <div class="col-lg-2 col-md-2 col-sm-2"></div>
                                         <div class="col-lg-8 col-md-8 col-sm-8" style="text-align:start;">
+                                            <label for="team" style="padding-right:48px;">チーム名</label>
+                                            <input class="m-input" type="text" id="team" name="team">
+                                        </div>
+                                    </div>
+                                    <div style="margin-top: 20px;" class="row">
+                                        <div class="col-lg-2 col-md-2 col-sm-2"></div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8" style="text-align:start;">
                                             <label for="sport" style="padding-right:48px;">競技</label>
                                             <input class="m-input" type="text" id="sport" name="sport">
                                         </div>
@@ -181,7 +188,8 @@
                                     <div style="margin-top: 40px;" class="row">
                                         <div class="col-lg-2 col-md-2 col-sm-2"></div>
                                         <label class="col-lg-2 col-md-2 col-sm-2"
-                                            style="text-align:start;">ログイン情報</label>
+                                            style="text-align:start;">ログイン情報<span
+                                                    style="color:red; padding-right:40px;">*</span></label>
                                         <input onclick="clearerror();" type="text"
                                             class="m-input col-lg-3 col-md-3 col-sm-3" id="userid" name="userid"
                                             placeholder="ID">
@@ -198,7 +206,6 @@
                                         <a onclick="validateform();"
                                             class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-4">アカウント作成</a>
                                     </div>
-
                                 </form>
                             </div>
                         </div>

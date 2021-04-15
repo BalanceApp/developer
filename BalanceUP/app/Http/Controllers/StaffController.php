@@ -33,13 +33,12 @@ class StaffController extends Controller
         }
         else{
             $now = date("y-m-d");
-            DB::insert('INSERT INTO staffs(userid, password, name, birthday, sex, registered_date) VALUES(?,md5(?),?,?,?,?)', [$userdata['userid'],$userdata['password'], $userdata['name'],$userdata['birthday'], $userdata['sex']=="male" ? 1:0, $now]);
+            DB::insert('INSERT INTO staffs(userid, password, name, birthday, sex, team, registered_date) VALUES(?,md5(?),?,?,?,?,?)', [$userdata['userid'],$userdata['password'], $userdata['name'],$userdata['birthday'], $userdata['sex']=="male" ? 1:0, $userdata['team'], $now]);
             
             $req->session()->put('userid', $userdata['userid']);
             $req->session()->put('userpwd', $userdata['password']);
             $req->session()->put('role', "staff");
             return view('staff_page');
-            
     	}
     }
 }
