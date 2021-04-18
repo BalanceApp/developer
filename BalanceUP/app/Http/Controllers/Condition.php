@@ -219,11 +219,10 @@ class Condition extends Controller
     function csvSave(Request $req){
         $data = $req->all();
         $files = [];
-
         if($data['changeBodyCheck'] == 1){
             $filename = '体の変化'.date('Ymd').'_'.date('his').'';
             $fp = fopen('./CSV/'.$filename.'.csv','w');
-            $columnNames = array('ID','性別(男:1,女:2)','入力日付','身長','体重','体脂肪率','筋肉量');
+            $columnNames = array('ID','氏名','チーム名','性別(男:1,女:2)','入力日付','身長','体重','体脂肪率','筋肉量');
             mb_convert_variables('SJIS', 'UTF-8', $columnNames);
             fputcsv($fp, $columnNames);
 
@@ -233,7 +232,7 @@ class Condition extends Controller
                 $dailyBodyRecords = DB::select('SELECT * FROM daily_body_records WHERE userid=? AND registered_date BETWEEN ? AND ?',[$data['userlist'][$i],$data['startyear'], $data['endyear']]);
                 for($j=0;$j<count($dailyBodyRecords);$j++){
                     $dailyBodyRecord = (array)$dailyBodyRecords[$j];
-                    $lineData = array($userinfo["userid"],$userinfo["sex"]+1,$dailyBodyRecord["registered_date"],$dailyBodyRecord["height"],$dailyBodyRecord["weight"],$dailyBodyRecord["fat"],$dailyBodyRecord["muscle"]);
+                    $lineData = array($userinfo["userid"],$userinfo["name"],$userinfo["team"],$userinfo["sex"]+1,$dailyBodyRecord["registered_date"],$dailyBodyRecord["height"],$dailyBodyRecord["weight"],$dailyBodyRecord["fat"],$dailyBodyRecord["muscle"]);
                     mb_convert_variables('SJIS', 'UTF-8', $lineData);
                     fputcsv($fp, $lineData);
                 }
@@ -247,7 +246,7 @@ class Condition extends Controller
         if($data['foodInputCheck'] == 1){
             $filename = '入力未修正データ'.date('Ymd').'_'.date('his').'';
             $fp = fopen('./CSV/'.$filename.'.csv','w');
-            $columnNames = array('ID','性別(男:1,女:2)','入力日付','主食 朝','主食 昼','主食 夜','主菜 朝','主菜 昼','主菜 夜','肉','魚介類','卵','豆製品',
+            $columnNames = array('ID','氏名','チーム名','性別(男:1,女:2)','入力日付','主食 朝','主食 昼','主食 夜','主菜 朝','主菜 昼','主菜 夜','肉','魚介類','卵','豆製品',
                                 '副菜 朝','副菜 昼','副菜 夜','色のうすい野菜','色のこい野菜','きのこ','海藻','いも','牛乳・乳製品 量','牛乳・乳製品 頻度',
                                 '果物 量','果物 頻度','甘いお菓子 量','甘いお菓子 頻度','しょっぱいお菓子 量','しょっぱいお菓子 頻度','ジュース 量',
                                 'ジュース 頻度','揚げ物','ファーストフード','汁物','スープ','サプリ','エネルギー','ミネラル','ビタミン','タンパク質・アミノ酸',
@@ -261,7 +260,7 @@ class Condition extends Controller
                 $foodInputs = DB::select('SELECT * FROM food_inputs WHERE userid=? AND registered_date BETWEEN ? AND ?',[$data['userlist'][$i],$data['startyear'], $data['endyear']]);
                 for($j=0;$j<count($foodInputs);$j++){
                     $foodInput = (array)$foodInputs[$j];
-                    $lineData = array($userinfo["userid"],$userinfo["sex"]+1,$foodInput["registered_date"]);
+                    $lineData = array($userinfo["userid"],$userinfo["name"],$userinfo["team"],$userinfo["sex"]+1,$foodInput["registered_date"]);
                     $foodInputKeys = array_keys($foodInput);
                     for($k=2; $k<=34;$k++){
                         array_push($lineData,(int)$foodInput[$foodInputKeys[$k]]);
@@ -282,7 +281,7 @@ class Condition extends Controller
         if($data['nutritionScoreCheck'] == 1){
             $filename = '栄養評価式による得点'.date('Ymd').'_'.date('his').'';
             $fp = fopen('./CSV/'.$filename.'.csv','w');
-            $columnNames = array('ID','性別(男:1,女:2)','入力日付','主食','主菜','副菜','牛乳・乳製品','果物','エネルギー源','タンパク質源','脂質源','ビタミン源','ミネラル源','食物繊維源');
+            $columnNames = array('ID','氏名','チーム名','性別(男:1,女:2)','入力日付','主食','主菜','副菜','牛乳・乳製品','果物','エネルギー源','タンパク質源','脂質源','ビタミン源','ミネラル源','食物繊維源');
             mb_convert_variables('SJIS', 'UTF-8', $columnNames);
             fputcsv($fp, $columnNames);
 
@@ -292,7 +291,7 @@ class Condition extends Controller
                 $nutritionScores = DB::select('SELECT * FROM nutrition_scores WHERE userid=? AND registered_date BETWEEN ? AND ?',[$data['userlist'][$i],$data['startyear'], $data['endyear']]);
                 for($j=0;$j<count($nutritionScores);$j++){
                     $nutritionScore = (array)$nutritionScores[$j];
-                    $lineData = array($userinfo["userid"],$userinfo["sex"]+1,$nutritionScore["registered_date"],$nutritionScore["main_meal"],$nutritionScore["main_dish"],$nutritionScore["side_dish"],$nutritionScore["milk"],$nutritionScore["fruit"],$nutritionScore["energy"],$nutritionScore["protein"],$nutritionScore["fat"],$nutritionScore["vitamin"],$nutritionScore["mineral"],$nutritionScore["fiber"]);
+                    $lineData = array($userinfo["userid"],$userinfo["name"],$userinfo["team"],$userinfo["sex"]+1,$nutritionScore["registered_date"],$nutritionScore["main_meal"],$nutritionScore["main_dish"],$nutritionScore["side_dish"],$nutritionScore["milk"],$nutritionScore["fruit"],$nutritionScore["energy"],$nutritionScore["protein"],$nutritionScore["fat"],$nutritionScore["vitamin"],$nutritionScore["mineral"],$nutritionScore["fiber"]);
                     mb_convert_variables('SJIS', 'UTF-8', $lineData);
                     fputcsv($fp, $lineData);
                 }
