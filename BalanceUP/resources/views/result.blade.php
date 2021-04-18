@@ -35,6 +35,18 @@
          }
          $("#grad").css("right", posit + "%");
 
+         if(order != 0 && s_num != 0){
+            $("#grade").html(order);
+            $("#count").html(s_num);
+         }
+         else if(order == 0 && s_num == 0){
+            $("#grade-top").html("チームに所属していないので順位を出すことができません");
+         }
+         else if(order == 0 && s_num != 0){
+            $("#grade-top").html("結果がないので順位を出すことができません");
+            
+         }
+
          drawAttribute();
          drawDietgram();
          intakeSourcegram();
@@ -794,9 +806,15 @@
                <div style="margin: 10px 10%; ">
                   <div style="margin-top: 10px; background-color: #c9f8f9; padding:15px;" id="comment">
                   </div>
-                  <div class="order-list-div">
-                     <p class="order-title">チーム順位</p>&nbsp;&nbsp;
-                     <div class="order-main">
+                  <div class="mt-10">
+                     <p class="s-title">チーム内順位 
+                        <span id="grade-top" class="ml-5">
+                           <span class="ml-5" id="grade"></span>位
+                           /
+                           <span id="count"></span>人中
+                        </span>
+                     </p>
+                     <div class="order-main mt-5">
                         <img src="{{ asset('images/bad.png') }}" alt="bad" class="bad-img">
                         <p id="grad"></p>
                         <img src="{{ asset('images/good.png') }}" alt="" class="good-img">

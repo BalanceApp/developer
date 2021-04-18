@@ -59,9 +59,11 @@ class Condition extends Controller
 
         $returndata['userName'] = DB::select('SELECT name, sport, team from players WHERE userid=?', [$myuserid]);
 
-        
-        $userCount = DB::select('SELECT count(*) as count from players'); #全員が何人いるか
-        $userids = DB::select('SELECT userid from players');
+        #チーム名を取得
+        $userTeam = DB::select('SELECT team from players WHERE userid=?', [$myuserid])[0]->team;
+        #チーム全員が何人いるか
+        $teamCount = DB::select('SELECT count(*) as count FROM players WHERE team = ?',[$userTeam])[0]->count; 
+        $userids = DB::select('SELECT userid FROM players WHERE team = ?',[$userTeam]);
         $userScores = [];
         foreach($userids as $userid){
             $score = 0;
@@ -91,10 +93,16 @@ class Condition extends Controller
             $bef_point = $value['score'];
             $cnt++;
         }
-
-        $returndata['grade'] = $grade;
-        $returndata['count'] = $userCount[0]->count;
         
+        if(in_array($myuserid, array_column( $userScores, 'name'))){
+            $returndata['grade'] = $grade;
+            $returndata['count'] = $teamCount;
+        }
+        else{
+            $returndata['grade'] = 0;
+            $returndata['count'] = $teamCount;
+        }
+
         echo json_encode($returndata);
     }  
 
