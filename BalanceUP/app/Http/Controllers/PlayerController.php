@@ -11,7 +11,14 @@ class PlayerController extends Controller
         if( $req->session()->get('role')!='staff'){
             return redirect('/');
         }
-        $playerlist = DB::select('select userid, name, team from players');
+        $userid = $req->session()->get('userid');
+        $team = DB::select('SELECT team FROM staffs WHERE userid=?',[$userid])[0]->team;
+        if($team != "omi"){
+            $playerlist = DB::select('SELECT userid, name, team FROM players WHERE team=?',[$team]);
+        }
+        else{
+            $playerlist = DB::select('SELECT userid, name, team FROM players');
+        }
         return view('playerlist', compact('playerlist'));
     }
 
